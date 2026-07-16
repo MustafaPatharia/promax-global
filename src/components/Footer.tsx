@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { nav, site, verticals } from "@/lib/site";
+import { asset } from "@/lib/assets";
 
 export default function Footer() {
   const year = 2026; // static; bump or compute at build if desired
@@ -9,7 +10,7 @@ export default function Footer() {
       <div className="shell grid gap-10 py-14 md:grid-cols-4">
         <div className="md:col-span-1">
           <Image
-            src="/brand/promax-logo-white.png"
+            src={asset("/brand/promax-logo-white.png")}
             alt="Promax Global"
             width={541}
             height={232}

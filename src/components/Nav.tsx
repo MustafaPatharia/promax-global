@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { nav } from "@/lib/site";
+import { asset } from "@/lib/assets";
 
 /**
  * Sticky header. Shrinks + gains shadow on scroll (Transland signature).
@@ -36,7 +37,7 @@ export default function Nav() {
       >
         <Link href="/" className="flex items-center" aria-label="Promax Global — home">
           <Image
-            src="/brand/promax-logo-color.png"
+            src={asset("/brand/promax-logo-color.png")}
             alt="Promax Global"
             width={541}
             height={232}
