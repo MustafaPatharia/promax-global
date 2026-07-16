@@ -1,0 +1,362 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------ *
+ * Promax Global — Design System
+ * Transland layout/rhythm + motion, recolored to Promax brand.
+ * Tailwind v4 CSS-first theme. Tokens: `bg-navy`, `text-brand`, etc.
+ * ------------------------------------------------------------------ */
+@theme {
+  /* Brand — orange */
+  --color-brand: #f97316;
+  --color-brand-600: #ea6a0c;
+  --color-brand-700: #c2560a;
+  --color-brand-050: #fff3ea;
+
+  /* Navy family */
+  --color-navy: #1a3a5c;
+  --color-navy-900: #12293f;
+  --color-navy-800: #16324f;
+  --color-navy-700: #234b74;
+  --color-azure: #3a6aa0;
+
+  /* Neutrals */
+  --color-ink: #1e293b;
+  --color-slate-50: #f8fafc;
+  --color-slate-100: #f1f5f9;
+  --color-slate-200: #e2e8f0;
+  --color-slate-300: #cbd5e1;
+  --color-slate-400: #94a3b8;
+  --color-slate-500: #64748b;
+  --color-slate-600: #475569;
+  --color-slate-700: #334155;
+
+  --color-background: #ffffff;
+  --color-foreground: var(--color-ink);
+
+  /* Type — Poppins display (Transland), Inter body */
+  --font-display: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  /* Motion */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+
+  /* Shadow scale */
+  --shadow-card: 0 10px 30px -12px rgb(18 41 63 / 0.15);
+  --shadow-card-hover: 0 24px 48px -18px rgb(18 41 63 / 0.28);
+
+  --spacing-gutter: 1.5rem;
+}
+
+:root {
+  --shell-max: 80rem; /* 1280px */
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+/* Lenis smooth-scroll baseline */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* ---------- Layout primitives ---------- */
+.shell {
+  width: 100%;
+  max-width: var(--shell-max);
+  margin-inline: auto;
+  padding-inline: var(--spacing-gutter);
+}
+
+/* Transland vertical rhythm (~120px desktop) */
+.section { padding-block: 5rem; }
+@media (min-width: 768px) { .section { padding-block: 7.5rem; } }
+
+/* ---------- Component layer ---------- */
+@layer components {
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-display);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-brand);
+  }
+  .eyebrow::before {
+    content: "";
+    width: 1.75rem;
+    height: 2px;
+    background: var(--color-brand);
+  }
+
+  /* Buttons — Transland pill with arrow slide */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 9999px;
+    padding: 0.85rem 1.6rem;
+    font-family: var(--font-display);
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1;
+    transition: background-color 0.25s var(--ease-out-quart),
+      color 0.25s, transform 0.25s var(--ease-out-quart),
+      box-shadow 0.25s, border-color 0.25s;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-primary { background: var(--color-brand); color: #fff; }
+  .btn-primary:hover { background: var(--color-brand-600); box-shadow: 0 12px 24px -10px rgb(249 115 22 / 0.6); }
+  .btn-navy { background: var(--color-navy); color: #fff; }
+  .btn-navy:hover { background: var(--color-navy-900); }
+  .btn-outline { border: 1.5px solid currentColor; }
+  .btn-ghost-light { color: #fff; border: 1.5px solid rgb(255 255 255 / 0.35); }
+  .btn-ghost-light:hover { background: rgb(255 255 255 / 0.1); }
+
+  /* Card */
+  .card {
+    position: relative;
+    border-radius: 1.25rem;
+    background: #fff;
+    box-shadow: var(--shadow-card);
+    transition: transform 0.35s var(--ease-out-quart), box-shadow 0.35s;
+  }
+  .card:hover { transform: translateY(-6px); box-shadow: var(--shadow-card-hover); }
+
+  /* Dotted world-map backdrop (Transland funfact section) */
+  .dotted-map {
+    background-image: radial-gradient(currentColor 1px, transparent 1.4px);
+    background-size: 22px 22px;
+    opacity: 0.08;
+  }
+
+  /* Infinite marquee strip (stakeholder / keyword ticker) */
+  .marquee {
+    display: flex;
+    width: max-content;
+    animation: marquee 38s linear infinite;
+  }
+  .marquee-mask {
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  }
+  .marquee-mask:hover .marquee { animation-play-state: paused; }
+
+  /* Feature checklist item */
+  .feature-check {
+    position: relative;
+    padding-left: 1.9rem;
+  }
+  .feature-check::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.15rem;
+    width: 1.15rem;
+    height: 1.15rem;
+    border-radius: 9999px;
+    background: var(--color-brand-050);
+    box-shadow: inset 0 0 0 1.5px var(--color-brand);
+  }
+  .feature-check::after {
+    content: "";
+    position: absolute;
+    left: 0.4rem;
+    top: 0.38rem;
+    width: 0.3rem;
+    height: 0.55rem;
+    border: solid var(--color-brand);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+
+  /* Pull-quote mark */
+  .quote-mark {
+    font-family: var(--font-display);
+    font-size: 5rem;
+    line-height: 0.7;
+    color: var(--color-brand);
+    opacity: 0.35;
+  }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee { animation: none; }
+}
+
+/* ------------------------------------------------------------------ *
+ * Hero video treatments (VideoHero.tsx). Continuous CSS motion for the
+ * ken-burns push-in and the duotone drift; Motion drives the on-mount
+ * reveals (clip-wipe / shutter / letterbox / focus-blur). Every effect
+ * is GPU-friendly (transform + filter) and disabled under reduced motion.
+ * ------------------------------------------------------------------ */
+@keyframes hero-kenburns {
+  from { transform: scale(1) translate3d(0, 0, 0); }
+  to   { transform: scale(1.14) translate3d(-2%, -2%, 0); }
+}
+.hero-kenburns {
+  animation: hero-kenburns 24s ease-in-out infinite alternate;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes hero-duotone-pan {
+  from { transform: scale(1.05) translate3d(1.5%, 0, 0); }
+  to   { transform: scale(1.12) translate3d(-1.5%, -1%, 0); }
+}
+.hero-duotone {
+  /* crush to grayscale then re-tone toward brand orange over navy */
+  filter: grayscale(1) contrast(1.05) sepia(0.55) hue-rotate(342deg) saturate(2.4) brightness(0.9);
+  animation: hero-duotone-pan 26s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-kenburns,
+  .hero-duotone { animation: none; }
+}
+
+/* Faint watermark word sitting above a heading (rows / grid-num body layouts). */
+.ghost-word {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(2.75rem, 7vw, 5rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  text-transform: capitalize;
+  color: transparent;
+  -webkit-text-stroke: 1px color-mix(in srgb, var(--color-navy) 22%, transparent);
+}
+
+/* ------------------------------------------------------------------ *
+ * Transland "section-title" signature — ghost outline word behind a
+ * kicker-with-rule and a two-tone heading. Ported from the theme
+ * (assets/css/style.css .block-contents .section-title), recolored to
+ * Promax navy/orange. This is the block that makes a section read as
+ * "from the template."
+ * ------------------------------------------------------------------ */
+.sectitle { position: relative; }
+
+.sectitle .ghost {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 11vw, 9.5rem);
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  text-transform: capitalize;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1.5px var(--color-navy);
+  opacity: 0.07;
+  margin-bottom: -0.42em;   /* pull the kicker/heading up into the watermark */
+  user-select: none;
+  pointer-events: none;
+}
+.sectitle.tone-dark .ghost { -webkit-text-stroke-color: #fff; opacity: 0.11; }
+
+.sectitle .kicker {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: capitalize;
+  letter-spacing: 0.02em;
+  color: var(--color-brand);
+  padding-left: 76px;
+  line-height: 1;
+}
+.sectitle .kicker::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 50%;
+  width: 60px; height: 2px;
+  background: var(--color-brand);
+  transform: translateY(-50%);
+}
+
+.sectitle h2 {
+  margin-top: 0.65rem;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 1.18;
+  text-transform: capitalize;
+  color: var(--color-navy);
+}
+.sectitle h2 span { color: var(--color-brand); }
+.sectitle.tone-dark h2 { color: #fff; }
+
+.sectitle.align-center { text-align: center; }
+.sectitle.align-center .ghost { text-align: center; }
+.sectitle.align-center .kicker { padding-left: 0; }
+.sectitle.align-center .kicker::before { display: none; }
+
+/* Company overview — CEO card with autograph, offset up over the copy.
+ * Ported from .company-ceo / .autograph-signature. */
+.ceo-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  background: #fff;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--color-slate-100);
+  border-radius: 1rem;
+  padding: 1.1rem 1.25rem;
+}
+.ceo-card .signature {
+  margin-left: auto;
+  font-family: "Segoe Script", "Brush Script MT", cursive;
+  font-size: 1.75rem;
+  line-height: 1;
+  color: var(--color-navy);
+  opacity: 0.8;
+  transform: rotate(-4deg);
+  white-space: nowrap;
+}
+
+/* Mask-outline giant number — textured huge figure over the dot-map.
+ * Ported from .mask-outline (background-clip:text). */
+.mask-number {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(4.5rem, 16vw, 13rem);
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  background-image: linear-gradient(120deg, var(--color-brand) 0%, #ffd7b0 45%, var(--color-brand-700) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}

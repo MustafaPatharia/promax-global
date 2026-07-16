@@ -1,0 +1,1038 @@
+{
+  "collection": "Trot Videos",
+  "brand": "TROT GLOBAL",
+  "note": "Metadata for AI agents and layout tooling. Descriptions from actual frame analysis (3x3 sampled montage per clip). Each entry carries elaborated description plus motion, camera, mood, dominant_colors, loop_friendly, has_text/has_people and best_for (placement hints for scroll animations, heroes, backgrounds, cards). Files renamed to kebab-case on disk; original_filename/source_mov preserve prior names.",
+  "count": 21,
+  "videos": [
+    {
+      "file": "trot-logo-reveal-black.mp4",
+      "duration_sec": 7.0,
+      "resolution": "3840x2160",
+      "type": "branding",
+      "description": "Brand logo sting on a pure black backdrop. The TROT GLOBAL identity assembles into place — an orange cog/gear ring enclosing three stylised hard-hat workers, with the 'TROT GLOBAL' wordmark locking in beneath. Minimal, high-contrast and centered, it reads instantly at any size and sits cleanly over dark UI. 4K master, ideal as a primary logo bumper.",
+      "tags": [
+        "logo",
+        "branding",
+        "trot-global",
+        "intro",
+        "4k",
+        "black-bg"
+      ],
+      "original_filename": "Trot Logo.mp4",
+      "motion": "logo build-in / assemble, elements settle to a static hold",
+      "camera": {
+        "shot": "graphic/logo",
+        "angle": "front-on",
+        "height": "n-a-cg",
+        "movement": "static (elements animate in)",
+        "framing": "centered logo, wide black margins",
+        "focus": "sharp, flat 2D"
+      },
+      "mood": "clean, corporate, confident",
+      "dominant_colors": [
+        "black",
+        "orange",
+        "white"
+      ],
+      "loop_friendly": false,
+      "has_text": true,
+      "has_people": false,
+      "best_for": [
+        "hero logo reveal",
+        "intro/outro bumper",
+        "loading splash",
+        "dark-section brand mark"
+      ],
+      "quality": {
+        "resolution": "3840x2160",
+        "class": "4K",
+        "fps": 30.0,
+        "bitrate_mbps": 10.0,
+        "codec": "h264",
+        "production_tier": "premium-brand-asset"
+      }
+    },
+    {
+      "file": "trot-logo-reveal-port-bg.mp4",
+      "duration_sec": 3.03,
+      "resolution": "1920x1080",
+      "type": "branding",
+      "description": "The TROT GLOBAL gear-and-workers logo animates together over a soft, out-of-focus aerial container-port backdrop of stacked shipping containers under a pale sky. Short and punchy, it fuses the brand mark with the company's shipping/logistics context in one beat — good when you want the logo to feel grounded in real operations rather than floating in the void.",
+      "tags": [
+        "logo",
+        "branding",
+        "trot-global",
+        "port",
+        "logistics",
+        "intro"
+      ],
+      "original_filename": "Trot Logo With Background video.mp4",
+      "motion": "logo assemble over subtly moving/blurred background",
+      "camera": {
+        "shot": "medium graphic over aerial plate",
+        "angle": "high aerial background",
+        "height": "aerial",
+        "movement": "static frame, background gently drifts/blurred",
+        "framing": "centered logo, defocused bg",
+        "focus": "logo sharp, background soft bokeh"
+      },
+      "mood": "corporate, industrious, grounded",
+      "dominant_colors": [
+        "orange",
+        "sky-blue",
+        "muted-container-tones"
+      ],
+      "loop_friendly": false,
+      "has_text": true,
+      "has_people": false,
+      "best_for": [
+        "intro over content",
+        "section divider",
+        "about/hero brand moment",
+        "short pre-roll"
+      ],
+      "quality": {
+        "resolution": "1920x1080",
+        "class": "1080p",
+        "fps": 30.0,
+        "bitrate_mbps": 10.3,
+        "codec": "h264",
+        "production_tier": "standard-brand-asset"
+      }
+    },
+    {
+      "file": "trot-global-text-intro-port-bg.mp4",
+      "duration_sec": 2.73,
+      "resolution": "1920x1080",
+      "type": "branding",
+      "description": "Kinetic-typography title card: the words 'TROT GLOBAL' whirl and tumble through 3D space before snapping crisply into a centered lockup, all set over a vivid top-down aerial of a multicolored shipping-container yard. Energetic and very short (~3s) — a fast attention hook rather than a background. Best paired with an immediate cut to primary content.",
+      "tags": [
+        "text-animation",
+        "branding",
+        "trot-global",
+        "port",
+        "intro",
+        "kinetic-typography"
+      ],
+      "original_filename": "TROT GLOBAL Text With BG VIdeo.mp4",
+      "motion": "fast 3D kinetic typography swirl resolving to lockup",
+      "camera": {
+        "shot": "3D kinetic type over top-down plate",
+        "angle": "top-down background",
+        "height": "aerial",
+        "movement": "fast virtual camera swirl, resolves to static lockup",
+        "framing": "text fills frame then centers",
+        "focus": "motion-blurred during swirl, sharp on hold"
+      },
+      "mood": "energetic, bold, modern",
+      "dominant_colors": [
+        "multicolor-containers",
+        "white-text",
+        "teal"
+      ],
+      "loop_friendly": false,
+      "has_text": true,
+      "has_people": false,
+      "best_for": [
+        "opening title hook",
+        "scroll-trigger reveal",
+        "reel/short intro",
+        "transition stinger"
+      ],
+      "quality": {
+        "resolution": "1920x1080",
+        "class": "1080p",
+        "fps": 30.0,
+        "bitrate_mbps": 9.4,
+        "codec": "h264",
+        "production_tier": "standard-brand-asset"
+      }
+    },
+    {
+      "file": "scrapyard-grapple-claw-metal.mp4",
+      "duration_sec": 25.48,
+      "resolution": "1920x1080",
+      "type": "footage",
+      "description": "Slow, cinematic close-up inside a scrap-recycling warehouse: a heavy orange-peel grapple claw descends, clamps a tangle of mixed scrap metal, and lifts it clear of the pile, with rows of white bulk collection bags receding into the dim background. Long (~25s) and moody with strong depth — an ideal centerpiece for a 'we handle scrap / material recovery' narrative, and its slow motion makes it excellent as a scroll-scrubbed hero where progress ties to scroll position.",
+      "tags": [
+        "scrap-metal",
+        "recycling",
+        "grapple-claw",
+        "industrial",
+        "warehouse",
+        "waste-management"
+      ],
+      "original_filename": "219_bWV0ICgxMik.mov",
+      "source_mov": "scrapyard-grapple-claw-metal.mov",
+      "motion": "grapple claw descends, grips and lifts scrap; slow deliberate",
+      "camera": {
+        "shot": "medium close-up",
+        "angle": "eye-level, slightly low",
+        "height": "ground",
+        "movement": "near-static with slow push; subject (claw) moves",
+        "framing": "claw centered, pile fills frame, bags in bg",
+        "focus": "shallow depth, subject sharp, bg soft"
+      },
+      "mood": "industrial, gritty, dramatic",
+      "dominant_colors": [
+        "rust-brown",
+        "charcoal",
+        "muted-white"
+      ],
+      "loop_friendly": false,
+      "has_text": false,
+      "has_people": false,
+      "best_for": [
+        "scroll-scrub hero",
+        "services/scrap-handling section",
+        "full-bleed background with overlay text",
+        "process explainer"
+      ],
+      "quality": {
+        "resolution": "1920x1080",
+        "class": "1080p",
+        "fps": 25.0,
+        "bitrate_mbps": 9.9,
+        "codec": "h264",
+        "production_tier": "premium-stock"
+      }
+    },
+    {
+      "file": "rusty-scrap-metal-pile-scrapyard.mp4",
+      "duration_sec": 11.88,
+      "resolution": "2046x1080",
+      "type": "footage",
+      "description": "An outdoor scrapyard hero shot: the camera tilts slowly across a towering, chaotic mountain of rusty scrap — twisted girders, old machinery parts and tangled metal — set against a bright blue, cloud-flecked sky. High texture and warm rust tones against cool sky give it natural contrast for white overlay text. Conveys volume and raw material supply at a glance.",
+      "tags": [
+        "scrap-metal",
+        "rust",
+        "scrapyard",
+        "recycling",
+        "junk",
+        "outdoor"
+      ],
+      "original_filename": "rusty-metal-pieces-in-scrapyard-4k-2k-2025-08-28-18-47-46-utc.mov",
+      "source_mov": "rusty-scrap-metal-pile-scrapyard.mov",
+      "motion": "slow vertical tilt across the pile",
+      "camera": {
+        "shot": "wide",
+        "angle": "low, looking up at pile",
+        "height": "ground",
+        "movement": "slow vertical tilt / slight pan",
+        "framing": "pile dominates lower two-thirds, sky above",
+        "focus": "deep, texture sharp throughout"
+      },
+      "mood": "raw, rugged, authentic",
+      "dominant_colors": [
+        "rust-orange",
+        "brown",
+        "sky-blue"
+      ],
+      "loop_friendly": false,
+      "has_text": false,
+      "has_people": false,
+      "best_for": [
+        "section background with overlay",
+        "scrap-supply/volume story",
+        "scroll reveal",
+        "stat-block backdrop"
+      ],
+      "quality": {
+        "resolution": "2046x1080",
+        "class": "2K",
+        "fps": 24.0,
+        "bitrate_mbps": 9.9,
+        "codec": "h264",
+        "production_tier": "premium-stock"
+      }
+    },
+    {
+      "file": "aluminium-baled-cubes-recycling.mp4",
+      "duration_sec": 5.67,
+      "resolution": "1920x1080",
+      "type": "footage",
+      "description": "Clean daylight shot of compressed aluminium scrap pressed into large silver bales stacked into neat cubes at a recycling facility, bright blue sky behind. The tidy geometry and metallic sheen read as 'processed, ready-for-reuse material' — the polished, positive end of the recycling chain versus raw scrap. Short and crisp; works well as a supporting b-roll tile.",
+      "tags": [
+        "aluminium",
+        "recycling",
+        "baled-metal",
+        "facility",
+        "circular-economy",
+        "industrial"
+      ],
+      "original_filename": "aluminium-recycling-facility-and-cubes-1080p-2025-08-28-22-34-37-utc.mov",
+      "source_mov": "aluminium-baled-cubes-recycling.mov",
+      "motion": "minimal — slight drift/near-static",
+      "camera": {
+        "shot": "medium wide",
+        "angle": "eye-level",
+        "height": "ground",
+        "movement": "near-static / very slow drift",
+        "framing": "bales fill frame, thin sky strip",
+        "focus": "deep, crisp"
+      },
+      "mood": "clean, sustainable, optimistic",
+      "dominant_colors": [
+        "silver",
+        "grey",
+        "sky-blue"
+      ],
+      "loop_friendly": true,
+      "has_text": false,
+      "has_people": false,
+      "best_for": [
+        "grid/gallery tile",
+        "recycling-output section",
+        "card thumbnail",
+        "subtle background loop"
+      ],
+      "quality": {
+        "resolution": "1920x1080",
+        "class": "1080p",
+        "fps": 23.98,
+        "bitrate_mbps": 7.7,
+        "codec": "h264",
+        "production_tier": "premium-stock"
+      }
+    },
+    {
+      "file": "foundry-furnace-molten-metal-worker.mp4",
+      "duration_sec": 22.72,
+      "resolution": "3840x2160",
+      "type": "footage",
+      "description": "Dramatic 4K interior of a metal foundry: a silhouetted worker in a hard hat stands beside a roaring furnace as molten metal glows blazing orange, sparks arc and steam billows through the dark hall. High dynamic range between deep shadow and fiery highlight makes it a striking, premium hero — powerful behind bold white or orange type, and the near-black margins let UI text sit comfortably.",
+      "tags": [
+        "foundry",
+        "furnace",
+        "molten-metal",
+        "smelting",
+        "industrial",
+        "worker",
+        "4k"
+      ],
+      "original_filename": "fiery-furnace-eruption-with-foundry-workers-4k-2025-08-28-22-41-23-utc.mp4",
+      "motion": "flickering flame, rising sparks/steam, worker subtle movement",
+      "camera": {
+        "shot": "medium wide",
+        "angle": "eye-level",
+        "height": "ground",
+        "movement": "locked/slow; flames, sparks, steam move",
+        "framing": "worker silhouette left, furnace glow right, dark surround",
+        "focus": "sharp on furnace, high dynamic range"
+      },
+      "mood": "dramatic, powerful, high-heat industrial",
+      "dominant_colors": [
+        "black",
+        "fiery-orange",
+        "amber"
+      ],
+      "loop_friendly": false,
+      "has_text": false,
+      "has_people": true,
+      "best_for": [
+        "cinematic hero",
+        "smelting/processing section",
+        "full-bleed with overlay text",
+        "dark-theme background"
+      ],
+      "quality": {
+        "resolution": "3840x2160",
+        "class": "4K",
+        "fps": 25.0,
+        "bitrate_mbps": 11.6,
+        "codec": "h264",
+        "production_tier": "premium-stock"
+      }
+    },
+    {
+      "file": "recycle-symbol-sign-sunset.mp4",
+      "duration_sec": 12.21,
+      "resolution": "3840x2160",
+      "type": "footage",
+      "description": "Emotive 4K shot: a hand raises a card bearing a white recycling symbol toward a low golden sun, the light flaring warmly through and around the mark as a soft green landscape blurs behind. Hopeful and human, it's the 'why it matters' beat — sustainability, reuse and purpose. The warm backlight and central symbol make it a natural values/mission hero or a gentle scroll-fade moment.",
+      "tags": [
+        "recycling",
+        "sustainability",
+        "reuse",
+        "sunset",
+        "eco",
+        "symbol",
+        "4k"
+      ],
+      "original_filename": "product-reuse-sorting-waste-products-girl-holding-4k-2025-08-29-06-48-55-utc.mp4",
+      "motion": "gentle handheld, sun flares shifting",
+      "camera": {
+        "shot": "close-up",
+        "angle": "eye-level, backlit",
+        "height": "ground",
+        "movement": "gentle handheld, sun flare shifts",
+        "framing": "hand+card center, sun behind, landscape blurred",
+        "focus": "very shallow, card sharp, heavy bokeh + flare"
+      },
+      "mood": "warm, hopeful, purposeful",
+      "dominant_colors": [
+        "golden",
+        "amber",
+        "soft-green"
+      ],
+      "loop_friendly": false,
+      "has_text": false,
+      "has_people": true,
+      "best_for": [
+        "mission/values section",
+        "emotional scroll-fade",
+        "sustainability CTA backdrop",
+        "testimonial/quote background"
+      ],
+      "quality": {
+        "resolution": "3840x2160",
+        "class": "4K",
+        "fps": 29.97,
+        "bitrate_mbps": 12.0,
+        "codec": "h264",
+        "production_tier": "premium-stock"
+      }
+    },
+    {
+      "file": "shipping-port-aerial-panorama.mp4",
+      "duration_sec": 13.97,
+      "resolution": "1920x1080",
+      "type": "footage",
+      "description": "Sweeping high-altitude aerial panorama of a busy container seaport — gantry cranes, vast fields of stacked containers and cargo ships berthed along the quay, open sea and bright sky filling the top third. A classic scale-and-scope establishing shot for global logistics; the airy sky band up top is perfect real estate for a headline or nav overlay.",
+      "tags": [
+        "port",
+        "shipping",
+        "containers",
+        "aerial",
+        "logistics",
+        "cargo-ship",
+        "sea-freight"
+      ],
+      "original_filename": "458405_Port_Shipping_1920x1080.mp4",
+      "motion": "slow aerial drift / timelapse feel",
+      "camera": {
+        "shot": "extreme wide panorama",
+        "angle": "high oblique aerial",
+        "height": "high aerial",
+        "movement": "slow aerial drift / timelapse",
+        "framing": "port fills lower frame, sea+sky band on top",
+        "focus": "deep, sharp"
+      },
+      "mood": "expansive, busy, global-scale",
+      "dominant_colors": [
+        "multicolor-containers",
+        "sea-blue",
+        "sky-grey"
+      ],
+      "loop_friendly": false,
+      "has_text": false,
+      "has_people": false,
+      "best_for": [
+        "logistics hero",
+        "scroll establishing shot",
+        "headline overlay (sky band)",
+        "about/network section"
+      ],
+      "quality": {
+        "resolution": "1920x1080",
+        "class": "1080p",
+        "fps": 25.0,
+        "bitrate_mbps": 11.8,
+        "codec": "h264",
+        "production_tier": "premium-stock"
+      }
+    },
+    {
+      "file": "container-port-night-topdown-aerial.mp4",
+      "duration_sec": 15.04,
+      "resolution": "1920x1080",
+      "type": "footage",
+      "description": "Premium top-down night aerial over a floodlit container terminal: gantry cranes work a moored cargo ship while grid-perfect rows of containers glow under amber dock lights against near-black water. The overhead geometry and rich night contrast feel high-end and editorial — a strong dark-theme hero and an elegant scroll-scrub subject as the camera glides over the berth.",
+      "tags": [
+        "port",
+        "night",
+        "containers",
+        "aerial",
+        "top-down",
+        "logistics",
+        "cranes"
+      ],
+      "original_filename": "GettyImages-954185528.mov",
+      "source_mov": "container-port-night-topdown-aerial.mov",
+      "motion": "slow top-down aerial glide",
+      "camera": {
+        "shot": "wide",
+        "angle": "top-down (nadir)",
+        "height": "high aerial",
+        "movement": "slow top-down glide",
+        "framing": "grid of containers + ship, water margins",
+        "focus": "deep, sharp, low-light clean"
+      },
+      "mood": "premium, nocturnal, precise",
+      "dominant_colors": [
+        "black",
+        "amber",
+        "teal"
+      ],
+      "loop_friendly": false,
+      "has_text": false,
+      "has_people": false,
+      "best_for": [
+        "dark hero",
+        "scroll-scrub section",
+        "full-bleed with overlay",
+        "operations/24-7 story"
+      ],
+      "quality": {
+        "resolution": "1920x1080",
+        "class": "1080p",
+        "fps": 25.0,
+        "bitrate_mbps": 13.4,
+        "codec": "h264",
+        "production_tier": "premium-stock"
+      }
+    },
+    {
+      "file": "port-containers-network-topdown.mp4",
+      "duration_sec": 20.02,
+      "resolution": "898x506",
+      "type": "footage",
+      "description": "Top-down aerial of a dense container yard overlaid with animated glowing cyan network arcs and nodes tracing connections across the terminal — a visual metaphor for a connected, data-driven global supply chain. Note: low-resolution source (898x506), so keep it small (card, inset, muted section background) or behind heavy overlay rather than full-screen.",
+      "tags": [
+        "port",
+        "network",
+        "connectivity",
+        "aerial",
+        "supply-chain",
+        "digital-overlay",
+        "low-res"
+      ],
+      "original_filename": "3797834207-preview.mp4",
+      "motion": "static aerial base + animated network lines",
+      "camera": {
+        "shot": "wide",
+        "angle": "top-down (nadir)",
+        "height": "high aerial",
+        "movement": "static base plate + animated overlay lines",
+        "framing": "container yard fills frame, network arcs on top",
+        "focus": "soft (low-res source)"
+      },
+      "mood": "techy, connected, systematic",
+      "dominant_colors": [
+        "container-multicolor",
+        "cyan",
+        "dark"
+      ],
+      "loop_friendly": true,
+      "has_text": false,
+      "has_people": false,
+      "best_for": [
+        "small card/tile",
+        "tech/connectivity section",
+        "muted background behind text",
+        "inset accent (avoid full-screen: low-res)"
+      ],
+      "quality": {
+        "resolution": "898x506",
+        "class": "SD/low",
+        "fps": 29.97,
+        "bitrate_mbps": 1.4,
+        "codec": "h264",
+        "production_tier": "low-res-proxy"
+      }
+    },
+    {
+      "file": "port-night-digital-hologram-overlay.mp4",
+      "duration_sec": 7.04,
+      "resolution": "1920x1080",
+      "type": "footage",
+      "description": "Aerial night view of an illuminated container port with animated holographic rings and floating smart-logistics icons layered over the scene — pitching the 'smart port / digitised operations' idea. Short (~7s) and loop-tolerant, it's a ready-made tech-section background where the glowing overlays carry the futurism.",
+      "tags": [
+        "port",
+        "night",
+        "smart-logistics",
+        "hologram",
+        "digital",
+        "tech",
+        "aerial"
+      ],
+      "original_filename": "shutterstock_1103567961.mov",
+      "source_mov": "port-night-digital-hologram-overlay.mov",
+      "motion": "aerial drift + animated hologram rings/icons",
+      "camera": {
+        "shot": "wide",
+        "angle": "high oblique aerial",
+        "height": "high aerial",
+        "movement": "slow aerial drift + animated hologram rings/icons",
+        "framing": "port lower-left, water, overlay graphics floating",
+        "focus": "sharp footage + CG overlay"
+      },
+      "mood": "futuristic, smart, connected",
+      "dominant_colors": [
+        "night-blue",
+        "cyan",
+        "warm-dock-lights"
+      ],
+      "loop_friendly": true,
+      "has_text": false,
+      "has_people": false,
+      "best_for": [
+        "tech/innovation section background",
+        "looping backdrop",
+        "feature callout behind text",
+        "scroll accent"
+      ],
+      "quality": {
+        "resolution": "1920x1080",
+        "class": "1080p",
+        "fps": 25.0,
+        "bitrate_mbps": 14.7,
+        "codec": "h264",
+        "production_tier": "premium-stock-with-cg"
+      }
+    },
+    {
+      "file": "smart-port-3d-digital-shipping.mp4",
+      "duration_sec": 20.14,
+      "resolution": "1920x1080",
+      "type": "footage",
+      "description": "High-end 3D animation: photoreal container ships and port cranes morph into glowing blue wireframe / digital-twin renders, with streaks of light and data flowing along the quay. The cleanest 'digital transformation of logistics' asset in the set — polished, brand-agnostic and long enough (~20s) to underpin a full section or slow scroll sequence.",
+      "tags": [
+        "port",
+        "3d-animation",
+        "digital-twin",
+        "smart-logistics",
+        "shipping",
+        "tech",
+        "wireframe"
+      ],
+      "original_filename": "shutterstock_3753482083.mov",
+      "source_mov": "smart-port-3d-digital-shipping.mov",
+      "motion": "3D fly-through, real-to-wireframe transitions, light streaks",
+      "camera": {
+        "shot": "varied 3D wide",
+        "angle": "oblique aerial CG",
+        "height": "virtual aerial",
+        "movement": "animated 3D fly-through, real-to-wireframe morphs",
+        "framing": "ships/cranes across frame, light streaks",
+        "focus": "CG-sharp"
+      },
+      "mood": "futuristic, sleek, premium-tech",
+      "dominant_colors": [
+        "blue",
+        "cyan",
+        "white",
+        "dark"
+      ],
+      "loop_friendly": false,
+      "has_text": false,
+      "has_people": false,
+      "best_for": [
+        "technology hero",
+        "scroll-driven feature sequence",
+        "digital-twin/innovation section",
+        "full-bleed dark background"
+      ],
+      "quality": {
+        "resolution": "1920x1080",
+        "class": "1080p",
+        "fps": 30.0,
+        "bitrate_mbps": 15.9,
+        "codec": "h264",
+        "production_tier": "premium-cg-animation"
+      }
+    },
+    {
+      "file": "trot-port-crew-hivis-briefing-a.mp4",
+      "duration_sec": 4.04,
+      "resolution": "1504x640",
+      "type": "footage",
+      "description": "AI-generated (Freepik) wide shot of a TROT-branded crew: dock workers in hard hats and hi-vis vests cluster around cargo lashing/rigging equipment on a quay, visibly mid-operation. Puts real people and the TROT brand on-site — good for a team / operations / safety beat. Short (~4s) and wide letterbox (1504x640), so it suits banner-strip placements. Note: AI-generated, faces/branding may not survive close scrutiny.",
+      "tags": [
+        "workers",
+        "port",
+        "hi-vis",
+        "crew",
+        "trot-global",
+        "operations",
+        "ai-generated"
+      ],
+      "original_filename": "freepik__a-dynamic-wide-shot-captures-a-group-of-workers-in__59724.mp4",
+      "motion": "subtle crowd/worker movement",
+      "camera": {
+        "shot": "wide letterbox",
+        "angle": "eye-level, behind/among crew",
+        "height": "ground",
+        "movement": "mostly static, subtle crowd motion",
+        "framing": "workers span frame, equipment/crane behind",
+        "focus": "medium depth; AI-gen soft artifacts"
+      },
+      "mood": "operational, human, on-the-ground",
+      "dominant_colors": [
+        "hi-vis-yellow",
+        "navy",
+        "grey-sky"
+      ],
+      "loop_friendly": false,
+      "has_text": false,
+      "has_people": true,
+      "best_for": [
+        "team/operations section",
+        "wide banner strip",
+        "safety/people story",
+        "about-us b-roll"
+      ],
+      "quality": {
+        "resolution": "1504x640",
+        "class": "720p",
+        "fps": 24.0,
+        "bitrate_mbps": 16.4,
+        "codec": "h264",
+        "production_tier": "ai-generated"
+      }
+    },
+    {
+      "file": "trot-port-crew-hivis-briefing-b.mp4",
+      "duration_sec": 4.04,
+      "resolution": "1504x640",
+      "type": "footage",
+      "description": "Second variant of the TROT-branded dock-crew scene — workers in hi-vis vests and hard hats grouped around port cargo rigging, a slightly different angle/beat from take A. Pair the two for a short cut sequence, or use as an alternate so the same shot doesn't repeat. Wide letterbox (1504x640), ~4s, AI-generated (Freepik).",
+      "tags": [
+        "workers",
+        "port",
+        "hi-vis",
+        "crew",
+        "trot-global",
+        "operations",
+        "ai-generated"
+      ],
+      "original_filename": "freepik__animate-this-and-make-a-t-shirt-logo-maintain-ensu__93160.mp4",
+      "motion": "subtle crowd/worker movement",
+      "camera": {
+        "shot": "wide letterbox",
+        "angle": "eye-level, alternate angle",
+        "height": "ground",
+        "movement": "mostly static, subtle crowd motion",
+        "framing": "workers span frame, rigging behind",
+        "focus": "medium depth; AI-gen soft artifacts"
+      },
+      "mood": "operational, human, on-the-ground",
+      "dominant_colors": [
+        "hi-vis-yellow",
+        "navy",
+        "grey-sky"
+      ],
+      "loop_friendly": false,
+      "has_text": false,
+      "has_people": true,
+      "best_for": [
+        "alternate to take A",
+        "team/operations section",
+        "wide banner strip",
+        "short cut sequence"
+      ],
+      "quality": {
+        "resolution": "1504x640",
+        "class": "720p",
+        "fps": 24.0,
+        "bitrate_mbps": 13.7,
+        "codec": "h264",
+        "production_tier": "ai-generated"
+      }
+    },
+    {
+      "file": "dubai-skyline-burj-aerial.mp4",
+      "duration_sec": 10.0,
+      "resolution": "1920x1080",
+      "type": "footage",
+      "description": "Aerial pan across the Dubai downtown skyline anchored by the Burj Khalifa spearing above the surrounding towers, highways and city grid under a clear blue sky. A recognisable, aspirational location cue — signals a Dubai / UAE base or market. The open sky gives room for a headline overlay.",
+      "tags": [
+        "dubai",
+        "burj-khalifa",
+        "skyline",
+        "aerial",
+        "city",
+        "uae"
+      ],
+      "original_filename": "0_Dubai_Burj_1920x1080.mp4",
+      "motion": "slow aerial pan/drift",
+      "camera": {
+        "shot": "wide",
+        "angle": "high oblique aerial",
+        "height": "high aerial",
+        "movement": "slow aerial pan/drift",
+        "framing": "Burj centered, skyline across frame, sky top",
+        "focus": "deep, sharp"
+      },
+      "mood": "aspirational, modern, global-city",
+      "dominant_colors": [
+        "sky-blue",
+        "sandstone",
+        "glass-grey"
+      ],
+      "loop_friendly": false,
+      "has_text": false,
+      "has_people": false,
+      "best_for": [
+        "location/HQ section",
+        "aspirational hero",
+        "headline overlay",
+        "market-presence story"
+      ],
+      "quality": {
+        "resolution": "1920x1080",
+        "class": "1080p",
+        "fps": 30.0,
+        "bitrate_mbps": 12.3,
+        "codec": "h264",
+        "production_tier": "premium-stock"
+      }
+    },
+    {
+      "file": "dubai-earth-zoom-location-marker.mp4",
+      "duration_sec": 15.05,
+      "resolution": "1920x1080",
+      "type": "footage",
+      "description": "Animated location reveal: the camera flies in from Earth in space and settles on a red 'DUBAI, United Arab Emirates' pin over the region. A clear, self-contained 'where we are' graphic — natural as a scroll-triggered map moment or the lead-in to a contact / offices section. Ends on the labeled marker, so it can hand off to static content.",
+      "tags": [
+        "dubai",
+        "uae",
+        "earth-zoom",
+        "location-marker",
+        "map",
+        "intro",
+        "globe"
+      ],
+      "original_filename": "0_Dubai_Satellite_View_1920x1080.mp4",
+      "motion": "space-to-surface zoom, pin drop",
+      "camera": {
+        "shot": "graphic/globe",
+        "angle": "space-to-oblique",
+        "height": "orbital to aerial",
+        "movement": "animated zoom in, ends on pin",
+        "framing": "globe centered, pin+label on hold",
+        "focus": "CG sharp"
+      },
+      "mood": "informative, global, wayfinding",
+      "dominant_colors": [
+        "earth-blue",
+        "green",
+        "black-space",
+        "red-pin"
+      ],
+      "loop_friendly": false,
+      "has_text": true,
+      "has_people": false,
+      "best_for": [
+        "location intro",
+        "scroll-triggered map reveal",
+        "contact/offices lead-in",
+        "'global reach' section"
+      ],
+      "quality": {
+        "resolution": "1920x1080",
+        "class": "1080p",
+        "fps": 29.97,
+        "bitrate_mbps": 11.1,
+        "codec": "h264",
+        "production_tier": "standard-graphic"
+      }
+    },
+    {
+      "file": "dubai-google-earth-zoom.mp4",
+      "duration_sec": 10.03,
+      "resolution": "1920x1080",
+      "type": "footage",
+      "description": "Google-Earth-style descent from the globe in space down to a satellite view of Dubai and the UAE coastline. Similar intent to the pin-marker clip but photoreal-satellite rather than graphic, and without a text label. Note: a 'Google Earth' watermark is visible — check usage rights before public/commercial placement.",
+      "tags": [
+        "dubai",
+        "uae",
+        "google-earth",
+        "satellite",
+        "zoom",
+        "map",
+        "location"
+      ],
+      "original_filename": "dubai.mp4",
+      "motion": "space-to-surface satellite zoom",
+      "camera": {
+        "shot": "satellite graphic",
+        "angle": "space-to-nadir",
+        "height": "orbital to satellite",
+        "movement": "animated zoom descent",
+        "framing": "globe to coastline fill",
+        "focus": "satellite-imagery sharpness"
+      },
+      "mood": "informative, realistic, exploratory",
+      "dominant_colors": [
+        "earth-blue",
+        "desert-tan",
+        "black-space"
+      ],
+      "loop_friendly": false,
+      "has_text": false,
+      "has_people": false,
+      "best_for": [
+        "location establishing shot",
+        "map/scroll intro",
+        "'find us' backdrop",
+        "(verify Google Earth rights first)"
+      ],
+      "quality": {
+        "resolution": "1920x1080",
+        "class": "1080p",
+        "fps": 30.0,
+        "bitrate_mbps": 10.7,
+        "codec": "h264",
+        "production_tier": "standard-graphic-watermarked"
+      }
+    },
+    {
+      "file": "digital-globe-iot-network-loop.mp4",
+      "duration_sec": 20.02,
+      "resolution": "1920x1080",
+      "type": "motion-graphic",
+      "description": "Abstract tech background: a grid of glowing teal wireframe globes slowly rotates over a dark starfield, evoking IoT, global connectivity and networked systems. Dark, low-detail and even-toned — purpose-built to sit behind white text without fighting it, and long enough (~20s) to loop under a whole section.",
+      "tags": [
+        "iot",
+        "globe",
+        "network",
+        "digital",
+        "background",
+        "tech",
+        "abstract"
+      ],
+      "original_filename": "5255345_Tech_Internet_Of_Things_1920x1080.mp4",
+      "motion": "slow continuous globe rotation",
+      "camera": {
+        "shot": "graphic grid",
+        "angle": "front-on",
+        "height": "n-a-cg",
+        "movement": "slow continuous rotation",
+        "framing": "3x3 globe grid on starfield",
+        "focus": "CG, even, low-detail"
+      },
+      "mood": "techy, abstract, calm-dark",
+      "dominant_colors": [
+        "dark-navy",
+        "teal",
+        "black"
+      ],
+      "loop_friendly": true,
+      "has_text": false,
+      "has_people": false,
+      "best_for": [
+        "section background behind text",
+        "looping dark backdrop",
+        "tech/network theme",
+        "hero underlay"
+      ],
+      "quality": {
+        "resolution": "1920x1080",
+        "class": "1080p",
+        "fps": 29.97,
+        "bitrate_mbps": 12.0,
+        "codec": "h264",
+        "production_tier": "standard-motion-graphic"
+      }
+    },
+    {
+      "file": "world-map-grid-motion-bg.mp4",
+      "duration_sec": 10.29,
+      "resolution": "1920x1080",
+      "type": "motion-graphic",
+      "description": "Subtle grayscale motion background: a rotating world-map grid with sweeping radar circles and a receding perspective floor grid, all low-contrast. Deliberately understated corporate wallpaper meant to live behind headlines, stats or a logo — adds gentle motion without pulling focus. Neutral tone lets you tint/overlay it to any brand color.",
+      "tags": [
+        "world-map",
+        "grid",
+        "background",
+        "motion-graphic",
+        "corporate",
+        "global",
+        "grayscale"
+      ],
+      "original_filename": "6805105_Digital_Animation_Montage_1920x1080.mp4",
+      "motion": "slow map rotation + radar sweeps",
+      "camera": {
+        "shot": "graphic background",
+        "angle": "front-on with perspective floor",
+        "height": "n-a-cg",
+        "movement": "slow map rotation + radar sweeps",
+        "framing": "map upper, perspective grid lower",
+        "focus": "soft, low-contrast"
+      },
+      "mood": "corporate, understated, global",
+      "dominant_colors": [
+        "grey",
+        "white",
+        "black"
+      ],
+      "loop_friendly": true,
+      "has_text": false,
+      "has_people": false,
+      "best_for": [
+        "text/stat overlay background",
+        "looping corporate wallpaper",
+        "logo underlay",
+        "tint-to-brand backdrop"
+      ],
+      "quality": {
+        "resolution": "1920x1080",
+        "class": "1080p",
+        "fps": 24.0,
+        "bitrate_mbps": 8.3,
+        "codec": "h264",
+        "production_tier": "standard-motion-graphic"
+      }
+    },
+    {
+      "file": "running-track-aerial-flyover.mp4",
+      "duration_sec": 26.03,
+      "resolution": "2048x1080",
+      "type": "footage",
+      "description": "Low aerial drone flyover skimming an empty black running track — crisp white lane lines, numbered lanes, green infield and tree line under an overcast spring sky. Clean and smooth with strong leading lines, but thematically OFF-BRAND for a scrap/recycling/logistics collection; retain only if you need a sports/performance or 'stay ahead' metaphor, otherwise a candidate to drop.",
+      "tags": [
+        "running-track",
+        "aerial",
+        "drone",
+        "sports",
+        "outdoor",
+        "off-brand"
+      ],
+      "original_filename": "running-on-track-spring-day-flight-over-black-hig-2025-08-29-05-44-12-utc.mov",
+      "source_mov": "running-track-aerial-flyover.mov",
+      "motion": "smooth low aerial forward flight",
+      "camera": {
+        "shot": "wide",
+        "angle": "low oblique aerial",
+        "height": "low aerial (drone)",
+        "movement": "smooth forward drone flight",
+        "framing": "track curves through frame, field+trees",
+        "focus": "deep, sharp, stabilized"
+      },
+      "mood": "clean, sporty, aspirational",
+      "dominant_colors": [
+        "black-track",
+        "white-lines",
+        "green"
+      ],
+      "loop_friendly": false,
+      "has_text": false,
+      "has_people": false,
+      "best_for": [
+        "sports/performance metaphor only",
+        "'stay ahead' section",
+        "smooth scroll flyover",
+        "(off-brand — consider removing)"
+      ],
+      "quality": {
+        "resolution": "2048x1080",
+        "class": "2K",
+        "fps": 29.97,
+        "bitrate_mbps": 10.9,
+        "codec": "h264",
+        "production_tier": "premium-stock"
+      }
+    }
+  ]
+}

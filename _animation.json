@@ -1,0 +1,161 @@
+{
+  "$schema": "internal://promax/animation-guide",
+  "title": "Animation libraries for Next.js/React",
+  "source": "https://snigdhachandrapaik.vercel.app/blogs/animated-website-libraries-nextjs-react",
+  "extractedFor": "Promax Global site rebuild",
+  "corePrinciple": "The library you choose matters less than how you use it. Architecture (composition, lazy-loading, GPU constraints) beats bundle size and feature count.",
+
+  "libraries": [
+    {
+      "name": "Motion",
+      "aka": "Framer Motion (renamed)",
+      "install": "npm install motion",
+      "import": "motion/react (NOT deprecated framer-motion)",
+      "bundle": "~30KB gzip",
+      "what": "Declarative React component animation, gestures, exit transitions",
+      "use": ["component mount/unmount", "modals", "drawers", "page transitions", "drag"],
+      "avoid": ["complex multi-element choreography (use GSAP)", "cross-framework projects"],
+      "key": "AnimatePresence enables exit animations before unmount",
+      "notes": "Handles prefers-reduced-motion automatically"
+    },
+    {
+      "name": "GSAP",
+      "install": "npm install gsap @gsap/react",
+      "bundle": "~23KB core gzip",
+      "what": "Timeline orchestration for complex multi-element sequences and scroll effects",
+      "use": ["choreographed entrances", "scroll-driven narratives", "SVG morph", "award portfolio sites"],
+      "avoid": ["simple React transitions (Motion cleaner)", "tight-budget lightweight projects"],
+      "plugins": ["ScrollTrigger (scroll-linked)", "MorphSVG (path morph)"],
+      "license": "Free core; premium plugins need Club GSAP. Prohibits use in Webflow competitors.",
+      "key": "Use timeline model for precise inter-element timing",
+      "notes": "Strip dev console logs before prod — costs per frame. prefers-reduced-motion via matchMedia."
+    },
+    {
+      "name": "React Spring",
+      "install": "npm install @react-spring/web",
+      "bundle": "~18KB gzip",
+      "what": "Physics-based spring animation, not duration tweens",
+      "use": ["card hover", "drag tracking", "interruptible input", "dataviz transitions"],
+      "avoid": ["rigid timing sequences", "scroll-driven"],
+      "config": "tension + friction control spring behavior"
+    },
+    {
+      "name": "Anime.js",
+      "install": "npm install animejs",
+      "bundle": "~6KB gzip (lightest engine)",
+      "what": "Framework-agnostic timeline engine, excellent stagger",
+      "use": ["SVG path draw", "grid stagger", "hero text reveal", "lightweight"],
+      "avoid": ["React lifecycle management (use Motion)"],
+      "key": "Best for per-character text stagger and grid animations"
+    },
+    {
+      "name": "Three.js",
+      "install": "npm install three",
+      "bundle": "~155KB gzip",
+      "what": "WebGL 3D scenes, models, shaders",
+      "use": ["3D product viewers", "immersive particle heroes", "interactive dataviz", "WebXR"],
+      "avoid": ["2D-only", "performance-critical dashboards"],
+      "key": "Direct ref mutation in useFrame, never React state",
+      "notes": "Lazy-load via next/dynamic ssr:false"
+    },
+    {
+      "name": "React Three Fiber (R3F)",
+      "install": "npm install @react-three/fiber @react-three/drei",
+      "what": "React renderer for Three.js (3D in JSX)",
+      "use": ["React/Next.js needing 3D"],
+      "companion": "@react-three/drei = prebuilt helpers (OrbitControls, Environment, Stage)",
+      "key": "NEVER setState inside useFrame — mutate refs directly (avoids re-render/frame drops)",
+      "notes": "Dynamic import ssr:false to keep off server bundle"
+    },
+    {
+      "name": "Lenis",
+      "install": "npm install lenis (replaces deprecated @studio-freight)",
+      "bundle": "~3KB gzip (smallest in ecosystem)",
+      "what": "Inertia smooth scroll, lerp interpolation, GSAP ScrollTrigger integration",
+      "use": ["scroll storytelling", "scroll-synced animation", "high-end agency sites"],
+      "avoid": ["data-heavy dashboards / functional UIs where scroll speed matters"],
+      "setup": "ReactLenis wrapper + useLenis(ScrollTrigger.update) for GSAP sync",
+      "config": "lerp:0.1 (lower=smoother), syncTouch:true for mobile"
+    },
+    {
+      "name": "LottieFiles / DotLottie",
+      "install": "npm install @lottiefiles/dotlottie-react (older lottie-react deprecated)",
+      "bundle": "~40KB (Wasm)",
+      "what": "Plays JSON vector animations from After Effects; DotLottie compresses ~80%",
+      "use": ["designer animations", "loading spinners", "onboarding illustrations", "icon hover"],
+      "avoid": ["state-driven interactive (use Rive)"],
+      "key": "Prefer .lottie over .json for much smaller files",
+      "notes": "next/dynamic ssr:false"
+    },
+    {
+      "name": "Rive",
+      "install": "npm install @rive-app/react-canvas",
+      "bundle": "~40KB",
+      "what": "State-machine interactive animation; responds to runtime inputs/logic",
+      "use": ["interactive characters", "cursor-tracking", "animated product demos", "stateful onboarding"],
+      "avoid": ["simple looping illustrations (use Lottie)"],
+      "key": "State machine model vs Lottie's pre-recorded timeline",
+      "example": "Duolingo cursor-responsive characters"
+    },
+    {
+      "name": "Aceternity UI",
+      "install": "npx shadcn@latest add \"https://ui.aceternity.com/r/background-beams\"",
+      "what": "Prebuilt animated components, theatrical (beam bg, card tilt, spotlight cursor)",
+      "use": ["landing pages", "hero sections", "premium SaaS dramatic impact"],
+      "avoid": ["overuse sitewide = templated look"],
+      "approach": "copy-paste, no npm dependency",
+      "aesthetic": "dark/premium/modern (Linear, Vercel vibe)"
+    },
+    {
+      "name": "Magic UI",
+      "install": "npx shadcn@latest add \"https://magicui.design/r/shimmer-button\"",
+      "what": "Copy-paste animated components, micro-interactions over theatrics",
+      "use": ["dev portfolios", "indie SaaS", "premium micro-interactions"],
+      "components": ["shimmer buttons", "animated gradients", "blur-fade", "retro grids"],
+      "approach": "copy-paste, no dependency"
+    },
+    {
+      "name": "React Bits",
+      "install": "npx jsrepo add react-bits/blur-text",
+      "what": "Animated component kit, CSS-based, many RSC-compatible",
+      "use": ["text animations", "background effects", "Server Component projects"],
+      "avoid": ["need full state-machine interactivity"],
+      "advantage": "Many components run in Server Components (no 'use client') unlike Aceternity/Magic UI"
+    }
+  ],
+
+  "decisionFramework": [
+    "1. Native CSS handles it? -> CSS",
+    "2. Smooth scroll inertia? -> Lenis",
+    "3. React component state animation? -> Motion",
+    "4. Multi-element choreography / scroll sequences? -> GSAP",
+    "5. Physics-based continuous input? -> React Spring",
+    "6. SVG drawing or stagger? -> Anime.js",
+    "7. WebGL / 3D? -> Three.js / R3F",
+    "8. Prebuilt animation file? -> LottieFiles (timeline) or Rive (state machine)",
+    "9. Copy-paste component? -> Aceternity / Magic UI / React Bits"
+  ],
+
+  "bestWayToUse": {
+    "strategy": "Layered composition, not single-library reliance",
+    "stack": [
+      "Lenis globally (3KB scroll-feel foundation)",
+      "Motion for React UI (modals, drawers, page/component transitions)",
+      "GSAP + ScrollTrigger for marketing sequences (choreographed/pinned reveals)",
+      "Three.js/R3F for 3D (only when it earns the payload; dynamic import ssr:false)",
+      "LottieFiles/DotLottie for designer animations (loops, loading)",
+      "Rive for interactive state (animations that respond to user input+logic)",
+      "Component kits selectively (1-2 per section max)",
+      "CSS for everything else (hover, focus, simple transitions)"
+    ]
+  },
+
+  "productionRules": [
+    "Only animate transform and opacity (GPU compositing; avoid layout-triggering props)",
+    "Lazy-load heavy libs via next/dynamic ssr:false (Three.js, Lottie, Rive)",
+    "Never setState inside useFrame (R3F) — mutate refs directly",
+    "Respect prefers-reduced-motion (Motion auto; GSAP via matchMedia)",
+    "Test on real mid-range mobile hardware, not emulators",
+    "Strip dev logs before prod (GSAP logs cost per-frame processing)"
+  ]
+}
