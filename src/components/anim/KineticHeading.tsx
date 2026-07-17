@@ -5,7 +5,7 @@
  * the full text server-visible first; under reduced motion it just shows.
  * Pass `highlight` words (case-insensitive) to paint them brand-orange.
  */
-import { useEffect, useRef } from "react";
+import { Fragment, useEffect, useRef } from "react";
 import { gsap, prefersReducedMotion } from "@/lib/gsap";
 
 export default function KineticHeading({
@@ -38,15 +38,21 @@ export default function KineticHeading({
 
   return (
     <h1 ref={ref} className={className}>
+      {/* Real space text nodes between words so the DOM/a11y-tree reads
+          "From UAE to the World", not a run-together "FromUAEtotheWorld".
+          inline-block spans pick up the whitespace as normal word spacing. */}
       {text.split(" ").map((word, i) => (
-        <span key={i} className="mr-[0.28em] inline-block overflow-hidden pb-[0.12em] align-bottom">
-          <span
-            data-word
-            className={`inline-block ${hl.includes(word.toLowerCase().replace(/[^a-z]/g, "")) ? "text-brand" : ""}`}
-          >
-            {word}
+        <Fragment key={i}>
+          {i > 0 ? " " : null}
+          <span className="inline-block overflow-hidden pb-[0.12em] align-bottom">
+            <span
+              data-word
+              className={`inline-block ${hl.includes(word.toLowerCase().replace(/[^a-z]/g, "")) ? "text-brand" : ""}`}
+            >
+              {word}
+            </span>
           </span>
-        </span>
+        </Fragment>
       ))}
     </h1>
   );

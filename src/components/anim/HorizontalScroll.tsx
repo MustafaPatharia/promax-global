@@ -1,9 +1,14 @@
 "use client";
 /**
- * Apple-style pinned horizontal scroll. The section pins to the viewport and
- * the panel track translates sideways as you scroll vertically (GSAP
- * ScrollTrigger pin + scrub). Only `transform` animates, so it stays smooth.
- * Reduced-motion / no-JS: falls back to a native horizontal-scroll strip.
+ * Apple-style pinned horizontal scroll. A tall section provides the scroll
+ * travel; an inner panel is **CSS `position: sticky`** so it holds the viewport
+ * while the track translates sideways (GSAP scrub drives only `transform`).
+ *
+ * Sticky, not GSAP `pin: true`, on purpose: pin swaps the element to
+ * position:fixed as you scroll into it, which reflows the section (a large,
+ * repeated CLS on smooth-scroll pages). Sticky is in-flow and reserves its
+ * space, so it never shifts — same pattern ScrubBand uses on this page.
+ * Reduced-motion / no-JS: `travel` stays 0, sticky is off, native scroll strip.
  */
 import { useLayoutEffect, useRef, useState } from "react";
 import Link from "next/link";
@@ -15,17 +20,19 @@ export type Panel = { slug: string; title: string; blurb: string; img: string };
 export default function HorizontalScroll({ panels }: { panels: Panel[] }) {
   const root = useRef<HTMLDivElement>(null);
   const track = useRef<HTMLDivElement>(null);
-  const [pinned, setPinned] = useState(false);
+  // Horizontal travel (px). 0 = not yet measured / reduced-motion (native strip).
+  // Reserves the section's extra scroll height so sticky has room to pin.
+  const [travel, setTravel] = useState(0);
 
   useLayoutEffect(() => {
     if (prefersReducedMotion()) return;
     const el = track.current;
     const rootEl = root.current;
     if (!el || !rootEl) return;
-    setPinned(true);
 
     const ctx = gsap.context(() => {
       const distance = () => Math.max(0, el.scrollWidth - window.innerWidth);
+      setTravel(distance());
       gsap.to(el, {
         x: () => -distance(),
         ease: "none",
@@ -34,19 +41,28 @@ export default function HorizontalScroll({ panels }: { panels: Panel[] }) {
           start: "top top",
           end: () => `+=${distance()}`,
           scrub: 1,
-          pin: true,
-          anticipatePin: 1,
           invalidateOnRefresh: true,
+          onRefresh: () => setTravel(distance()),
         },
       });
     }, rootEl);
     return () => ctx.revert();
   }, []);
 
+  const pinned = travel > 0;
+
   return (
-    <section ref={root} className="relative overflow-hidden bg-navy-900 text-white">
-      <div className={pinned ? "flex h-screen items-center" : "flex items-center overflow-x-auto"}>
-        <div ref={track} className="flex gap-6 px-6 md:gap-8 md:px-[8vw]">
+    <section
+      ref={root}
+      className="relative bg-navy-900 text-white"
+      style={pinned ? { height: `calc(100vh + ${travel}px)` } : undefined}
+    >
+      {/* sticky inner holds the viewport; overflow-hidden clips the sideways track */}
+      <div className={`${pinned ? "sticky top-0" : ""} flex h-screen items-center overflow-hidden`}>
+        <div
+          ref={track}
+          className={`flex gap-6 px-6 md:gap-8 md:px-[8vw] ${pinned ? "" : "overflow-x-auto"}`}
+        >
           {/* intro panel */}
           <div className="flex w-[78vw] shrink-0 flex-col justify-center md:w-[34vw]">
             <p className="eyebrow !text-brand">Global Divisions</p>

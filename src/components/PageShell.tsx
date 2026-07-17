@@ -67,20 +67,20 @@ export default function PageShell({ content, faqs }: { content: PageContent; faq
         )}
         <div className="shell relative py-24 md:py-32">
           {content.eyebrow && (
-            <Reveal>
+            <Reveal eager>
               <p className="eyebrow !text-brand">{content.eyebrow}</p>
             </Reveal>
           )}
-          <Reveal index={1}>
+          <Reveal eager index={1}>
             <h1 className="mt-4 max-w-3xl text-4xl font-bold leading-tight md:text-5xl">
               {content.title}
             </h1>
           </Reveal>
-          <Reveal index={2}>
+          <Reveal eager index={2}>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-200">{content.intro}</p>
           </Reveal>
           {content.cta && (
-            <Reveal index={3}>
+            <Reveal eager index={3}>
               <Link href={content.cta.href} className="btn btn-primary mt-8">
                 {content.cta.label} <span aria-hidden>→</span>
               </Link>

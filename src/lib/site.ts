@@ -8,7 +8,7 @@ export const site = {
   legalName: "Promax Global (under patronage of Promax United)",
   tagline: "From UAE to the World",
   description:
-    "Promax Global is a UAE-headquartered global enterprise delivering integrated solutions across port management, trade, technology, education, energy, and strategic investment. From Abu Dhabi to the World.",
+    "Promax Global is a UAE-headquartered group delivering integrated port management, trade, technology, energy, and strategic investment — Abu Dhabi to the world.",
   url: "https://promaxglobal.com",
   locale: "en_AE",
   contact: {

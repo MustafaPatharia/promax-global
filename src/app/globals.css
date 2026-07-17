@@ -244,6 +244,23 @@ html.lenis, html.lenis body { height: auto; }
   .hero-duotone { animation: none; }
 }
 
+/* ------------------------------------------------------------------ *
+ * Eager reveal (Reveal.tsx `eager`). Above-the-fold entrance that keeps
+ * opacity at 1 the whole time, so the LCP element (hero <h1>) is painted
+ * on the first frame — no wait for Motion to hydrate. Transform-only, so
+ * it never triggers layout (zero CLS).
+ * ------------------------------------------------------------------ */
+@keyframes reveal-eager {
+  from { transform: translateY(24px); }
+  to   { transform: none; }
+}
+.reveal-eager {
+  animation: reveal-eager 0.75s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal-eager { animation: none; }
+}
+
 /* Faint watermark word sitting above a heading (rows / grid-num body layouts). */
 .ghost-word {
   display: block;

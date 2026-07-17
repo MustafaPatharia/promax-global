@@ -8,6 +8,7 @@
  * `variant` picks the entrance so sections don't all move the same way:
  *   up (default) · left · right · scale · blur
  */
+import { createElement, type ElementType } from "react";
 import { motion, type Variants } from "motion/react";
 
 type Variant = "up" | "left" | "right" | "scale" | "blur";
@@ -40,13 +41,28 @@ export default function Reveal({
   as = "div",
   variant = "up",
   className,
+  eager = false,
 }: {
   children: React.ReactNode;
   index?: number;
   as?: keyof typeof motion;
   variant?: Variant;
   className?: string;
+  /**
+   * Above-the-fold content (hero copy). Renders server-visible with a
+   * CSS-only entrance — opacity stays 1, so the element paints on the first
+   * frame without waiting for Motion to hydrate. This is what keeps hero LCP
+   * fast on slow mobile; `whileInView` reveals gate paint behind JS.
+   */
+  eager?: boolean;
 }) {
+  if (eager) {
+    return createElement(
+      as as ElementType,
+      { className: `reveal-eager ${className ?? ""}`, style: { animationDelay: `${index * 0.08}s` } },
+      children,
+    );
+  }
   const Tag = motion[as] as typeof motion.div;
   return (
     <Tag

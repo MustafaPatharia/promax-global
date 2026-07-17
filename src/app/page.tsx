@@ -221,7 +221,7 @@ export default function Home() {
                   />
                 </div>
                 <div>
-                  <h5 className="font-display font-bold leading-tight text-navy">H.E. Louai Mohamed Ali</h5>
+                  <p className="font-display font-bold leading-tight text-navy">H.E. Louai Mohamed Ali</p>
                   <span className="text-sm text-slate-500">Chairman</span>
                 </div>
                 <span className="signature" aria-hidden>Louai Ali</span>

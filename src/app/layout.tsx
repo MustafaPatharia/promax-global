@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Poppins, Inter, Alex_Brush } from "next/font/google";
 import "./globals.css";
 import { site } from "@/lib/site";
@@ -21,25 +21,20 @@ const alexBrush = Alex_Brush({
   display: "swap",
 });
 
+// Root-relative OG image resolves against metadataBase (the production domain).
+// Kept off the basePath helper on purpose — canonical/OG target the live domain,
+// not the GitHub Pages subpath.
+const ogImage = "/videos/posters/shipping-port-aerial-panorama.jpg";
+
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} | ${site.tagline} — Strategic Advisory, Infrastructure & Investment`,
+    default: `${site.name} | UAE Ports, Trade & Investment Group`,
     template: `%s | ${site.name}`,
   },
   description: site.description,
   applicationName: site.name,
-  keywords: [
-    "Promax Global",
-    "UAE port management",
-    "port advisory",
-    "infrastructure",
-    "strategic investment",
-    "Abu Dhabi",
-    "trade hub",
-    "food security",
-    "smart energy",
-  ],
+  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     locale: site.locale,
@@ -47,9 +42,14 @@ export const metadata: Metadata = {
     title: `${site.name} — ${site.tagline}`,
     description: site.description,
     url: site.url,
+    images: [{ url: ogImage, alt: `${site.name} — ${site.tagline}` }],
   },
-  twitter: { card: "summary_large_image" },
+  twitter: { card: "summary_large_image", images: [ogImage] },
   robots: { index: true, follow: true },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#12293f",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
