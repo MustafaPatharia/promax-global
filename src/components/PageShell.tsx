@@ -6,12 +6,16 @@ import VideoHero, { type HeroVariant } from "@/components/anim/VideoHero";
 import ScrubBand from "@/components/anim/ScrubBand";
 import SplitBand from "@/components/anim/SplitBand";
 import SectionBody, { type BodyLayout } from "@/components/SectionBody";
+import Blocks, { type Block } from "@/components/sections";
 import { video, poster } from "@/lib/videos";
 
 export type PageSection = {
   heading: string;
   body?: string;
   items?: { title: string; text?: string }[];
+  /** Scraped content image (filename in /public/images) shown beside the copy. */
+  image?: string;
+  imageAlt?: string;
 };
 
 export type PageContent = {
@@ -23,6 +27,8 @@ export type PageContent = {
   /** Reveal/motion style for the hero video — keeps heroes from looking alike. */
   heroStyle?: HeroVariant;
   sections?: PageSection[];
+  /** Ported Transland section blocks, rendered in order after the body sections. */
+  blocks?: Block[];
   /** Layout for the body `items` block — varies page structure, not just video. */
   bodyStyle?: BodyLayout;
   /** Count-up stat band. */
@@ -90,8 +96,12 @@ export default function PageShell({ content, faqs }: { content: PageContent; faq
           section={s}
           layout={content.bodyStyle}
           bg={i % 2 ? "bg-slate-50" : "bg-white"}
+          index={i}
         />
       ))}
+
+      {/* ---------- Ported template section blocks ---------- */}
+      <Blocks blocks={content.blocks} offset={content.sections?.length ?? 0} />
 
       {/* ---------- Stat band ---------- */}
       {content.stats?.length ? (

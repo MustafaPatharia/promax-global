@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import { pageMeta } from "@/lib/seo";
 import { site } from "@/lib/site";
 import Reveal from "@/components/anim/Reveal";
-import VideoHero from "@/components/anim/VideoHero";
-import { video, poster } from "@/lib/videos";
 
 export const metadata: Metadata = pageMeta({
   title: "Contact Us",
@@ -15,15 +13,10 @@ export const metadata: Metadata = pageMeta({
 export default function ContactPage() {
   return (
     <>
-      {/* ---------- Video hero ---------- */}
+      {/* ---------- Hero ---------- */}
       <section className="relative overflow-hidden text-white">
-        <VideoHero
-          src={video("dubai-earth-zoom-location-marker.mp4")}
-          poster={poster("dubai-earth-zoom-location-marker")}
-          variant="clip-wipe"
-          playOnce
-          overlay="bg-gradient-to-br from-navy-900/92 via-navy/82 to-navy-700/70"
-        />
+        <div className="absolute inset-0 bg-gradient-to-br from-navy-900 via-navy to-navy-700" />
+        <div className="dotted-map pointer-events-none absolute inset-0 text-white" />
         <div className="shell relative py-24 md:py-32">
           <Reveal>
             <p className="eyebrow !text-brand">Contact Us</p>
@@ -62,6 +55,14 @@ export default function ContactPage() {
                   <dd>
                     <a href={`mailto:${site.contact.email}`} className="text-brand hover:underline">
                       {site.contact.email}
+                    </a>
+                  </dd>
+                </div>
+                <div>
+                  <dt className="font-semibold text-navy">Careers</dt>
+                  <dd>
+                    <a href={`mailto:${site.contact.careersEmail}`} className="text-brand hover:underline">
+                      {site.contact.careersEmail}
                     </a>
                   </dd>
                 </div>

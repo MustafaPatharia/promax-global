@@ -9,14 +9,16 @@ export const site = {
   tagline: "From UAE to the World",
   description:
     "Promax Global is a UAE-headquartered global enterprise delivering integrated solutions across port management, trade, technology, education, energy, and strategic investment. From Abu Dhabi to the World.",
-  // TODO: set real production domain before launch
-  url: "https://promaxglobal.example",
+  url: "https://promaxglobal.com",
   locale: "en_AE",
   contact: {
     address: "Alia Tower 05, Corniche Abu Dhabi, United Arab Emirates",
     poBox: "P.O. Box 54300, Abu Dhabi, UAE",
-    email: "info@promaxunited.com",
-    phone: "+971 56 601 0848",
+    email: "hello@promaxglobal.com",
+    careersEmail: "career@promaxglobal.com",
+    // PLACEHOLDER — dummy number. Replace with real number before launch.
+    // (Old scrape number was Promax United's — never ship it.)
+    phone: "+971 00 000 0000",
   },
   stats: [
     { value: "25+", label: "Countries — Global Presence" },

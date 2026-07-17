@@ -8,8 +8,8 @@
 import { useLayoutEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { gsap, ScrollTrigger, prefersReducedMotion } from "@/lib/gsap";
-import { poster } from "@/lib/videos";
 
+/** `img` is an already-resolved image URL (a video poster or a content image). */
 export type Panel = { slug: string; title: string; blurb: string; img: string };
 
 export default function HorizontalScroll({ panels }: { panels: Panel[] }) {
@@ -66,11 +66,11 @@ export default function HorizontalScroll({ panels }: { panels: Panel[] }) {
             <Link
               key={p.slug}
               href={`/portfolio/${p.slug}`}
-              className="group relative flex aspect-[3/4] w-[78vw] shrink-0 overflow-hidden rounded-3xl md:aspect-[4/5] md:w-[32vw]"
+              className="group relative flex aspect-[3/4] h-[60vh] shrink-0 overflow-hidden rounded-3xl md:aspect-[4/5] md:h-[74vh]"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src={poster(p.img)}
+                src={p.img}
                 alt=""
                 className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
               />

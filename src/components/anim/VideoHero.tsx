@@ -16,9 +16,8 @@
  * All GPU-friendly (transform / clip-path / filter). Under reduced motion (or
  * if autoplay is blocked) it holds the poster with no motion.
  */
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "motion/react";
-import { prefersReducedMotion } from "@/lib/gsap";
 import BackgroundVideo from "./BackgroundVideo";
 
 export type HeroVariant =
@@ -82,34 +81,22 @@ function Layer({
   playOnce: boolean;
   className?: string;
 }) {
-  const ref = useRef<HTMLVideoElement>(null);
-  const [staticOnly, setStaticOnly] = useState(true);
   const [mounted, setMounted] = useState(false);
-  const [reduced, setReduced] = useState(false);
 
   useEffect(() => {
-    setMounted(true); // reveal to final state after hydration…
-    if (prefersReducedMotion()) {
-      setReduced(true); // …but instantly (no animation), holding the poster
-      return;
-    }
-    setStaticOnly(false);
-    const v = ref.current;
-    if (v) v.play().catch(() => setStaticOnly(true));
+    setMounted(true); // reveal to final state after hydration
   }, []);
 
   // continuous-motion variants tint/scale the media element itself
   const mediaClass =
     variant === "kenburns" ? "hero-kenburns" : variant === "duotone" ? "hero-duotone" : "";
 
-  const media = staticOnly ? (
-    // eslint-disable-next-line @next/next/no-img-element
-    <img src={poster} alt="" aria-hidden className={`h-full w-full object-cover ${mediaClass}`} />
-  ) : (
+  // Always autoplay muted; the poster attr covers the rare browser that blocks it.
+  const media = (
     <video
-      ref={ref}
       src={src}
       poster={poster}
+      autoPlay
       muted
       loop={!playOnce}
       playsInline
@@ -118,9 +105,9 @@ function Layer({
     />
   );
 
-  // reveal to the final state after mount; instant under reduced motion, animated otherwise
+  // reveal to the final state after mount
   const animate = mounted;
-  const dur = (d: number) => (reduced ? 0 : d);
+  const dur = (d: number) => d;
 
   return (
     <div className={`absolute inset-0 -z-10 overflow-hidden ${className ?? ""}`}>
@@ -156,7 +143,7 @@ function Layer({
             style={{ left: `${i * 33.34}%` }}
             initial={{ scaleY: 1 }}
             animate={animate ? { scaleY: 0 } : undefined}
-            transition={{ duration: dur(0.9), ease: EASE, delay: reduced ? 0 : i * 0.12 }}
+            transition={{ duration: dur(0.9), ease: EASE, delay: i * 0.12 }}
           />
         ))}
 

@@ -75,6 +75,40 @@ GSAP+ScrollTrigger (choreography/scrub) → Three/R3F (3D, lazy). Full decision 
 - Off-brand / rights caveats: `running-track-aerial-flyover` = drop (off-brand);
   `dubai-google-earth-zoom` = verify Google Earth rights before public use.
 
+## Source content (scraped reference site)
+
+The new site is rebuilt from the **existing Promax United site** (`itechtheme.com`), scraped
+with `scraper.py` (venv `.scraper-venv`) into `output/`:
+
+- **`output/pages/*.json`** — one JSON per source page (13 unique pages; `index` + `index.html`
+  duplicate the homepage). Each has `url`, `title`, `meta`, and `sections[]`. Every section carries
+  `title/subtitle/heading`, `image_count`, `images[]`, `image_details[]` (name+alt+src),
+  a plain-language `description`, and an **`ai_agent_description`** (what the section is about +
+  how it's laid out + guessed role) — read these to decide layout + motion for the rebuild.
+- **`output/images/`** — 59 unique images, named `<hash>_<name>.<ext>`. Extensions are sniffed
+  from magic bytes (not the URL), so they always open. Copy into `public/` when wiring a page.
+- **`output/index.json`** — crawl summary (page list + counts).
+
+Three inputs feed the rebuild: **(1)** `Trot Videos/_videos.json` (21 clips), **(2)** the scraped
+section metadata above, **(3)** the 59 images.
+
+### Rebuild rules (hard constraints)
+
+- **One video, one place.** Each of the 21 clips is used AT MOST ONCE across the entire site —
+  never the same clip in two sections/pages. ~21 sections get video (heroes/banners/feature
+  bands); the rest use images. Track the used-video set globally while building.
+- **Vary the animation.** Don't lean on one style (e.g. vertical scrub) everywhere — rotate across
+  the `anim/` primitives (Reveal, Parallax, VideoScrub, HorizontalScroll, HeroParticles, Marquee…)
+  so no style dominates. Match primitive to section role from `ai_agent_description`.
+- **Use every image.** All 59 images must appear somewhere; no orphans. Cross-check coverage.
+- Section/page structure mirrors the scraped `sections[]`, re-designed with brand tokens + motion —
+  not a pixel copy of the old site.
+- **Rebrand, don't copy names.** The scraped content is the OLD brand — **Trot / Promax United**
+  (hence the `Trot Videos/` folder, `promaxunited.com`, old phone/email in the JSON). The new site
+  is **Promax Global**. Swap every brand mention to Promax Global; identity/contact lives in
+  `lib/site.ts` only. Do NOT copy the old email/domain/phone from the scrape — per the user's global
+  rule, confirm real contact details before writing them anywhere.
+
 ## SEO / GEO conventions
 
 - Every page exports Next `metadata` — build it with **`pageMeta()`** (`lib/seo.ts`) for consistent

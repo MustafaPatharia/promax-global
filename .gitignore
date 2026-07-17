@@ -39,6 +39,14 @@ yarn-error.log*
 /transland-transportation-logistics-theme/
 /_ref/
 
+# scraper + rebuild tooling — reference only, not deployed
+/output/
+/.scraper-venv/
+scraper.py
+build_plan.py
+_rebuild-plan.json
+_rebuild-plan.md
+
 # tooling / local
 /.claude/
 /.codegraph/

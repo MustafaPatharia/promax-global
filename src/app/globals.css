@@ -334,16 +334,31 @@ html.lenis, html.lenis body { height: auto; }
   border: 1px solid var(--color-slate-100);
   border-radius: 1rem;
   padding: 1.1rem 1.25rem;
+  /* overflow visible on purpose — the autograph spills past the card edge
+     (Transland .company-ceo / .autograph-signature pattern). */
 }
+/* Autograph: absolutely positioned, oversized, rotated, overflowing the
+   top-right of the card like a real signature stamped across it. */
 .ceo-card .signature {
-  margin-left: auto;
-  font-family: "Segoe Script", "Brush Script MT", cursive;
-  font-size: 1.75rem;
+  position: absolute;
+  top: -1.5rem;
+  right: -1.5rem;
+  z-index: 2;
+  pointer-events: none;
+  font-family: var(--font-signature), "Segoe Script", "Brush Script MT", cursive;
+  font-size: clamp(3.25rem, 7vw, 5rem);
   line-height: 1;
-  color: var(--color-navy);
-  opacity: 0.8;
-  transform: rotate(-4deg);
+  color: var(--color-brand);
+  transform: rotate(-11deg);
   white-space: nowrap;
+}
+@media (max-width: 767px) {
+  .ceo-card .signature {
+    top: auto;
+    bottom: -1.75rem;
+    right: 0.5rem;
+    font-size: 3rem;
+  }
 }
 
 /* Mask-outline giant number — textured huge figure over the dot-map.

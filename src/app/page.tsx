@@ -1,5 +1,7 @@
 import Link from "next/link";
+import Image from "next/image";
 import { site, verticals } from "@/lib/site";
+import { img } from "@/lib/images";
 import Reveal from "@/components/anim/Reveal";
 import Counter from "@/components/anim/Counter";
 import Marquee from "@/components/anim/Marquee";
@@ -25,11 +27,11 @@ const services: { icon: IconName; title: string; text: string; href: string }[] 
 /** Icon per headline stat (funfact row). */
 const statIcon: IconName[] = ["globe", "briefcase", "layers", "clipboard"];
 
-/** Real corporate leadership (monogram avatars — no stock headshots). */
-const leadership = [
-  { name: "H.E. Louai Mohamed Ali", role: "Chairman", note: "Strategic direction and global partnerships." },
+/** Real corporate leadership — real headshots where we have them, else monogram. */
+const leadership: { name: string; role: string; note: string; photo?: string }[] = [
+  { name: "H.E. Louai Mohamed Ali", role: "Chairman", note: "Strategic direction and global partnerships.", photo: "b029c743_Mohamed_Ali.png" },
+  { name: "Group CEO", role: "Chief Executive", note: "Operational leadership across the group's five verticals.", photo: "50f8d446_CEO_1_.png" },
   { name: "Board of Directors", role: "Governance", note: "Structured oversight driving global development operations." },
-  { name: "Executive Office", role: "Operations", note: "Operational leadership across the group's five verticals." },
 ];
 
 const stakeholders = [
@@ -76,27 +78,32 @@ const sectorTiles: Tile[] = [
     title: "Industry & the energy transition",
   },
   {
-    src: video("dubai-earth-zoom-location-marker.mp4"),
-    poster: poster("dubai-earth-zoom-location-marker"),
+    src: video("dubai-skyline-burj-aerial.mp4"),
+    poster: poster("dubai-skyline-burj-aerial"),
     label: "Strategic Projects",
     title: "Nation-scale development",
   },
 ];
 
-/** Division panels for the pinned horizontal scroll (imagery per slug). */
+/**
+ * Division panel imagery = each destination page's HERO still, so the card
+ * matches what you land on. Video-hero pages → that hero's poster (exact frame);
+ * gradient-hero pages (no clip) → that page's lead image. Values are already
+ * resolved URLs. No clip that PLAYS elsewhere on home is reused here.
+ */
 const panelImg: Record<string, string> = {
-  "port-management": "container-port-night-topdown-aerial",
-  "skills-education": "dubai-skyline-burj-aerial",
-  "trade-hub": "shipping-port-aerial-panorama",
-  "technology-fintech": "smart-port-3d-digital-shipping",
-  "smart-energy": "recycle-symbol-sign-sunset",
-  "strategic-projects": "dubai-earth-zoom-location-marker",
+  "port-management": poster("port-containers-network-topdown"), // matches page heroVideo
+  "trade-hub": poster("aluminium-baled-cubes-recycling"), // matches page heroVideo
+  "smart-energy": poster("recycle-symbol-sign-sunset"), // matches page heroVideo
+  "skills-education": img("75287166_Skills_Education.jpg"), // gradient hero → lead image
+  "technology-fintech": img("4fc30b83_Technology_Fintech.jpg"), // gradient hero → lead image
+  "strategic-projects": img("40b2f196_Strategic_Projects.jpg"), // gradient hero → lead image
 };
 const panels: Panel[] = verticals.map((v) => ({
   slug: v.slug,
   title: v.title,
   blurb: v.blurb,
-  img: panelImg[v.slug] ?? "container-port-night-topdown-aerial",
+  img: panelImg[v.slug] ?? poster("container-port-night-topdown-aerial"),
 }));
 
 export default function Home() {
@@ -204,9 +211,15 @@ export default function Home() {
             {/* CEO / signature card — Transland .company-ceo, offset up over the copy */}
             <Reveal variant="up" index={2}>
               <div className="ceo-card -mt-4 lg:mr-12">
-                <span className="grid h-14 w-14 shrink-0 place-items-center rounded-full bg-navy font-display text-lg font-bold text-white">
-                  LM
-                </span>
+                <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-full ring-2 ring-brand/40">
+                  <Image
+                    src={img("b029c743_Mohamed_Ali.png")}
+                    alt="H.E. Louai Mohamed Ali, Chairman"
+                    fill
+                    sizes="56px"
+                    className="scale-[1.4] object-cover object-top"
+                  />
+                </div>
                 <div>
                   <h5 className="font-display font-bold leading-tight text-navy">H.E. Louai Mohamed Ali</h5>
                   <span className="text-sm text-slate-500">Chairman</span>
@@ -429,9 +442,21 @@ export default function Home() {
               return (
                 <Reveal key={m.name} variant="up" index={i}>
                   <div className="card group h-full p-8 text-center">
-                    <span className="mx-auto grid h-20 w-20 place-items-center rounded-full bg-navy font-display text-2xl font-bold text-white transition group-hover:bg-brand">
-                      {initials}
-                    </span>
+                    {m.photo ? (
+                      <div className="relative mx-auto h-20 w-20 overflow-hidden rounded-full ring-2 ring-brand/30 transition group-hover:ring-brand">
+                        <Image
+                          src={img(m.photo)}
+                          alt={`${m.name}, ${m.role}`}
+                          fill
+                          sizes="80px"
+                          className="scale-[1.4] object-cover object-top"
+                        />
+                      </div>
+                    ) : (
+                      <span className="mx-auto grid h-20 w-20 place-items-center rounded-full bg-navy font-display text-2xl font-bold text-white transition group-hover:bg-brand">
+                        {initials}
+                      </span>
+                    )}
                     <h3 className="mt-5 text-lg font-bold text-navy">{m.name}</h3>
                     <p className="mt-1 text-sm font-semibold uppercase tracking-wide text-brand">{m.role}</p>
                     <p className="mt-3 text-sm leading-relaxed text-slate-500">{m.note}</p>

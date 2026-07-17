@@ -3,9 +3,6 @@ import type { Metadata } from "next";
 import { pageMeta } from "@/lib/seo";
 import { verticals } from "@/lib/site";
 import Reveal from "@/components/anim/Reveal";
-import VideoHero from "@/components/anim/VideoHero";
-import ScrubBand from "@/components/anim/ScrubBand";
-import { video, poster } from "@/lib/videos";
 
 export const metadata: Metadata = pageMeta({
   title: "Our Portfolio",
@@ -18,12 +15,8 @@ export default function PortfolioPage() {
   return (
     <>
       <section className="relative overflow-hidden text-white">
-        <VideoHero
-          src={video("container-port-night-topdown-aerial.mp4")}
-          poster={poster("container-port-night-topdown-aerial")}
-          variant="shutter"
-          overlay="bg-gradient-to-br from-navy-900/90 via-navy/80 to-navy-700/70"
-        />
+        <div className="absolute inset-0 bg-gradient-to-br from-navy-900 via-navy to-navy-700" />
+        <div className="dotted-map pointer-events-none absolute inset-0 text-white" />
         <div className="shell relative py-24 md:py-32">
           <Reveal>
             <p className="eyebrow !text-brand">Global Divisions</p>
@@ -56,15 +49,6 @@ export default function PortfolioPage() {
           ))}
         </div>
       </section>
-
-      {/* ---------- Cinematic scroll-scrub band ---------- */}
-      <ScrubBand
-        src={video("world-map-grid-motion-bg.mp4")}
-        poster={poster("world-map-grid-motion-bg")}
-        eyebrow="One Portfolio, One Direction"
-        title={<>Real assets on <span className="text-brand">four continents</span></>}
-        text="Ports, trade corridors, energy, technology, and nation-scale projects — held under one UAE-headquartered group. Scroll the map to trace the reach."
-      />
     </>
   );
 }
