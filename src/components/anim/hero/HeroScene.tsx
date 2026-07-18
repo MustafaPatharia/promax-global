@@ -90,7 +90,7 @@ function Globe() {
       <Points positions={dust} stride={3} frustumCulled={false}>
         <PointMaterial
           transparent
-          color="#f97316"
+          color="#3aa328"
           size={0.03}
           sizeAttenuation
           depthWrite={false}

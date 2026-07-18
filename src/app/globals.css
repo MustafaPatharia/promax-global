@@ -7,10 +7,10 @@
  * ------------------------------------------------------------------ */
 @theme {
   /* Brand — orange */
-  --color-brand: #f97316;
-  --color-brand-600: #ea6a0c;
-  --color-brand-700: #c2560a;
-  --color-brand-050: #fff3ea;
+  --color-brand: #3aa328;
+  --color-brand-600: #2f8a21;
+  --color-brand-700: #256d1a;
+  --color-brand-050: #ecf7ea;
 
   /* Navy family */
   --color-navy: #1a3a5c;
@@ -386,7 +386,7 @@ html.lenis, html.lenis body { height: auto; }
   font-size: clamp(4.5rem, 16vw, 13rem);
   line-height: 0.9;
   letter-spacing: -0.03em;
-  background-image: linear-gradient(120deg, var(--color-brand) 0%, #ffd7b0 45%, var(--color-brand-700) 100%);
+  background-image: linear-gradient(120deg, var(--color-brand) 0%, #a8e6a0 45%, var(--color-brand-700) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
