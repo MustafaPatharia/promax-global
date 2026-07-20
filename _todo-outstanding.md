@@ -23,7 +23,7 @@
 | ~~C1~~ | ~~Arabic logo~~ | ✅ **FOUND** — `image5.jpeg` (بروماكس جلوبال). English marks: `image4.jpeg` (dark-on-light), `image17.jpeg` (footer) |
 | C2 | **15 partner logos** — ⚠️ **NOT in the .docx.** Para 152–153 gives the *names only*, as text: Promax Global, Promax United, Trot Global, Youth Chamber of Commerce, Plambeck, Promax Enjoy, Trot Solutions, Solveeasy, Promax Digital, Trot Holdings, Abu Dhabi International Factory, Promax Investments, Promax Easypay, Goldwin Mines, Starboard Ports | Above-footer strip (§2.2). Still needed as image files |
 | C3 | **Abu Dhabi skyline drone footage** | Corporate Overview AD → Africa → Europe → Global (00:13:05). Using a stand-in clip meanwhile; client to source from Unsplash/Pexels |
-| C4 | **Management Services description text** | Paresh action item: *"Forward Service Description"* (00:46:11) |
+| ~~C4~~ | ~~Management Services description text~~ | ✅ **NOT BLOCKED — it was in the doc all along** (paras 419–421) and is already on the site verbatim. The meeting action item at 00:46:11 was superseded by the doc |
 | C5 | **Strategic Ventures — 12 box descriptions** | ≥100 chars each, per doc |
 | C6 | **Chairman's Message** — the doc itself says the photo is interim: *"H.E Loui Mohammed Ali High resolution Image will be shared. Meanwhile use the option given"* (para 186). Interim photo = `image14.png`. **Two scripts (Arabic + English) still outstanding** (para 188) | About page. Layout is specified: picture LEFT, scripts RIGHT |
 | C7 | **Insights content** | 8 categories defined, zero items |
@@ -92,7 +92,7 @@ section; para 186 writes it *"Loui Mohammed Ali"*. Confirm the correct spelling 
 - [x] Ports & Logistics landing reads *Portfolio → Ports & Logistics* and now lists the three service pages as cards
 - [x] Management Services **3×2 grid** — wired to the client's own docx images (`mgmt-*`)
 - [x] Advisory Service **4×2 grid** with a bright header photo per discipline — `service-freight` gained optional `columns` + per-item `image`; the 8 discipline photos were sitting unused in `public/images/`
-- [ ] Management Services body text still blocked on **C4** (Paresh to forward); the old-site paragraph is in place as a stand-in
+- [x] Management Services body text — doc paras 419–421, in place verbatim. Not blocked (earlier note claiming an old-site stand-in was wrong)
 - [ ] Remaining portfolios' level-2 items stay as anchors — their sub-items are card content, not page content, until the client sends copy. Promoting them = add to `portfolioSubPages` + a `content.ts` entry, no new route code
 
 ### 2.8 Icons

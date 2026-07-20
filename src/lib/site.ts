@@ -43,18 +43,21 @@ export const site = {
  * logo files directly (2026-07-20) and asked for them to be included.
  */
 export const partners: { name: string; logo: string | null }[] = [
-  { name: "Promax Global", logo: null },
-  { name: "Promax United", logo: null },
-  { name: "Trot Global", logo: null },
+  { name: "Promax Global", logo: "/partners/promax-global.png" },
+  { name: "Promax United", logo: "/partners/promax-united.jpg" },
+  { name: "Trot Global", logo: "/partners/trot-global.png" },
   { name: "Youth Chamber of Commerce", logo: "/partners/youth-chamber-of-commerce.jpg" },
-  { name: "Plambeck", logo: null },
-  { name: "Promax Enjoy", logo: null },
+  // Supplied as a 1200×630 social "sharepic": white mark on a solid navy field,
+  // not a transparent logo. It reads as a dark rectangle in the faded strip —
+  // ask the client for the plain mark before launch.
+  { name: "Plambeck", logo: "/partners/plambeck.jpg" },
+  { name: "Promax Enjoy", logo: "/partners/promax-enjoy.jpeg" },
   { name: "Trot Solutions", logo: "/partners/trot-solutions.png" },
   { name: "Solveeasy", logo: "/partners/solveeasy.jpg" },
-  { name: "Promax Digital", logo: null },
+  { name: "Promax Digital", logo: "/partners/promax-digital.jpeg" },
   { name: "Trot Holdings", logo: "/partners/trot-holdings.png" },
-  { name: "Abu Dhabi International Factory", logo: null },
-  { name: "Promax Investments", logo: null },
+  { name: "Abu Dhabi International Factory", logo: "/partners/abu-dhabi-international-factory.png" },
+  { name: "Promax Investments", logo: "/partners/promax-investments.png" },
   { name: "Promax Easypay", logo: null },
   { name: "Goldwin Mines", logo: null },
   { name: "Starboard Ports", logo: null },
