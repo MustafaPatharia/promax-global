@@ -99,6 +99,18 @@ export type BrandShowcaseBlock = {
   stats?: { value: string; label: string }[];
 };
 
+/** Bilingual leadership message — photo + Arabic (RTL) and English scripts. */
+export type ChairmanBlock = {
+  type: "chairman";
+  eyebrow?: string;
+  heading: string;
+  photo?: string;
+  name: string;
+  role: string;
+  arabic: string;
+  english: string;
+};
+
 /** Plain responsive image grid (no lightbox) — reference/operational imagery. */
 export type GalleryBlock = {
   type: "gallery";
@@ -119,4 +131,5 @@ export type Block =
   | PricingBlock
   | BranchesBlock
   | BrandShowcaseBlock
+  | ChairmanBlock
   | GalleryBlock;

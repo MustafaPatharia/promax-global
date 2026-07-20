@@ -1,0 +1,323 @@
+<title>Promax Global — Content Doc vs Live Site Gap Matrix</title>
+<style>
+  :root{
+    --navy:#0b1f3a; --navy-2:#12294a; --ink:#0e1726; --paper:#f7f8fb;
+    --card:#ffffff; --line:#dfe4ec; --muted:#5b6678; --sub:#7a8496;
+    --green:#3aa328; --green-ink:#1f6a17;
+    --miss:#d1495b; --miss-bg:#fdecef;
+    --part:#c9821b; --part-bg:#fbf0dd;
+    --match:#2f8f45; --match-bg:#e7f4ea;
+    --dec:#3a63c9; --dec-bg:#e9eefb;
+    --chip-ink:#fff;
+    --shadow:0 1px 2px rgba(11,31,58,.06),0 8px 24px rgba(11,31,58,.06);
+    --maxw:1080px;
+    --f-disp:"Georgia","Times New Roman",serif;
+    --f-body:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --f-mono:"SFMono-Regular",ui-monospace,Menlo,Consolas,monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --paper:#0a1220; --ink:#e8edf5; --card:#111c30;
+      --line:#22314b; --muted:#9aa6ba; --sub:#7f8ca3;
+      --miss-bg:#3a1a20; --part-bg:#3a2c14; --match-bg:#16301f; --dec-bg:#182543;
+      --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#0a1220; --ink:#e8edf5; --card:#111c30;
+    --line:#22314b; --muted:#9aa6ba; --sub:#7f8ca3;
+    --miss-bg:#3a1a20; --part-bg:#3a2c14; --match-bg:#16301f; --dec-bg:#182543;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px rgba(0,0,0,.35);
+  }
+  :root[data-theme="light"]{
+    --paper:#f7f8fb; --ink:#0e1726; --card:#ffffff;
+    --line:#dfe4ec; --muted:#5b6678; --sub:#7a8496;
+    --miss-bg:#fdecef; --part-bg:#fbf0dd; --match-bg:#e7f4ea; --dec-bg:#e9eefb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-body);
+    line-height:1.5;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+  /* header */
+  header.top{background:linear-gradient(160deg,#0b1f3a,#12294a 70%);color:#eef2f8;
+    border-bottom:3px solid var(--green);}
+  header.top .wrap{padding:46px 24px 40px}
+  .eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#8fb98a;
+    font-weight:600;margin:0 0 14px}
+  h1{font-family:var(--f-disp);font-weight:700;font-size:clamp(28px,4.2vw,44px);
+    line-height:1.08;margin:0 0 12px;text-wrap:balance;letter-spacing:-.01em}
+  h1 em{font-style:normal;color:#8fd67f}
+  .lede{max-width:60ch;color:#c3cde0;font-size:16px;margin:0}
+  .src{margin-top:18px;font-family:var(--f-mono);font-size:12px;color:#9fb0cd}
+
+  /* scorecard */
+  .score{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin:26px 0 0}
+  .stat{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);
+    border-radius:12px;padding:14px 16px}
+  .stat .n{font-family:var(--f-disp);font-size:30px;font-weight:700;line-height:1;
+    font-variant-numeric:tabular-nums}
+  .stat .l{font-size:11.5px;letter-spacing:.04em;color:#b9c4da;margin-top:7px;text-transform:uppercase}
+  .stat.miss .n{color:#ff8a9a}.stat.part .n{color:#f0b64a}
+  .stat.match .n{color:#8fd67f}.stat.dec .n{color:#8fa8ee}
+
+  main{padding:34px 0 60px}
+
+  .bar{height:16px;border-radius:8px;overflow:hidden;display:flex;border:1px solid var(--line);
+    margin:0 0 6px}
+  .bar span{display:block;height:100%}
+  .barcap{font-size:12.5px;color:var(--muted);margin:0 0 30px}
+  .barcap b{color:var(--ink)}
+
+  .legend{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 30px}
+  .tag{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:600;
+    border-radius:999px;padding:5px 11px;border:1px solid transparent}
+  .tag .dot{width:8px;height:8px;border-radius:50%}
+  .t-miss{background:var(--miss-bg);color:var(--miss)}.t-miss .dot{background:var(--miss)}
+  .t-part{background:var(--part-bg);color:var(--part)}.t-part .dot{background:var(--part)}
+  .t-match{background:var(--match-bg);color:var(--match)}.t-match .dot{background:var(--match)}
+  .t-dec{background:var(--dec-bg);color:var(--dec)}.t-dec .dot{background:var(--dec)}
+
+  section.grp{margin:0 0 34px}
+  .grp h2{font-family:var(--f-disp);font-size:20px;font-weight:700;margin:0 0 3px;
+    display:flex;align-items:baseline;gap:10px}
+  .grp h2 .idx{font-family:var(--f-mono);font-size:13px;color:var(--green-ink);font-weight:700}
+  @media (prefers-color-scheme:dark){.grp h2 .idx{color:#6fca5c}}
+  :root[data-theme="dark"] .grp h2 .idx{color:#6fca5c}
+  .grp .note{font-size:13px;color:var(--sub);margin:0 0 14px}
+
+  .tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;
+    box-shadow:var(--shadow);background:var(--card)}
+  table{width:100%;border-collapse:collapse;min-width:720px;font-size:13.5px}
+  thead th{background:var(--navy);color:#dbe4f2;text-align:left;font-weight:600;
+    font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:11px 14px;
+    position:sticky;top:0}
+  th.st,td.st{width:118px}
+  tbody td{padding:12px 14px;border-top:1px solid var(--line);vertical-align:top}
+  tbody tr:nth-child(even) td{background:color-mix(in srgb,var(--card) 100%,var(--paper) 40%)}
+  td.area{font-weight:600;width:210px;color:var(--ink)}
+  td .doc{color:var(--muted)}
+  td .site{color:var(--muted)}
+  .pill{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;
+    border-radius:6px;padding:4px 8px;white-space:nowrap;letter-spacing:.02em}
+  .pill.miss{background:var(--miss-bg);color:var(--miss)}
+  .pill.part{background:var(--part-bg);color:var(--part)}
+  .pill.match{background:var(--match-bg);color:var(--match)}
+  .pill.dec{background:var(--dec-bg);color:var(--dec)}
+
+  .callout{border-left:3px solid var(--dec);background:var(--dec-bg);border-radius:0 10px 10px 0;
+    padding:14px 16px;margin:0 0 30px;font-size:13.5px;color:var(--ink)}
+  .callout b{color:var(--dec)}
+  code{font-family:var(--f-mono);font-size:.88em;background:color-mix(in srgb,var(--paper) 70%,var(--card));
+    padding:1px 5px;border-radius:4px;border:1px solid var(--line)}
+
+  footer{border-top:1px solid var(--line);padding:24px 0;color:var(--sub);font-size:12.5px}
+
+  @media (max-width:720px){
+    .score{grid-template-columns:repeat(2,1fr)}
+    header.top .wrap{padding:34px 20px 30px}
+  }
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <p class="eyebrow">Content Audit · Promax Global</p>
+    <h1>Client Content Doc <em>vs</em> Live Website — Gap Matrix</h1>
+    <p class="lede">Row-by-row comparison of the client's <code>Promax_Global_Website_Content 15072026.docx</code> against what is currently built on the site. Status flags what already matches, what's partial, what's missing, and what needs a decision before build.</p>
+    <p class="src">SOURCES · doc: Promax_Global_Website_Content 15072026.docx (933 lines) · site: src/lib/site.ts, content.ts, app routes (main, cb5dbe9)</p>
+
+    <div class="score">
+      <div class="stat match"><div class="n">8</div><div class="l">Match / close</div></div>
+      <div class="stat part"><div class="n">12</div><div class="l">Partial</div></div>
+      <div class="stat miss"><div class="n">14</div><div class="l">Missing</div></div>
+      <div class="stat dec"><div class="n">4</div><div class="l">Needs decision</div></div>
+      <div class="stat"><div class="n" style="color:#fff">~55%</div><div class="l">Doc coverage</div></div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <div class="bar" aria-hidden="true">
+      <span style="width:21%;background:var(--match)"></span>
+      <span style="width:32%;background:var(--part)"></span>
+      <span style="width:37%;background:var(--miss)"></span>
+      <span style="width:10%;background:var(--dec)"></span>
+    </div>
+    <p class="barcap"><b>Bottom line:</b> the site's design system, home, portfolio spine and 5–6 verticals largely exist — but <b>3 whole sections (Strategic Ventures, Why Us, Insights) are absent</b>, the two enquiry <b>forms are unbuilt</b>, portfolio detail is thinner than the doc, and <b>contact details / stats conflict</b> and need sign-off.</p>
+
+    <div class="legend">
+      <span class="tag t-match"><span class="dot"></span>Match — built, close to doc</span>
+      <span class="tag t-part"><span class="dot"></span>Partial — exists, differs / thinner</span>
+      <span class="tag t-miss"><span class="dot"></span>Missing — not built</span>
+      <span class="tag t-dec"><span class="dot"></span>Decision — doc self-conflicts or needs client sign-off</span>
+    </div>
+
+    <div class="callout">
+      <b>Two contact/identity items need your call before anything ships.</b> The doc gives an email <code>info@promaxglobal.ae</code> (and a stray old <code>info@promaxunited.com</code>) plus phone <code>+971&nbsp;56&nbsp;601&nbsp;0848</code>. The live site uses <code>hello@promaxglobal.com</code> / <code>career@promaxglobal.com</code>, domain <code>.com</code>, and a placeholder phone. These are not interchangeable — confirm the real domain, email and phone before I write them anywhere.
+    </div>
+
+    <!-- 1 NAV / IA -->
+    <section class="grp">
+      <h2><span class="idx">01</span> Navigation &amp; Information Architecture</h2>
+      <p class="note">Doc top nav: Home · About Us · Portfolio · Strategic Ventures · Insights · Reach Us — plus a Why Us tab, a top utility bar, and an EN/AR/FR/LA language selector.</p>
+      <div class="tablewrap"><table>
+        <thead><tr><th>Item</th><th>Client doc</th><th>Live site</th><th class="st">Status</th></tr></thead>
+        <tbody>
+          <tr><td class="area">Primary nav labels</td><td class="doc">Home, About, Portfolio, <b>Strategic Ventures</b>, <b>Insights</b>, Reach Us</td><td class="site">Home, About, Portfolio, Work With Us, Invest With Us, Contact</td><td class="st"><span class="pill part">PARTIAL</span></td></tr>
+          <tr><td class="area">Strategic Ventures nav+page</td><td class="doc">Independent page, own dropdown (11 items)</td><td class="site">No route, no nav item</td><td class="st"><span class="pill miss">MISSING</span></td></tr>
+          <tr><td class="area">Insights nav+page</td><td class="doc">Top-level section</td><td class="site">No route, no nav item</td><td class="st"><span class="pill miss">MISSING</span></td></tr>
+          <tr><td class="area">Why Us nav+page</td><td class="doc">Own page (governments / workflow / ecosystem)</td><td class="site">Fragments on home only; no page</td><td class="st"><span class="pill miss">MISSING</span></td></tr>
+          <tr><td class="area">Reach Us</td><td class="doc">Hub with Invest/Work forms nested under it</td><td class="site">"Contact" page; Work/Invest are separate top-level pages</td><td class="st"><span class="pill part">PARTIAL</span></td></tr>
+          <tr><td class="area">Top utility bar</td><td class="doc">Location · Email · Phone · Language</td><td class="site">Not present</td><td class="st"><span class="pill miss">MISSING</span></td></tr>
+          <tr><td class="area">Language selector</td><td class="doc">EN (active) · AR · FR · LA</td><td class="site">English only, no selector</td><td class="st"><span class="pill miss">MISSING</span></td></tr>
+          <tr><td class="area">Logo (bilingual)</td><td class="doc">English logo left, Arabic logo right</td><td class="site">Single logo, English</td><td class="st"><span class="pill part">PARTIAL</span></td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <!-- 2 PORTFOLIO TAXONOMY -->
+    <section class="grp">
+      <h2><span class="idx">02</span> Portfolio taxonomy</h2>
+      <p class="note">Doc: 6 items, with "Ports &amp; Logistics" a <b>parent</b> holding 4 sub-pages. Site: 9 flat items. Same content, different tree + names.</p>
+      <div class="tablewrap"><table>
+        <thead><tr><th>Item</th><th>Client doc</th><th>Live site</th><th class="st">Status</th></tr></thead>
+        <tbody>
+          <tr><td class="area">Grouping</td><td class="doc">Ports &amp; Logistics → {Management, Advisory, Infrastructure, Strategic Equipment}</td><td class="site">4 flat siblings (no parent)</td><td class="st"><span class="pill part">PARTIAL</span></td></tr>
+          <tr><td class="area">"AI &amp; Fintech"</td><td class="doc">Named <b>AI &amp; Fintech</b></td><td class="site">Named "Technology &amp; Fintech"</td><td class="st"><span class="pill part">RENAME</span></td></tr>
+          <tr><td class="area">"Infrastructure &amp; Asset Holdings"</td><td class="doc">Named <b>Infrastructure &amp; Asset Holdings</b></td><td class="site">Named "Strategic Projects"</td><td class="st"><span class="pill part">RENAME</span></td></tr>
+          <tr><td class="area">Skills &amp; Education</td><td class="doc">"Skill Development &amp; Education"</td><td class="site">"Skills &amp; Education"</td><td class="st"><span class="pill match">MATCH</span></td></tr>
+          <tr><td class="area">Trade Hub</td><td class="doc">Trade Hub &amp; Food Security</td><td class="site">Trade Hub &amp; Food Security</td><td class="st"><span class="pill match">MATCH</span></td></tr>
+          <tr><td class="area">Smart &amp; Green Energy</td><td class="doc">Smart &amp; Green Energy</td><td class="site">Smart &amp; Green Energy</td><td class="st"><span class="pill match">MATCH</span></td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <!-- 3 HOME -->
+    <section class="grp">
+      <h2><span class="idx">03</span> Home page</h2>
+      <div class="tablewrap"><table>
+        <thead><tr><th>Item</th><th>Client doc</th><th>Live site</th><th class="st">Status</th></tr></thead>
+        <tbody>
+          <tr><td class="area">Hero headline</td><td class="doc">"From Abu Dhabi. Building the Future of Nations."</td><td class="site">"From UAE to the World"</td><td class="st"><span class="pill part">PARTIAL</span></td></tr>
+          <tr><td class="area">Hero buttons</td><td class="doc">"Explore Our Platforms" · "Global Projects"</td><td class="site">Different CTA set</td><td class="st"><span class="pill part">PARTIAL</span></td></tr>
+          <tr><td class="area">Hero visual</td><td class="doc">Star sky + rotating globe, UAE border trace over 13 named countries</td><td class="site">HeroParticles WebGL globe (no country trace)</td><td class="st"><span class="pill part">PARTIAL</span></td></tr>
+          <tr><td class="area">Strategic Business Platforms grid</td><td class="doc">6 platform groups (Infrastructure &amp; Economic Cities, Natural Resources, Digital Economy, Energy Transition, Investment &amp; Capital, National Capability) w/ sub-bullets — distinct from portfolio</td><td class="site">Shows the 6 portfolio verticals instead</td><td class="st"><span class="pill part">PARTIAL</span></td></tr>
+          <tr><td class="area">Animated statistics</td><td class="doc">UAE HQ · 25+ jurisdictions · 8 platforms · 5 verticals · 50+ network</td><td class="site">25+ countries · 8 projects · 5 verticals · 50+ advisories</td><td class="st"><span class="pill match">CLOSE</span></td></tr>
+          <tr><td class="area">Partners strip</td><td class="doc">16 <b>named</b> brands (Promax United, Trot Global, Plambeck, Goldwin Mines, Starboard Ports…)</td><td class="site">Marquee of stakeholder <b>types</b> (Terminal Operators, Sovereign Funds…)</td><td class="st"><span class="pill part">PARTIAL</span></td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <!-- 4 ABOUT -->
+    <section class="grp">
+      <h2><span class="idx">04</span> About page</h2>
+      <div class="tablewrap"><table>
+        <thead><tr><th>Item</th><th>Client doc</th><th>Live site</th><th class="st">Status</th></tr></thead>
+        <tbody>
+          <tr><td class="area">Chairman's Message</td><td class="doc">Replace "Meet our Team" with H.E. Louai Mohamed Ali message — photo left, <b>Arabic + English scripts</b> right</td><td class="site">Single Chairman card, English only, part of team block</td><td class="st"><span class="pill part">PARTIAL</span></td></tr>
+          <tr><td class="area">Legacy — "Abu Dhabi Economic Gateway"</td><td class="doc">Keep section, retain content</td><td class="site">Present as home eyebrow/section</td><td class="st"><span class="pill match">MATCH</span></td></tr>
+          <tr><td class="area">Sustainability / ESG</td><td class="doc">3-pillar section: Environmental · Social · Governance, aligned to UN SDGs / UAE Net Zero / Responsible Investment</td><td class="site">ESG mentioned in passing; no dedicated 3-pillar section</td><td class="st"><span class="pill miss">MISSING</span></td></tr>
+          <tr><td class="area">About stats</td><td class="doc">27 countries · 18 projects · 9 verticals · 36 partners</td><td class="site">25+ · 8 · 5 · 50+</td><td class="st"><span class="pill dec">CONFLICT</span></td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <!-- 5 NEW PAGES -->
+    <section class="grp">
+      <h2><span class="idx">05</span> Whole sections to build</h2>
+      <p class="note">Three sections in the doc have no equivalent route on the site.</p>
+      <div class="tablewrap"><table>
+        <thead><tr><th>Item</th><th>Client doc asks for</th><th>Live site</th><th class="st">Status</th></tr></thead>
+        <tbody>
+          <tr><td class="area">Strategic Ventures</td><td class="doc">Own page · dropdown of 11 · 4×3 grid of 12 named ventures (~100-char scope each): Blue Ports, Dry Port, Logistics Hub, Industrial Park, Technology City, Smart Energy Metering, Manufacturing, Digital Investment Platform, Digital Wallet, Breakbulk Port, Workforce Mobility, Skill Development</td><td class="site">Nothing</td><td class="st"><span class="pill miss">MISSING</span></td></tr>
+          <tr><td class="area">Why Us</td><td class="doc">Banner · "Why Governments Choose Promax" (8 icons) · "From Strategy to Delivery" 8-step workflow · "Our Ecosystem" (6 partner categories)</td><td class="site">Nothing (loose fragments on home)</td><td class="st"><span class="pill miss">MISSING</span></td></tr>
+          <tr><td class="area">Insights</td><td class="doc">Articles · Leadership Thoughts · Industry Reports · Whitepapers · Research · Media · Events · Videos</td><td class="site">Nothing</td><td class="st"><span class="pill miss">MISSING</span></td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <!-- 6 FORMS -->
+    <section class="grp">
+      <h2><span class="idx">06</span> Enquiry forms</h2>
+      <div class="tablewrap"><table>
+        <thead><tr><th>Item</th><th>Client doc</th><th>Live site</th><th class="st">Status</th></tr></thead>
+        <tbody>
+          <tr><td class="area">Work With Us form</td><td class="doc">Name, Full Name, Mobile, Email, <b>CV attachment</b>, 200-word field</td><td class="site">Static content page — no form</td><td class="st"><span class="pill miss">MISSING</span></td></tr>
+          <tr><td class="area">Invest With Us form</td><td class="doc">Activity dropdown (6 types), Email, Organization, Role, 500-word field</td><td class="site">Static content page — no form</td><td class="st"><span class="pill miss">MISSING</span></td></tr>
+          <tr><td class="area">Submit button</td><td class="doc">"Transmit Inquiry"</td><td class="site">Contact form already uses "Transmit Inquiry"</td><td class="st"><span class="pill match">MATCH</span></td></tr>
+          <tr><td class="area">Success message</td><td class="doc">"Inquiry Transmitted Successfully — …we will review…"</td><td class="site">Contact form has no wired success state shown</td><td class="st"><span class="pill part">PARTIAL</span></td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <!-- 7 PORTFOLIO CONTENT DEPTH -->
+    <section class="grp">
+      <h2><span class="idx">07</span> Portfolio content depth &amp; rewrites</h2>
+      <p class="note">Sub-pages exist, but the doc supplies deeper copy and specific renames the site hasn't applied yet.</p>
+      <div class="tablewrap"><table>
+        <thead><tr><th>Sub-page</th><th>Client doc change</th><th>Live site</th><th class="st">Status</th></tr></thead>
+        <tbody>
+          <tr><td class="area">Infrastructure &amp; Asset Holdings</td><td class="doc">8 <b>named</b> projects w/ locations: Blue Port–Atlantic, Dry Port–Burkina Faso, Bulk–Lumut Malaysia, Manufacturing–Duqm, Real Estate–Duqm, Trailer Plant–UAE, Smart City–UAE, Mining Rights</td><td class="site">Generic "Strategic Projects" copy, no named 8</td><td class="st"><span class="pill part">PARTIAL</span></td></tr>
+          <tr><td class="area">Skills &amp; Education</td><td class="doc">Tri-regional India–GCC–Africa alliance, 8 named sub-programs</td><td class="site">Present but lighter / different framing</td><td class="st"><span class="pill part">PARTIAL</span></td></tr>
+          <tr><td class="area">Smart &amp; Green Energy</td><td class="doc">Header → "Smart Energy Management" + add separate "Green Energy" section (6-item portfolio)</td><td class="site">Combined single treatment</td><td class="st"><span class="pill part">PARTIAL</span></td></tr>
+          <tr><td class="area">Trade Hub</td><td class="doc">Use "<b>Promax Trade Hub</b>", not "Abu Dhabi Trade Hub"</td><td class="site">Check wording</td><td class="st"><span class="pill part">VERIFY</span></td></tr>
+          <tr><td class="area">Infrastructure sub</td><td class="doc">Rename "Civil &amp; Digital Assets" → "Infrastructure Assets"; new header; remove section03</td><td class="site">Old naming</td><td class="st"><span class="pill part">RENAME</span></td></tr>
+          <tr><td class="area">Strategic Equipment</td><td class="doc">Header → "Strategic Sourcing"; "Sourced Assets Profile" → "Sourcing"; add equipment tabs</td><td class="site">Old naming</td><td class="st"><span class="pill part">RENAME</span></td></tr>
+          <tr><td class="area">AI &amp; Fintech</td><td class="doc">Tech projects (data centres, smart grid, cyber) + fintech (digital banking, inclusion)</td><td class="site">Technology &amp; Fintech page exists, close</td><td class="st"><span class="pill match">CLOSE</span></td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <!-- 8 FOOTER -->
+    <section class="grp">
+      <h2><span class="idx">08</span> Footer</h2>
+      <div class="tablewrap"><table>
+        <thead><tr><th>Item</th><th>Client doc</th><th>Live site</th><th class="st">Status</th></tr></thead>
+        <tbody>
+          <tr><td class="area">Columns</td><td class="doc">Our Portfolio (6) · Strategic Platforms (6) · Find Us + tagline</td><td class="site">Footer exists; column set differs from doc</td><td class="st"><span class="pill part">VERIFY</span></td></tr>
+          <tr><td class="area">Contact block + "BUILDING THE FUTURE OF NATIONS"</td><td class="doc">Address, email, phone, strapline</td><td class="site">Present, values differ (see decision box)</td><td class="st"><span class="pill dec">CONFLICT</span></td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <!-- 9 ASSET READINESS -->
+    <section class="grp">
+      <h2><span class="idx">09</span> Asset readiness per section</h2>
+      <p class="note">Hero globe stays as-is (locked). For every other section: do we already hold a relevant <b>video</b> (21-clip Trot library, <code>_videos.json</code>), <b>image</b> (35 doc + 59 stock), <b>stat</b>, and <b>anim primitive</b> to build it? Video is the binding constraint — the library skews port/scrap-metal, so new Promax verticals have no matching clip.</p>
+      <div class="tablewrap"><table>
+        <thead><tr><th>Section</th><th>Video (clip / gap)</th><th>Image</th><th>Stat / Anim</th><th class="st">Readiness</th></tr></thead>
+        <tbody>
+          <tr><td class="area">Home hero</td><td class="doc">Globe — <b>HeroParticles</b> (keep)</td><td class="site">—</td><td class="site">HeroParticles</td><td class="st"><span class="pill match">LOCKED</span></td></tr>
+          <tr><td class="area">Corporate Overview / HQ</td><td class="doc"><code>dubai-skyline-burj-aerial</code> ✓</td><td class="site">image13, image29 (brand) + dubai stock</td><td class="site">ParallaxMedia</td><td class="st"><span class="pill match">READY</span></td></tr>
+          <tr><td class="area">Strategic Platforms grid</td><td class="doc">none needed (grid of 3 stills)</td><td class="site">public/images sector photos ✓</td><td class="site">Reveal grid</td><td class="st"><span class="pill match">READY</span></td></tr>
+          <tr><td class="area">Animated statistics</td><td class="doc">underlay: <code>world-map-grid</code> / <code>digital-globe</code> ✓</td><td class="site">—</td><td class="site">Counter · stats in site.ts ✓</td><td class="st"><span class="pill match">READY</span></td></tr>
+          <tr><td class="area">Partners strip (16 named)</td><td class="doc">—</td><td class="site"><b>16 partner logos NOT extracted</b> — only Promax marks exist</td><td class="site">Marquee</td><td class="st"><span class="pill miss">GAP · logos</span></td></tr>
+          <tr><td class="area">Ports &amp; Logistics</td><td class="doc"><code>shipping-port-aerial</code> / <code>container-port-night</code> ✓</td><td class="site">image18, 20–23 + stock ✓</td><td class="site">VideoScrub / VideoGrid</td><td class="st"><span class="pill match">READY</span></td></tr>
+          <tr><td class="area">Port Advisory</td><td class="doc"><code>smart-port-3d</code> / <code>port-night-hologram</code> ✓</td><td class="site">advisory tiles (public) ✓</td><td class="site">Reveal / VideoScrub</td><td class="st"><span class="pill match">READY</span></td></tr>
+          <tr><td class="area">Infrastructure</td><td class="doc"><code>container-port-night</code> / <code>scrapyard-grapple</code> ✓</td><td class="site">stock ✓</td><td class="site">HorizontalScroll</td><td class="st"><span class="pill match">READY</span></td></tr>
+          <tr><td class="area">Strategic Equipment</td><td class="doc"><code>foundry-furnace</code> / <code>scrapyard-grapple</code> ✓ (industrial)</td><td class="site">stock ✓</td><td class="site">VideoGrid</td><td class="st"><span class="pill match">READY</span></td></tr>
+          <tr><td class="area">Skills &amp; Education</td><td class="doc"><code>skills-education-pexels</code> (training room) ✓ <i>new</i></td><td class="site">image31 + stock</td><td class="site">Reveal grid</td><td class="st"><span class="pill match">READY</span></td></tr>
+          <tr><td class="area">Trade Hub / Food Security</td><td class="doc"><code>trade-hub-pexels</code> (aerial container port) ✓ <i>new</i></td><td class="site">image25, image26 (rebuild) ✓</td><td class="site">ScrubBand</td><td class="st"><span class="pill match">READY</span></td></tr>
+          <tr><td class="area">AI &amp; Fintech</td><td class="doc"><code>technology-fintech-pexels</code> (data cabling) ✓ <i>new</i></td><td class="site">image27 (rebuild) ✓</td><td class="site">Reveal</td><td class="st"><span class="pill match">READY</span></td></tr>
+          <tr><td class="area">Smart &amp; Green Energy</td><td class="doc"><code>smart-energy-pexels</code> (wind + solar) ✓ <i>new</i></td><td class="site">stock ✓</td><td class="site">ParallaxMedia</td><td class="st"><span class="pill match">READY</span></td></tr>
+          <tr><td class="area">Reach Us</td><td class="doc"><code>reach-us-pexels</code> (skyline + harbor) ✓ <i>new sub</i></td><td class="site">image11 (stock) ✓</td><td class="site">BackgroundVideo</td><td class="st"><span class="pill match">READY</span></td></tr>
+          <tr><td class="area">Strategic Ventures (new page)</td><td class="doc">mixed per-venture — none mapped</td><td class="site">no venture images extracted</td><td class="site">—</td><td class="st"><span class="pill miss">GAP</span></td></tr>
+          <tr><td class="area">Why Us / Insights (new)</td><td class="doc">optional</td><td class="site">generic stock only</td><td class="site">Reveal / workflow</td><td class="st"><span class="pill miss">GAP</span></td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <div class="callout" style="border-color:var(--part);background:var(--part-bg)">
+      <b style="color:var(--match)">Video gap closed.</b> Trot is the parent group, Promax the subsidiary — so the group's own Trot/industrial clips cover Ports, Infrastructure, Equipment. The 5 thematic gaps (Skills, Trade Hub, AI &amp; Fintech, Green Energy, Reach Us) are now filled with fresh <b>Pexels</b> footage in <code>public/videos/*-pexels-*.mp4</code> (training room · aerial container port · data cabling · wind+solar · skyline+harbor) — all verified on-topic, Pexels free license (no attribution required). <b>To do before ship:</b> <code>trade-hub-pexels</code> is 15&nbsp;MB — transcode/compress the batch and generate posters; wire each into <code>_videos.json</code> + the section. One-video-one-place rule still applies.
+    </div>
+
+    <div class="callout" style="border-color:var(--part);background:var(--part-bg)">
+      <b style="color:var(--part)">Stats conflict inside the doc itself.</b> The home section says 25+ countries / 8 platforms / 5 verticals / 50+, while the About section says 27 / 18 / 9 / 36. One canonical set is needed — tell me which, and I'll set it in <code>src/lib/site.ts</code> (single source of truth) so every page stays consistent.
+    </div>
+
+  </div>
+
+  <footer><div class="wrap">Gap matrix generated from the client content doc and the current <code>main</code> branch. Status counts are indicative, grouped by section. Contact/identity and stat conflicts flagged blue/amber require client sign-off before build.</div></footer>
+</main>

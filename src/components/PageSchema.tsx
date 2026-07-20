@@ -1,5 +1,6 @@
 import { site } from "@/lib/site";
 import type { Faq } from "@/lib/faqs";
+import { getNav, withLocale, type Locale } from "@/lib/i18n";
 
 /**
  * Per-page structured data: BreadcrumbList + Service + optional FAQPage.
@@ -10,6 +11,7 @@ export default function PageSchema({
   title,
   description,
   path,
+  locale,
   breadcrumb = [],
   faqs,
   isService = false,
@@ -17,14 +19,17 @@ export default function PageSchema({
   title: string;
   description: string;
   path: string;
+  locale: Locale;
   breadcrumb?: { name: string; path: string }[];
   faqs?: Faq[];
   isService?: boolean;
 }) {
-  const url = `${site.url}${path}`;
+  const loc = (p: string) => `${site.url}${withLocale(p, locale)}`;
+  const url = loc(path);
+  const homeName = getNav(locale)[0]?.label ?? "Home";
   const data: Record<string, unknown>[] = [];
 
-  const trail = [{ name: "Home", path: "/" }, ...breadcrumb, { name: title, path }];
+  const trail = [{ name: homeName, path: "/" }, ...breadcrumb, { name: title, path }];
   data.push({
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -32,7 +37,7 @@ export default function PageSchema({
       "@type": "ListItem",
       position: i + 1,
       name: c.name,
-      item: `${site.url}${c.path}`,
+      item: loc(c.path),
     })),
   });
 

@@ -27,16 +27,16 @@ export const pages: Record<string, PageContent & { metaDescription: string }> = 
     ],
     blocks: [
       {
-        type: "team-photos",
-        eyebrow: "Corporate Leadership",
-        heading: "The people behind the group",
-        intro: "Strategic direction, structured governance, and operational leadership across five verticals.",
-        members: [
-          { name: "H.E. Louai Mohamed Ali", role: "Chairman", photo: "b029c743_Mohamed_Ali.png" },
-          { name: "Group Chief Executive", role: "Group CEO", photo: "50f8d446_CEO_1_.png" },
-          { name: "Board of Directors", role: "Governance & Oversight" },
-          { name: "Executive Office", role: "Group Operations" },
-        ],
+        type: "chairman",
+        eyebrow: "Chairman's Message",
+        heading: "A message from our Chairman",
+        photo: "b029c743_Mohamed_Ali.png",
+        name: "H.E. Louai Mohamed Ali",
+        role: "Chairman",
+        arabic:
+          "تُبنى بروماكس جلوبال على تعاونٍ ديناميكيٍّ يجمع خبراءَ بارعين، ومبتكرين مبدعين، وأصحابَ رؤى استشرافية، يوحّدهم التزامٌ عميق بأدوارهم. يزدهر تناغمنا بالعمل الجماعي والالتزام الراسخ بتحقيق التميّز. نحتضن أدوارنا كلَّ يوم بهدفٍ مشترك: أن نحوّل أحلامكم إلى واقع، ونتجاوز أهدافكم، ونضعكم في مصافِّ الروّاد في مجالاتكم. ملتزمون بالتميّز، لسنا شركاءَ فحسب؛ بل حلفاؤكم الدائمون.",
+        english:
+          "Promax Global is powered by a dynamic collaboration of adept experts, creative innovators, and forward-thinking visionaries, all united by a profound dedication to their respective roles. Our synergy thrives on collaborative efforts and an unyielding commitment to achieving excellence. Each day, we embrace our roles with a collective purpose — to transform your dreams to life, exceed your goals, and position you as pioneers in your respective fields. Committed to excellence, we are not just partners; we're your relentless allies.",
       },
       {
         type: "feature-cards",
@@ -47,6 +47,18 @@ export const pages: Record<string, PageContent & { metaDescription: string }> = 
           { icon: "briefcase", title: "Relentless allies", text: "Not just partners — we align to your national priorities and see them through." },
           { icon: "globe", title: "UAE hub, global reach", text: "From the heart of the Middle East to 25+ countries across four regions." },
           { icon: "layers", title: "Financial resilience", text: "Institutional credibility and diversified strength across resilient verticals." },
+        ],
+      },
+      {
+        type: "feature-cards",
+        eyebrow: "Sustainability",
+        heading: "ESG at the core",
+        intro: "Three pillars, aligned with the UN SDGs, UAE Net Zero 2050, and Responsible Investment principles.",
+        columns: 3,
+        items: [
+          { icon: "globe", title: "Environmental", text: "Decarbonization, renewable integration, and green-port transformation aligned with UAE Net Zero 2050." },
+          { icon: "briefcase", title: "Social", text: "Skills, women & youth empowerment, and inclusive development across India, the GCC, and Africa — mapped to the UN SDGs." },
+          { icon: "clipboard", title: "Governance", text: "Transparent reporting, institutional oversight, and responsible-investment discipline across every mandate." },
         ],
       },
       {
@@ -69,10 +81,10 @@ export const pages: Record<string, PageContent & { metaDescription: string }> = 
       },
     ],
     stats: [
-      { value: "25+", label: "Countries — Global Presence" },
-      { value: "8", label: "Mandated Projects" },
-      { value: "5", label: "Industry Verticals" },
-      { value: "50+", label: "Active Terminal Advisories" },
+      { value: "27", label: "Countries — Global Presence" },
+      { value: "18", label: "Mandated Strategic Projects" },
+      { value: "9", label: "Core Industry Verticals" },
+      { value: "36", label: "Partners — Global Network" },
     ],
     quote: {
       text:
@@ -120,7 +132,7 @@ export const pages: Record<string, PageContent & { metaDescription: string }> = 
         ],
       },
     ],
-    cta: { label: "Submit a Partnership Enquiry", href: "/contact" },
+    cta: { label: "Submit a Partnership Enquiry", href: "#inquiry" },
   },
 
   "invest-with-us": {
@@ -168,7 +180,7 @@ export const pages: Record<string, PageContent & { metaDescription: string }> = 
       { value: "5", label: "Resilient Verticals" },
       { value: "4", label: "Regions — GCC · Africa · India · Asia" },
     ],
-    cta: { label: "Submit Investment Interest", href: "/contact" },
+    cta: { label: "Submit Investment Interest", href: "#inquiry" },
   },
 
   "port-management": {
@@ -346,7 +358,9 @@ export const pages: Record<string, PageContent & { metaDescription: string }> = 
 
   "skills-education": {
     eyebrow: "Portfolio Vertical",
-    title: "Skills & Education",
+    title: "Skill Development & Education",
+    heroVideo: "skills-education-pexels-19229819.mp4",
+    heroStyle: "kenburns",
     intro:
       "Establishing the Tri-Regional Socio-Economic Development Alliance covering India, GCC, and Africa — empowering students, women, and entrepreneurs for a brighter future.",
     metaDescription:
@@ -414,17 +428,35 @@ export const pages: Record<string, PageContent & { metaDescription: string }> = 
           { image: "f9d77639_photo-1578575437130-527eed3abbec.jpg", icon: "building", title: "Storage & logistics" },
         ],
       },
+      {
+        type: "feature-cards",
+        eyebrow: "Partner with Promax Trade Hub",
+        heading: "Our strengths",
+        columns: 4,
+        items: [
+          { icon: "briefcase", title: "Billion-dollar patronage", text: "Backed by the Promax United Group." },
+          { icon: "clipboard", title: "Mandated & exclusive rights", text: "Government-granted project rights across regions." },
+          { icon: "globe", title: "Multi-country presence", text: "GCC, Africa, Asia, and the Atlantic corridor." },
+          { icon: "compass", title: "Strong government alignment", text: "Working directly with national priorities." },
+          { icon: "bolt", title: "Proven execution", text: "Delivery capability in real-asset sectors." },
+          { icon: "layers", title: "High-growth real assets", text: "Resilient, essential supply-chain sectors." },
+          { icon: "anchor", title: "Transparent governance", text: "Clear reporting and accountable structures." },
+          { icon: "building", title: "Long-term value", text: "Sustainable, generational value creation." },
+        ],
+      },
     ],
     cta: { label: "Initiate Strategic Alignment", href: "/contact" },
   },
 
   "technology-fintech": {
     eyebrow: "Portfolio Vertical",
-    title: "Technology & Fintech",
+    title: "AI & Fintech",
+    heroVideo: "technology-fintech-pexels-1085656.mp4",
+    heroStyle: "duotone",
     intro:
       "Large-scale digital infrastructure and inclusive financial ecosystems that accelerate national development, strengthen economic transparency, and uplift underserved communities.",
     metaDescription:
-      "Promax Global Technology & Fintech — digital infrastructure, cybersecurity, smart grids, digital banking, and rural financial inclusion.",
+      "Promax Global AI & Fintech — data centres, smart grids, AI, cybersecurity, digital banking, and rural financial inclusion across high-growth markets.",
     blocks: [
       {
         type: "feature-cards",
@@ -489,16 +521,22 @@ export const pages: Record<string, PageContent & { metaDescription: string }> = 
         ],
       },
     ],
+    band: {
+      video: "smart-energy-pexels-9789926.mp4",
+      eyebrow: "Green Energy",
+      heading: "Cleaner, more efficient, future-ready operations",
+      text: "From renewable integration and hybrid equipment conversions to smart energy management and ESG-aligned decarbonization — we help ports, industries, and governments transition to low-carbon operations. Solar & renewable integration, hybrid & electric equipment conversions, energy-efficiency audits, and sustainable infrastructure upgrades.",
+    },
     cta: { label: "Initiate Strategic Alignment", href: "/contact" },
   },
 
   "strategic-projects": {
     eyebrow: "Portfolio Vertical",
-    title: "Strategic Projects & Investments",
+    title: "Infrastructure & Asset Holdings",
     intro:
-      "A diversified portfolio of mandated, acquired, and high-value strategic projects — 8 flagship developments valued around $1 billion each, spanning GCC, Africa, Asia, and the Atlantic.",
+      "A diversified portfolio of mandated, acquired, and high-value strategic assets — 8 flagship developments valued around $1 billion each, spanning GCC, Africa, Asia, and the Atlantic — structured for institutional investors, sovereign funds, and global operators.",
     metaDescription:
-      "Promax Global Strategic Investment Portfolio — 8 high-value mandated projects across GCC, Africa, Asia, and the Atlantic.",
+      "Promax Global Infrastructure & Asset Holdings — 8 mandated, high-value projects across ports, logistics, industry, real estate, manufacturing, and natural resources in GCC, Africa, Asia, and the Atlantic.",
     bodyStyle: "grid-num",
     sections: [
       {
@@ -536,5 +574,128 @@ export const pages: Record<string, PageContent & { metaDescription: string }> = 
       { value: "25+", label: "Countries of Operation" },
     ],
     cta: { label: "Initiate Institutional Discussion", href: "/contact" },
+  },
+
+  "strategic-ventures": {
+    eyebrow: "Strategic Ventures",
+    title: "Strategic Ventures",
+    heroVideo: "trade-hub-pexels-30899354.mp4",
+    heroStyle: "kenburns",
+    intro:
+      "A live portfolio of mandated and co-developed ventures spanning ports, industrial parks, technology cities, smart energy, digital finance, and workforce mobility — structured for institutional partners across GCC, Africa, and Asia.",
+    metaDescription:
+      "Promax Global Strategic Ventures — blue ports, dry ports, logistics and industrial parks, technology cities, smart energy metering, manufacturing, digital investment platforms, and digital wallets across GCC, Africa, and Asia.",
+    blocks: [
+      {
+        type: "service-overlay",
+        eyebrow: "The Portfolio",
+        heading: "Twelve ventures, one platform",
+        intro: "Each venture is structured for co-investment, joint venture, or concession — with government alignment and clear development mandates.",
+        columns: 4,
+        items: [
+          { image: "705a5901_photo-1611974789855-9c2a0a7236a3.jpg", icon: "anchor", title: "Blue Ports", text: "Sustainable blue-economy ports with fisheries, processing, and cold-chain." },
+          { image: "878dc9be_photo-1586528116311-ad8dd3c8310d.jpg", icon: "anchor", title: "Dry Port", text: "ICD, bonded warehousing, and multimodal rail/road connectivity." },
+          { image: "10c34884_photo-1454165804606-c3d57bc86b40.jpg", icon: "layers", title: "Logistics Hub", text: "Port-centric distribution and consolidation infrastructure." },
+          { image: "9203de11_photo-1578575437130-527eed3abbec.jpg", icon: "crane", title: "Industrial Park", text: "Trot Industrial Park — light and medium manufacturing zones." },
+          { image: "23f9bc2f_photo-1509391366360-2e959784a276.jpg", icon: "building", title: "Technology City", text: "Dhafra Project — a next-generation smart urban district." },
+          { image: "b769338c_photo-1454165804606-c3d57bc86b40.jpg", icon: "bolt", title: "Smart Energy Metering", text: "Burkina Faso — national smart-metering and grid intelligence." },
+          { image: "1318030e_photo-1494412574643-ff11b0a5c1c3.jpg", icon: "crane", title: "Manufacturing", text: "Fabrication, engineering, and export-oriented production lines." },
+          { image: "ae497055_photo-1524178232363-1fb2b075b655.jpg", icon: "globe", title: "Digital Investment Platform", text: "Institutional-grade digital investment and capital-access rails." },
+          { image: "99d9424c_photo-1524178232363-1fb2b075b655.jpg", icon: "briefcase", title: "Digital Wallet", text: "Inclusive payments and digital-finance wallet infrastructure." },
+          { image: "0665834b_photo-1558494949-ef010cbdcc31.jpg", icon: "anchor", title: "Breakbulk Port", text: "Bulk and breakbulk terminals for minerals and project cargo." },
+          { image: "0d7cc51f_infrastructure_capacity.jpg", icon: "compass", title: "Workforce Mobility", text: "Cross-border skills mobility and standardized certification." },
+          { image: "75287166_Skills_Education.jpg", icon: "clipboard", title: "Skill Development", text: "Tri-regional academies for India–GCC–Africa mobility." },
+        ],
+      },
+    ],
+    cta: { label: "Co-Develop a Venture", href: "/invest-with-us" },
+  },
+
+  "why-us": {
+    eyebrow: "Why Us",
+    title: "Why Governments Choose Promax",
+    intro:
+      "From opportunity to long-term stewardship, Promax Global combines government engagement, investment structuring, integrated delivery, and institutional governance — turning national priorities into operating assets.",
+    metaDescription:
+      "Why governments and investors choose Promax Global — government engagement, investment structuring, global partnerships, integrated delivery, operational excellence, and long-term asset stewardship.",
+    blocks: [
+      {
+        type: "feature-cards",
+        eyebrow: "Our Advantages",
+        heading: "Eight reasons partners choose Promax",
+        columns: 4,
+        items: [
+          { icon: "building", title: "Government Engagement", text: "Direct alignment with national development agendas." },
+          { icon: "briefcase", title: "Investment Structuring", text: "PPP, concessions, project finance, and co-investment." },
+          { icon: "globe", title: "Global Partnerships", text: "Technology, academic, and institutional networks." },
+          { icon: "layers", title: "Integrated Delivery", text: "From strategy through design, build, and operations." },
+          { icon: "compass", title: "Operational Excellence", text: "Proven execution and performance discipline." },
+          { icon: "anchor", title: "Long-Term Asset Stewardship", text: "Lifecycle ownership and value protection." },
+          { icon: "bolt", title: "Technology Integration", text: "Smart, connected, data-driven infrastructure." },
+          { icon: "clipboard", title: "Institutional Governance", text: "Transparent reporting and accountable structures." },
+        ],
+      },
+      {
+        type: "work-steps",
+        eyebrow: "From Strategy to Delivery",
+        heading: "How a national priority becomes an operating asset",
+        intro: "A disciplined, end-to-end delivery model that de-risks capital and compresses time-to-value.",
+        steps: [
+          { title: "Identify Opportunity", text: "Screen national priorities and market gaps.", icon: "compass" },
+          { title: "Strategic Assessment", text: "Feasibility, structuring, and risk analysis.", icon: "clipboard" },
+          { title: "Government Engagement", text: "Mandates, approvals, and alignment.", icon: "building" },
+          { title: "Investment Structuring", text: "Capital architecture and bankability.", icon: "briefcase" },
+          { title: "Design", text: "Engineering and master planning.", icon: "layers" },
+          { title: "Development", text: "Construction and systems integration.", icon: "crane" },
+          { title: "Operations", text: "Commissioning and performance management.", icon: "anchor" },
+          { title: "Long-term Management", text: "Lifecycle stewardship and value growth.", icon: "globe" },
+        ],
+      },
+      {
+        type: "feature-cards",
+        eyebrow: "Our Ecosystem",
+        heading: "A structured partner network",
+        intro: "Not logos for show — a deliberately structured ecosystem across six partner classes.",
+        columns: 3,
+        items: [
+          { icon: "briefcase", title: "Strategic Partners" },
+          { icon: "bolt", title: "Technology Partners" },
+          { icon: "building", title: "Government Partners" },
+          { icon: "clipboard", title: "Academic Partners" },
+          { icon: "layers", title: "Investment Partners" },
+          { icon: "globe", title: "International Organizations" },
+        ],
+      },
+    ],
+    cta: { label: "Start a Conversation", href: "/contact" },
+  },
+
+  insights: {
+    eyebrow: "Insights",
+    title: "Insights",
+    intro:
+      "Leadership thought, industry reports, whitepapers, research, and media from Promax Global — perspectives on ports, trade, energy transition, digital economy, and national development.",
+    metaDescription:
+      "Promax Global Insights — articles, leadership thoughts, industry reports, whitepapers, research, media, events, and videos on ports, trade, energy, and national development.",
+    blocks: [
+      {
+        type: "feature-cards",
+        eyebrow: "Explore",
+        heading: "Knowledge, research & media",
+        intro: "New Promax Global publications and media are being curated. Explore the streams below.",
+        columns: 4,
+        items: [
+          { icon: "clipboard", title: "Articles", text: "Short-form perspective on markets and mandates." },
+          { icon: "briefcase", title: "Leadership Thoughts", text: "Views from the Promax Global leadership." },
+          { icon: "layers", title: "Industry Reports", text: "Sector analysis across ports, trade, and energy." },
+          { icon: "compass", title: "Whitepapers", text: "In-depth positions on infrastructure and policy." },
+          { icon: "globe", title: "Research", text: "Tri-regional development and economic research." },
+          { icon: "anchor", title: "Media", text: "Press, coverage, and announcements." },
+          { icon: "building", title: "Events", text: "Forums, roundtables, and roadshows." },
+          { icon: "bolt", title: "Videos", text: "Films and briefings from across the group." },
+        ],
+      },
+    ],
+    cta: { label: "Contact the Press Office", href: "/contact" },
   },
 };

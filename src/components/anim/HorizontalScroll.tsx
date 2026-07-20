@@ -13,11 +13,20 @@
 import { useLayoutEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { gsap, ScrollTrigger, prefersReducedMotion } from "@/lib/gsap";
+import { withLocale, type Locale } from "@/lib/i18n";
 
 /** `img` is an already-resolved image URL (a video poster or a content image). */
 export type Panel = { slug: string; title: string; blurb: string; img: string };
 
-export default function HorizontalScroll({ panels }: { panels: Panel[] }) {
+export default function HorizontalScroll({
+  panels,
+  locale,
+  t,
+}: {
+  panels: Panel[];
+  locale: Locale;
+  t: { eyebrow: string; headingLead: string; headingAccent: string; intro: string; keepScrolling: string; explore: string };
+}) {
   const root = useRef<HTMLDivElement>(null);
   const track = useRef<HTMLDivElement>(null);
   // Horizontal travel (px). 0 = not yet measured / reduced-motion (native strip).
@@ -65,23 +74,20 @@ export default function HorizontalScroll({ panels }: { panels: Panel[] }) {
         >
           {/* intro panel */}
           <div className="flex w-[78vw] shrink-0 flex-col justify-center md:w-[34vw]">
-            <p className="eyebrow !text-brand">Global Divisions</p>
+            <p className="eyebrow !text-brand">{t.eyebrow}</p>
             <h2 className="mt-4 text-4xl font-bold leading-tight md:text-5xl">
-              Six ways we move <span className="text-brand">world trade</span>
+              {t.headingLead} <span className="text-brand">{t.headingAccent}</span>
             </h2>
-            <p className="mt-5 max-w-md leading-relaxed text-slate-300">
-              Scroll through the portfolio — each division is a distinct, real-asset business under
-              one UAE-headquartered mandate.
-            </p>
+            <p className="mt-5 max-w-md leading-relaxed text-slate-300">{t.intro}</p>
             <span className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-brand">
-              Keep scrolling <span aria-hidden>→</span>
+              {t.keepScrolling} <span aria-hidden>→</span>
             </span>
           </div>
 
           {panels.map((p, i) => (
             <Link
               key={p.slug}
-              href={`/portfolio/${p.slug}`}
+              href={withLocale(`/portfolio/${p.slug}`, locale)}
               className="group relative flex aspect-[3/4] h-[60vh] shrink-0 overflow-hidden rounded-3xl md:aspect-[4/5] md:h-[74vh]"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -98,7 +104,7 @@ export default function HorizontalScroll({ panels }: { panels: Panel[] }) {
                 <h3 className="mt-1 text-2xl font-bold">{p.title}</h3>
                 <p className="mt-2 max-w-xs text-sm leading-relaxed text-slate-300">{p.blurb}</p>
                 <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand">
-                  Explore <span aria-hidden className="transition group-hover:translate-x-1">→</span>
+                  {t.explore} <span aria-hidden className="transition group-hover:translate-x-1">→</span>
                 </span>
               </div>
             </Link>

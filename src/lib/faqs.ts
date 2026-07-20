@@ -103,4 +103,30 @@ export const faqs: Record<string, Faq[]> = {
       a: "Eight mandated flagship projects valued around $1 billion each — including the Atlantic Blue Port, Burkina Faso dry port, Lumut bulk port in Malaysia, Duqm industrial and real-estate developments in Oman, UAE trailer manufacturing and smart city, and mining rights.",
     },
   ],
+  "strategic-ventures": [
+    {
+      q: "What are Promax Global's strategic ventures?",
+      a: "A live portfolio of twelve mandated and co-developed ventures — blue ports, dry ports, logistics and industrial parks, technology cities, smart energy metering, manufacturing, digital investment platforms, digital wallets, breakbulk ports, workforce mobility, and skill development — across GCC, Africa, and Asia.",
+    },
+    {
+      q: "How can I co-invest in a Promax Global venture?",
+      a: "Each venture is structured for co-investment, joint venture, or concession with government alignment and clear mandates. Submit interest through the Invest With Us page to begin a scoped discussion.",
+    },
+  ],
+  "why-us": [
+    {
+      q: "Why do governments choose Promax Global?",
+      a: "For government engagement, investment structuring, global partnerships, integrated delivery, operational excellence, long-term asset stewardship, technology integration, and institutional governance — an end-to-end model that turns national priorities into operating assets.",
+    },
+    {
+      q: "How does Promax Global deliver projects?",
+      a: "Through an eight-stage model: identify opportunity, strategic assessment, government engagement, investment structuring, design, development, operations, and long-term management.",
+    },
+  ],
+  insights: [
+    {
+      q: "What does Promax Global publish?",
+      a: "Articles, leadership thoughts, industry reports, whitepapers, research, media, events, and videos covering ports, trade, energy transition, digital economy, and national development.",
+    },
+  ],
 };

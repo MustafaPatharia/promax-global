@@ -2,10 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Poppins, Inter, Alex_Brush } from "next/font/google";
 import "./globals.css";
 import { site } from "@/lib/site";
-import Nav from "@/components/Nav";
-import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
-import SmoothScroll from "@/components/SmoothScroll";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -66,11 +63,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         className="min-h-full flex flex-col bg-background text-foreground"
       >
         <JsonLd />
-        <SmoothScroll>
-          <Nav />
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </SmoothScroll>
+        {children}
       </body>
     </html>
   );

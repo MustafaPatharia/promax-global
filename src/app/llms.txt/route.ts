@@ -8,8 +8,9 @@ import { pages } from "@/lib/content";
  */
 export const dynamic = "force-static";
 
+// English is the default/x-default locale; the Arabic mirror lives under /ar.
 function abs(path: string) {
-  return `${site.url}${path}`;
+  return `${site.url}/en${path === "/" ? "" : path}`;
 }
 
 export function GET() {
@@ -21,6 +22,7 @@ export function GET() {
     `> ${site.description}`,
     "",
     `**Tagline:** ${site.tagline}`,
+    `**Languages:** English (${site.url}/en) · Arabic (${site.url}/ar)`,
     `**Headquarters:** ${site.contact.address}`,
     `**Contact:** ${site.contact.email} · ${site.contact.phone}`,
     "",
@@ -29,6 +31,12 @@ export function GET() {
     `- [About Promax Global](${abs("/about")}): ${pages.about.metaDescription}`,
     `- [Work With Us](${abs("/work-with-us")}): ${pages["work-with-us"].metaDescription}`,
     `- [Invest With Us](${abs("/invest-with-us")}): ${pages["invest-with-us"].metaDescription}`,
+    "",
+    "## Company",
+    "",
+    `- [Strategic Ventures](${abs("/strategic-ventures")}): ${pages["strategic-ventures"].metaDescription}`,
+    `- [Why Us](${abs("/why-us")}): ${pages["why-us"].metaDescription}`,
+    `- [Insights](${abs("/insights")}): ${pages.insights.metaDescription}`,
     "",
     "## Portfolio — Divisions",
     "",

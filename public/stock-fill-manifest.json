@@ -1,0 +1,37 @@
+{
+  "skills-education": {
+    "type": "video",
+    "file": "skills-education-pexels-19229819.mp4",
+    "src": "pexels#19229819",
+    "credit": "Matheus Bertelli",
+    "page": "https://www.pexels.com/video/a-group-of-people-sitting-at-tables-in-a-room-19229819/"
+  },
+  "trade-hub": {
+    "type": "video",
+    "file": "trade-hub-pexels-30899354.mp4",
+    "src": "pexels#30899354",
+    "credit": "To\u00e0n BDS",
+    "page": "https://www.pexels.com/video/aerial-view-of-busy-international-container-port-30899354/"
+  },
+  "technology-fintech": {
+    "type": "video",
+    "file": "technology-fintech-pexels-1085656.mp4",
+    "src": "pexels#1085656",
+    "credit": "Dima Krivoy",
+    "page": "https://www.pexels.com/video/blue-colored-cables-1085656/"
+  },
+  "smart-energy": {
+    "type": "video",
+    "file": "smart-energy-pexels-9789926.mp4",
+    "src": "pexels#9789926",
+    "credit": "Kindel Media",
+    "page": "https://www.pexels.com/video/wind-mills-and-solar-panels-9789926/"
+  },
+  "reach-us": {
+    "type": "video",
+    "file": "reach-us-pexels-11336420.mp4",
+    "src": "pexels#11336420",
+    "credit": "Glenn Langhorst",
+    "page": "https://www.pexels.com/video/clear-sky-over-skyscrapers-and-harbor-11336420/"
+  }
+}

@@ -1,0 +1,231 @@
+/**
+ * UI / chrome / hand-composed-page copy that does NOT live in content.ts.
+ * EN source of truth; ui.ar.ts mirrors this shape in Arabic. Only human-readable
+ * text lives here — icons, hrefs, image/video filenames stay in the components.
+ */
+export const uiEn = {
+  hscroll: {
+    eyebrow: "Global Divisions",
+    headingLead: "Six ways we move",
+    headingAccent: "world trade",
+    intro:
+      "Scroll through the portfolio — each division is a distinct, real-asset business under one UAE-headquartered mandate.",
+    keepScrolling: "Keep scrolling",
+    explore: "Explore",
+  },
+  nav: {
+    workWithUs: "Work With Us",
+    getStarted: "Get Started",
+    invest: "Invest",
+    menu: "Menu",
+    homeAria: "Promax Global — home",
+  },
+  utility: {
+    location: "Abu Dhabi, UAE",
+    langLabel: "Language",
+  },
+  footer: {
+    portfolio: "Portfolio",
+    company: "Company",
+    corporateOffice: "Corporate Office",
+    blurb: "crafting a legacy of global success stories. Under patronage of Promax United.",
+    rights: "Promax Global. Under patronage of Promax United. All rights reserved.",
+  },
+  pageShell: {
+    faqHeading: "Frequently asked questions",
+    connectHeading: "Connect with an expert",
+    connectText: "Talk to our team about your operations, project, or investment.",
+    connectCta: "Transmit Corporate Inquiry",
+  },
+  common: {
+    learnMore: "Learn more",
+    readMore: "Read more",
+  },
+  langGate: {
+    title: "Continue in your language?",
+    body: "This page is available in English and Arabic. Choose how you'd like to browse.",
+    continueEn: "Continue in English",
+    continueAr: "المتابعة بالعربية",
+    dismiss: "Close",
+  },
+  cookie: {
+    text: "We store your language preference in a cookie to keep the site in your chosen language.",
+    accept: "Got it",
+  },
+  switcher: {
+    aria: "Change language",
+    en: "EN",
+    ar: "AR",
+  },
+  home: {
+    heroEyebrow: "Abu Dhabi Economic Gateway",
+    heroHeading: "From UAE to the World",
+    heroHighlight: "World",
+    heroPara:
+      "Integrated port management, advisory, infrastructure, trade, technology, and strategic investment — supporting governments, port authorities, and institutional investors across 25+ countries.",
+    heroInvest: "Invest With Us",
+    heroPortfolio: "Explore Portfolio",
+    marqueeLabel: "Trusted across the global trade & infrastructure spectrum",
+    aboutGhost: "About",
+    aboutKicker: "Under Promax United Patronage",
+    aboutHeadingLead: "Company",
+    aboutHeadingAccent: "Overview",
+    aboutPara:
+      "Promax Global is a UAE-headquartered enterprise delivering integrated solutions across port management, trade, technology, education, energy, and strategic investment. We transform bold local ideas into global realities — blending expertise, forward-thinking leadership, and financial resilience.",
+    intentPoints: [
+      "Government-aligned mandates across 25+ countries",
+      "Billion-dollar Promax United patronage",
+      "Five resilient, real-asset verticals",
+      "Proven execution from Abu Dhabi to the world",
+    ],
+    chairmanName: "H.E. Louai Mohamed Ali",
+    chairmanRole: "Chairman",
+    aboutCta: "About Promax Global",
+    servicesGhost: "Service",
+    servicesKicker: "Featured Service",
+    servicesHeadingLead: "What",
+    servicesHeadingAccent: "We Do",
+    services: [
+      { title: "Port Management", text: "Tiered port operations and container-terminal execution — uptime, fluidity, and safety compliance." },
+      { title: "Port Advisory", text: "Independent, data-driven assessments from senior port engineers across the Middle East, Africa, and Asia." },
+      { title: "Infrastructure", text: "Deep-water berths, heavy warehousing, and integrated digital platforms that raise marine asset value." },
+      { title: "Strategic Equipment", text: "Multi-brand machinery procurement, AMC lifecycle programs, and Drives/PLC systems integration." },
+    ],
+    platformsGhost: "Platforms",
+    platformsKicker: "Strategic Business Platforms",
+    platformsHeadingLead: "Six platforms, one",
+    platformsHeadingAccent: "development engine",
+    platforms: [
+      { title: "Infrastructure & Economic Cities", points: ["Ports & Marine Infrastructure", "Industrial & Manufacturing Zones", "Special Economic Zones (SEZ)", "Logistics & Distribution Hubs", "Transport & Mobility Corridors", "Smart Urban Infrastructure", "Technology & Innovation Cities", "Housing & Community Infrastructure"] },
+      { title: "Natural Resources", points: ["Mining & Mineral Development", "Gold & Precious Metals", "Critical Minerals & Energy-Transition Materials", "Commodity Trading & Global Procurement", "Food Security Systems", "Agriculture & Agri-Infrastructure", "Fisheries & Marine Resources"] },
+      { title: "Digital Economy", points: ["Artificial Intelligence & Automation", "Fintech & Digital Finance", "Tokenization & Blockchain Systems", "Digital Assets & Custody Infrastructure", "Cybersecurity & Digital Protection", "Smart Government & Public Digital Services"] },
+      { title: "Energy Transition", points: ["Renewable Energy Systems", "Utilities & Clean Infrastructure", "Smart Grid & Digital Energy", "Hydrogen & Future Fuels", "Carbon Management & CCUS"] },
+      { title: "Investment & Capital", points: ["PPP Structuring & Concessions", "Project Finance & Bankability", "Investment Structuring & Capital Architecture", "Institutional Capital & Co-Investment Platforms", "Asset Development & Monetization"] },
+      { title: "National Capability Development", points: ["Education & Workforce Development", "Women & Youth Empowerment Programs", "Innovation Ecosystems & R&D", "Government Advisory & Public-Sector Transformation"] },
+    ],
+    funfactNumber: "$8B",
+    funfactCaption: "In mandated flagship projects across four continents",
+    reachGhost: "Reach",
+    reachKicker: "Global Reach",
+    reachHeadingLead: "One UAE hub, four",
+    reachHeadingAccent: "continents",
+    reachPara:
+      "From Abu Dhabi we extend our influence globally — supporting governments, regulators, port authorities, and institutional investors with integrated, future-ready capabilities that strengthen national competitiveness and long-term resilience.",
+    regions: ["GCC", "Africa", "India", "Southeast Asia", "Atlantic Corridor"],
+    scrubEyebrow: "Ports That Never Sleep",
+    scrubTitleLead: "Moving trade from the",
+    scrubTitleAccent: "quay to the cloud",
+    scrubText:
+      "Round-the-clock terminal operations, digital-twin oversight, and connected supply chains — engineered for uptime, safety, and long-horizon value. Scroll to move through the night shift.",
+    sectorsGhost: "Sectors",
+    sectorsKicker: "Featured Service",
+    sectorsHeadingLead: "Real assets,",
+    sectorsHeadingAccent: "in motion",
+    sectorsPara: "Hover to bring each vertical to life — click to watch it full-frame.",
+    sectorTiles: [
+      { label: "Technology & Fintech", title: "Smart, connected ports" },
+      { label: "Smart & Green Energy", title: "Industry & the energy transition" },
+      { label: "Strategic Projects", title: "Nation-scale development" },
+    ],
+    flagshipGhost: "Portfolio",
+    flagshipKicker: "Mandated Portfolio",
+    flagshipHeadingLead: "8 flagship projects,",
+    flagshipHeadingAccent: "~$1 billion each",
+    flagshipViewAll: "View all projects",
+    flagship: [
+      { name: "Blue Port Project", place: "Atlantic Ocean", note: "Exclusive Blue Port ecosystem with Atlantic fisheries access." },
+      { name: "Dry Port Development", place: "Burkina Faso", note: "National dry port strengthening West Africa's trade corridors." },
+      { name: "Bulk & Break-Bulk Port", place: "Lumut, Malaysia", note: "Terminal for minerals, agri-commodities, and industrial cargo." },
+      { name: "Smart City Development", place: "United Arab Emirates", note: "Integrated smart-infrastructure city project." },
+    ],
+    leadershipGhost: "Team",
+    leadershipKicker: "Corporate Leadership",
+    leadershipHeadingLead: "Structured oversight,",
+    leadershipHeadingAccent: "global execution",
+    leadership: [
+      { name: "H.E. Louai Mohamed Ali", role: "Chairman", note: "Strategic direction and global partnerships." },
+      { name: "Group CEO", role: "Chief Executive", note: "Operational leadership across the group's five verticals." },
+      { name: "Board of Directors", role: "Governance", note: "Structured oversight driving global development operations." },
+    ],
+    quoteText:
+      "We support governments, regulators, port authorities, energy-transition stakeholders, and industry leaders with integrated, future-ready capabilities that strengthen national competitiveness and long-term economic resilience.",
+    quoteWho: "Promax Global — Corporate Overview",
+    partnersLabel: "Strategic Partners — the Promax & Trot group network",
+    ctaHeading: "Partner with Promax Global",
+    ctaText:
+      "Governments, operators, contractors, technology providers, and investors — let's build the next chapter together.",
+    ctaButton: "Transmit Corporate Inquiry",
+    stakeholders: [
+      "Governments", "Port Authorities", "Terminal Operators", "Sovereign Wealth Funds",
+      "Institutional Investors", "EPC Contractors", "Technology Providers",
+      "Multilateral Organizations", "Academic Partners", "Family Offices",
+    ],
+  },
+  portfolio: {
+    eyebrow: "Global Divisions",
+    heading: "Our Portfolio",
+    intro:
+      "A global, multi-dimensional, multi-sectoral business portfolio spanning five core operational zones — plus our mandated strategic projects.",
+    readMore: "Read more",
+  },
+  contact: {
+    heroEyebrow: "Reach Us",
+    heroHeading: "Transmit a Corporate Inquiry",
+    heroPara:
+      "Reach our Abu Dhabi gateway directly, or send an inquiry below — we review every submission and respond within 24 hours.",
+    gatewayEyebrow: "Reach Us",
+    gatewayHeading: "Corporate gateway",
+    gatewayPara:
+      "Governments, operators, contractors, technology providers, and investors — start the conversation with the team that will own your file.",
+    mailingAddress: "Mailing Address",
+    officialEmail: "Official Email",
+    careers: "Careers",
+    directPhone: "Direct Phone",
+    fullName: "Full Name",
+    fullNamePlaceholder: "Your name",
+    corporateEmail: "Corporate Email",
+    emailPlaceholder: "partner@domain.com",
+    inquiryType: "Inquiry Type",
+    inquiryOptions: ["Partnership", "Investment", "Advisory", "General"],
+    message: "Message",
+    messagePlaceholder: "Provide details about your inquiry…",
+    submit: "Transmit Inquiry",
+  },
+  workSection: {
+    eyebrow: "Build the Future Together",
+    heading: "Work With Us",
+    para:
+      "From Abu Dhabi, UAE — to the world. Share your details and a short brief; our team will connect with you.",
+  },
+  investSection: {
+    eyebrow: "Invest With Us",
+    heading: "Register your interest",
+    para:
+      "Select an activity and share a brief. Our team reviews every institutional inquiry and responds with a scoped discussion.",
+  },
+  inquiryForm: {
+    activities: [
+      "Strategic Partnership", "Joint Venture", "Project Co-Investment",
+      "General Sourcing Inquiry", "Government Relations", "Media",
+    ],
+    name: "Name",
+    fullName: "Full Name",
+    mobile: "Mobile",
+    email: "Email",
+    cv: "CV Attachment",
+    activity: "Activity",
+    selectActivity: "Select an activity…",
+    organization: "Organization",
+    role: "Your Role",
+    tellWork: "Tell us about yourself",
+    tellInvest: "Tell us about your interest",
+    words: "words",
+    shorten: " — please shorten",
+    submit: "Transmit Inquiry",
+    successTitle: "Inquiry Transmitted Successfully",
+    successText:
+      "Thank you for contacting Promax Global. We will review your submission and connect with you soon.",
+  },
+};
+
+export type Ui = typeof uiEn;

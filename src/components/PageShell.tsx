@@ -8,6 +8,7 @@ import SplitBand from "@/components/anim/SplitBand";
 import SectionBody, { type BodyLayout } from "@/components/SectionBody";
 import Blocks, { type Block } from "@/components/sections";
 import { video, poster } from "@/lib/videos";
+import { getUi, withLocale, type Locale } from "@/lib/i18n";
 
 export type PageSection = {
   heading: string;
@@ -47,7 +48,16 @@ export type PageContent = {
 const base = (f: string) => f.replace(/\.mp4$/, "");
 
 /** Generic inner-page layout driven by content data. SSR + scroll reveals. */
-export default function PageShell({ content, faqs }: { content: PageContent; faqs?: Faq[] }) {
+export default function PageShell({
+  content,
+  faqs,
+  locale,
+}: {
+  content: PageContent;
+  faqs?: Faq[];
+  locale: Locale;
+}) {
+  const ui = getUi(locale);
   return (
     <>
       {/* ---------- Hero ---------- */}
@@ -81,7 +91,7 @@ export default function PageShell({ content, faqs }: { content: PageContent; faq
           </Reveal>
           {content.cta && (
             <Reveal eager index={3}>
-              <Link href={content.cta.href} className="btn btn-primary mt-8">
+              <Link href={withLocale(content.cta.href, locale)} className="btn btn-primary mt-8">
                 {content.cta.label} <span aria-hidden>→</span>
               </Link>
             </Reveal>
@@ -171,7 +181,7 @@ export default function PageShell({ content, faqs }: { content: PageContent; faq
         <section className="section bg-slate-50">
           <div className="shell">
             <Reveal>
-              <h2 className="text-2xl font-bold text-navy md:text-3xl">Frequently asked questions</h2>
+              <h2 className="text-2xl font-bold text-navy md:text-3xl">{ui.pageShell.faqHeading}</h2>
             </Reveal>
             <div className="mt-8 max-w-3xl divide-y divide-slate-200 border-t border-slate-200">
               {faqs.map((f, i) => (
@@ -192,11 +202,11 @@ export default function PageShell({ content, faqs }: { content: PageContent; faq
       <section className="bg-navy-900 text-white">
         <div className="shell flex flex-col items-start justify-between gap-6 py-14 md:flex-row md:items-center">
           <div>
-            <h2 className="text-2xl font-bold md:text-3xl">Connect with an expert</h2>
-            <p className="mt-2 text-slate-300">Talk to our team about your operations, project, or investment.</p>
+            <h2 className="text-2xl font-bold md:text-3xl">{ui.pageShell.connectHeading}</h2>
+            <p className="mt-2 text-slate-300">{ui.pageShell.connectText}</p>
           </div>
-          <Link href="/contact" className="btn btn-primary shrink-0">
-            Transmit Corporate Inquiry <span aria-hidden>→</span>
+          <Link href={withLocale("/contact", locale)} className="btn btn-primary shrink-0">
+            {ui.pageShell.connectCta} <span aria-hidden>→</span>
           </Link>
         </div>
       </section>

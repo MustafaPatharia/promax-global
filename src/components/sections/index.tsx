@@ -12,6 +12,7 @@ import Testimonials from "./Testimonials";
 import Pricing from "./Pricing";
 import Branches from "./Branches";
 import BrandShowcase from "./BrandShowcase";
+import ChairmanMessage from "./ChairmanMessage";
 import Gallery from "./Gallery";
 import type { Block } from "./types";
 
@@ -44,6 +45,8 @@ export default function Blocks({ blocks, offset = 0 }: { blocks?: Block[]; offse
             return <Branches key={i} {...b} bg={bg} />;
           case "brand-showcase":
             return <BrandShowcase key={i} {...b} bg={bg} />;
+          case "chairman":
+            return <ChairmanMessage key={i} {...b} bg={bg} />;
           case "gallery":
             return <Gallery key={i} {...b} bg={bg} />;
           default:
