@@ -12,6 +12,7 @@ import Testimonials from "./Testimonials";
 import Pricing from "./Pricing";
 import Branches from "./Branches";
 import BrandShowcase from "./BrandShowcase";
+import Overview from "./Overview";
 import Gallery from "./Gallery";
 import type { Block } from "./types";
 
@@ -24,6 +25,8 @@ export default function Blocks({ blocks, offset = 0 }: { blocks?: Block[]; offse
       {blocks.map((b, i) => {
         const bg = (i + offset) % 2 ? "bg-slate-50" : "bg-white";
         switch (b.type) {
+          case "overview":
+            return <Overview key={i} {...b} bg={bg} />;
           case "feature-cards":
             return <FeatureCards key={i} {...b} bg={bg} />;
           case "work-steps":

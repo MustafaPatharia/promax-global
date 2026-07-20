@@ -18,7 +18,7 @@ export const faqs: Record<string, Faq[]> = {
     },
     {
       q: "What sectors does Promax Global operate in?",
-      a: "Five verticals: ports and logistics, skills and education, trade hub and food security, technology and fintech, and smart and green energy — plus a portfolio of mandated strategic projects.",
+      a: "Six portfolios: ports and logistics, skills and education, AI and fintech, trade hub, smart and green energy, and infrastructure and asset holdings.",
     },
   ],
   "work-with-us": [
@@ -34,73 +34,63 @@ export const faqs: Record<string, Faq[]> = {
   "invest-with-us": [
     {
       q: "What investment opportunities does Promax Global offer?",
-      a: "A curated portfolio of mandated infrastructure projects, trade hubs, energy assets, and technology ventures across high-growth emerging markets — including 8 flagship projects valued around $1 billion each.",
+      a: "A curated portfolio of mandated infrastructure projects, trade hubs, energy assets, and technology ventures across high-growth emerging markets.",
     },
     {
       q: "Why invest with Promax Global?",
-      a: "Institutional credibility from Promax United patronage, government-backed mandates, operations across 25+ countries, five diversified verticals, and ESG-aligned long-term value creation.",
+      a: "Institutional credibility from Promax United patronage, government-backed mandates, operations across 25+ countries, six diversified portfolios, and ESG-aligned long-term value creation.",
     },
   ],
-  "port-management": [
+  "ports-logistics": [
     {
       q: "What port management services does Promax Global provide?",
-      a: "Structured, tiered port operations covering bulk ports, container terminals, and end-to-end operations — from port start-ups to established terminals — optimized for asset uptime, cargo fluidity, and safety compliance to global marine standards.",
+      a: "Promax Global's port management services cover all types of port and terminal operations, from start-ups and developing ports through to more established operations — spanning bulk ports, container terminals, liquid ports, logistics hubs, industrial parks, and blue ports.",
     },
     {
-      q: "What types of ports does Promax Global manage?",
-      a: "Bulk ports (dry, liquid, and breakbulk cargo) and container terminals, with capabilities spanning developing ports through to established international operations.",
-    },
-  ],
-  "port-advisory": [
-    {
-      q: "What is Promax Global port advisory?",
-      a: "Independent, data-driven port assessments from senior port engineers and operational managers, strengthening terminal performance, asset reliability, safety, sustainability, and long-term strategy across the Middle East, Africa, and Asia.",
+      q: "What does Promax Global's port advisory cover?",
+      a: "High-end Port Advisory and Integrated Terminal Performance services across the Middle East, Africa, and Asia — covering operational performance reviews, technical and engineering assessments, safety and compliance, digitalization and smart ports, infrastructure and capacity planning, green-port transformation, commercial advisory, and training and change management.",
     },
     {
-      q: "What areas does Promax Global's port advisory cover?",
-      a: "Commercial and strategic advisory, infrastructure and capacity planning, operational performance, safety and risk, green-port sustainability, and smart-port digitalization.",
-    },
-  ],
-  infrastructure: [
-    {
-      q: "What port infrastructure does Promax Global build?",
-      a: "Civil marine infrastructure such as deep-water berths and dredging layouts, heavy warehousing and logistics yards, and integrated digital platforms that raise marine asset value.",
-    },
-  ],
-  "strategic-equipment": [
-    {
-      q: "What port equipment services does Promax Global offer?",
-      a: "Multi-brand equipment sourcing from Ship-to-Shore cranes to yard IT, lifecycle maintenance (AMC, inspections, structural restoration), and Drives/PLC systems integration for maximum uptime.",
+      q: "What strategic equipment support does Promax Global offer?",
+      a: "End-to-end sourcing for mission-critical equipment — specification development, technical validation, vendor assessment, and third-party inspections — plus full equipment lifecycle management covering reliability engineering, annual maintenance contracts, residual life analysis, installation and commissioning, and structural inspections.",
     },
   ],
   "skills-education": [
     {
       q: "What is Promax Global's Skills & Education program?",
-      a: "The Tri-Regional Socio-Economic Development Alliance across India, the GCC, and Africa — advancing skill development, women empowerment, startup incubation, fintech inclusion, and rural development aligned to UN SDGs.",
+      a: "A Tri-Regional Socio-Economic Development Alliance covering India, the GCC, and Africa — advancing skill development and workforce mobility, women empowerment, startup and incubation centres, digital finance inclusion, agriculture and rural development, entrepreneurship, UN SDG-aligned programs, and policy advocacy.",
+    },
+  ],
+  "ai-fintech": [
+    {
+      q: "When will the Promax Global AI & Fintech portfolio launch?",
+      a: "The AI & Fintech portfolio is currently in development. For early access or partnership discussions, contact the Promax Global team directly.",
     },
   ],
   "trade-hub": [
     {
-      q: "What is the Promax Global Trade Hub?",
-      a: "An integrated trade and food-security network connecting the GCC, India, Africa, and Asia through global sourcing, commodity management, storage infrastructure, and port-centric logistics — supporting the UAE National Food Security Strategy 2051.",
+      q: "When will the Promax Global Trade Hub portfolio launch?",
+      a: "The Trade Hub portfolio is currently in development. For early access or partnership discussions, contact the Promax Global team directly.",
     },
   ],
-  "technology-fintech": [
+  "smart-green-energy": [
     {
-      q: "What technology and fintech solutions does Promax Global deliver?",
-      a: "Hyperscale data centres, smart-grid electricity distribution, port and industrial digitalization, cybersecurity, digital banking platforms, and rural financial inclusion.",
+      q: "What smart energy solutions does Promax Global provide?",
+      a: "Smart Energy Management Solutions offering intelligent monitoring, control, and optimization of energy consumption across industrial, port, logistics, and commercial environments — integrating IoT sensors, advanced analytics, automation, and energy-efficient technologies.",
     },
-  ],
-  "smart-energy": [
     {
       q: "What green energy solutions does Promax Global provide?",
-      a: "Solar and renewable integration, hybrid and electric conversion of port equipment, energy-efficiency audits, IoT smart energy management, and ESG-aligned carbon reduction.",
+      a: "Solar and renewable integration, hybrid and electric equipment conversions, energy-efficiency audits, smart energy management systems, sustainable infrastructure upgrades, and carbon reduction and ESG compliance programs.",
     },
   ],
-  "strategic-projects": [
+  "infrastructure-asset-holdings": [
     {
       q: "What strategic projects does Promax Global hold?",
-      a: "Eight mandated flagship projects valued around $1 billion each — including the Atlantic Blue Port, Burkina Faso dry port, Lumut bulk port in Malaysia, Duqm industrial and real-estate developments in Oman, UAE trailer manufacturing and smart city, and mining rights.",
+      a: "Eight mandated strategic projects — the Atlantic Blue Port fisheries project, a Burkina Faso dry port development mandate, a bulk/breakbulk port in Lumut Malaysia, industrial manufacturing and freehold real estate in Duqm Oman, a UAE trailer manufacturing plant, a UAE smart city development, and mining rights and natural resource development.",
+    },
+    {
+      q: "Why invest with Promax Global?",
+      a: "Mandated and exclusive project rights, government-aligned development frameworks, multi-country presence across GCC, Africa, Asia and the Atlantic, high-growth sectors with long-term demand, strong regulatory and execution capability, and flexible investment models including JV, PPP, equity, BOT/BOOT, and concessions.",
     },
   ],
 };

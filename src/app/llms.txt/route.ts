@@ -44,7 +44,7 @@ export function GET() {
     "",
     "## Contact",
     "",
-    `- [Contact Promax Global](${abs("/contact")}): Partnership, advisory, and investment enquiries.`,
+    `- [Reach Promax Global](${abs("/reach-us")}): Partnership, advisory, and investment enquiries.`,
     "",
   ];
 

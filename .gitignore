@@ -38,6 +38,10 @@ yarn-error.log*
 /Trot Videos/
 /transland-transportation-logistics-theme/
 /_ref/
+# client .docx source, extracted docx images, and the licensed Transland theme
+# (~54MB, and the theme is third-party licensed — assets get copied into /public
+# as they're used, the raw material stays local)
+/_references/
 
 # scraper + rebuild tooling — reference only, not deployed
 /output/
@@ -49,6 +53,7 @@ _rebuild-plan.md
 
 # tooling / local
 /.claude/
+/.vscode/
 /.codegraph/
 /plans/
 *.original.md

@@ -6,11 +6,16 @@
  * Tailwind v4 CSS-first theme. Tokens: `bg-navy`, `text-brand`, etc.
  * ------------------------------------------------------------------ */
 @theme {
-  /* Brand — orange */
+  /* Brand — green */
   --color-brand: #3aa328;
   --color-brand-600: #2f8a21;
   --color-brand-700: #256d1a;
   --color-brand-050: #ecf7ea;
+
+  /* Gold — premium accent, used against navy/green for investor-facing surfaces */
+  --color-gold: #d4af37;
+  --color-gold-300: #e8ce7a;
+  --color-gold-600: #a9871f;
 
   /* Navy family */
   --color-navy: #1a3a5c;
@@ -89,8 +94,10 @@ html.lenis, html.lenis body { height: auto; }
 }
 
 /* Transland vertical rhythm (~120px desktop) */
-.section { padding-block: 5rem; }
-@media (min-width: 768px) { .section { padding-block: 7.5rem; } }
+/* Vertical rhythm — trimmed slightly on client note (2026-07-20): sections were
+   running too tall. Keep both values in step if this is retuned. */
+.section { padding-block: 3.75rem; }
+@media (min-width: 768px) { .section { padding-block: 5.5rem; } }
 
 /* ---------- Component layer ---------- */
 @layer components {
@@ -300,6 +307,86 @@ html.lenis, html.lenis body { height: auto; }
   pointer-events: none;
 }
 .sectitle.tone-dark .ghost { -webkit-text-stroke-color: #fff; opacity: 0.11; }
+
+/* ------------------------------------------------------------------ *
+ * Gold foil — premium accent surfaces (Strategic Business Platforms).
+ * Real gold reads as a MULTI-STOP gradient (highlight → metal → shadow);
+ * a flat hex reads as mustard. These three utilities carry that sheen to
+ * text, 1px edges, and fills so the accent looks minted, not painted.
+ * ------------------------------------------------------------------ */
+.gold-text {
+  background-image: linear-gradient(135deg, #f6e6a8 0%, #d4af37 38%, #a9871f 62%, #f0dc9a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* 1px gradient hairline: gradient parent + inset solid child */
+.gold-edge {
+  position: relative;
+  background-image: linear-gradient(150deg, rgb(246 230 168 / 0.85) 0%, rgb(212 175 55 / 0.35) 26%, rgb(255 255 255 / 0.06) 52%, rgb(169 135 31 / 0.4) 100%);
+  padding: 1px;
+}
+.gold-edge > * { background: linear-gradient(175deg, #16324f 0%, #12293f 60%, #101f31 100%); }
+.gold-edge:hover {
+  background-image: linear-gradient(150deg, #f6e6a8 0%, #d4af37 32%, rgb(212 175 55 / 0.45) 58%, #e8ce7a 100%);
+}
+
+.gold-fill {
+  background-image: linear-gradient(135deg, #f6e6a8 0%, #d4af37 42%, #a9871f 72%, #e8ce7a 100%);
+}
+
+/* ------------------------------------------------------------------ *
+ * Gold running border — a bright foil arc that orbits a card's edge.
+ * Used on the ACTIVE Strategic Business Platform card. Sits on a wrapper
+ * OUTSIDE the card (the card itself is overflow-hidden, which would clip
+ * this), so the arc reads as a ring travelling around the perimeter.
+ * ------------------------------------------------------------------ */
+@property --gold-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.gold-run {
+  background: conic-gradient(
+    from var(--gold-angle),
+    transparent 0deg,
+    transparent 200deg,
+    rgb(212 175 55 / 0.5) 268deg,
+    #f6e6a8 310deg,
+    #d4af37 336deg,
+    transparent 360deg
+  );
+  animation: gold-run 3.4s linear infinite;
+}
+
+@keyframes gold-run {
+  to { --gold-angle: 360deg; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gold-run { animation: none; background: rgb(212 175 55 / 0.85); }
+}
+
+/* slow foil sweep across a card face on hover */
+@keyframes gold-sheen {
+  0%   { transform: translateX(-120%) skewX(-18deg); }
+  100% { transform: translateX(320%) skewX(-18deg); }
+}
+.gold-sheen::after {
+  content: "";
+  position: absolute;
+  top: 0; bottom: 0; left: 0;
+  width: 42%;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, rgb(246 230 168 / 0.13), transparent);
+  transform: translateX(-120%) skewX(-18deg);
+}
+.gold-sheen:hover::after { animation: gold-sheen 1.15s cubic-bezier(0.22, 1, 0.36, 1); }
+@media (prefers-reduced-motion: reduce) {
+  .gold-sheen:hover::after { animation: none; }
+}
 
 .sectitle .kicker {
   position: relative;

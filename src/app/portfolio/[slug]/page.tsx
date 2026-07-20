@@ -5,21 +5,10 @@ import { faqs } from "@/lib/faqs";
 import { pageMeta } from "@/lib/seo";
 import PageShell from "@/components/PageShell";
 import PageSchema from "@/components/PageSchema";
-
-const divisionSlugs = [
-  "port-management",
-  "port-advisory",
-  "infrastructure",
-  "strategic-equipment",
-  "skills-education",
-  "trade-hub",
-  "technology-fintech",
-  "smart-energy",
-  "strategic-projects",
-];
+import { portfolioSlugs } from "@/lib/site";
 
 export function generateStaticParams() {
-  return divisionSlugs.map((slug) => ({ slug }));
+  return portfolioSlugs.map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({
@@ -40,7 +29,7 @@ export default async function DivisionPage({
 }) {
   const { slug } = await params;
   const content = pages[slug];
-  if (!content || !divisionSlugs.includes(slug)) notFound();
+  if (!content || !(portfolioSlugs as readonly string[]).includes(slug)) notFound();
   const pageFaqs = faqs[slug];
   return (
     <>
@@ -52,7 +41,8 @@ export default async function DivisionPage({
         faqs={pageFaqs}
         isService
       />
-      <PageShell content={content} faqs={pageFaqs} />
+      {/* noCta: client 00:43:53 — "No call to action in the pages" (portfolio). */}
+      <PageShell content={content} faqs={pageFaqs} noCta />
     </>
   );
 }

@@ -42,12 +42,33 @@ export type PageContent = {
   /** Pull-quote — real leadership/philosophy line, never a fabricated testimonial. */
   quote?: { text: string; who?: string };
   cta?: { label: string; href: string };
+  /**
+   * Client has not released this portfolio's content yet (Trade Hub, AI & Fintech —
+   * meeting 2026-07-20). Renders the hero + a "Coming Soon" placard and nothing else.
+   */
+  comingSoon?: boolean;
 };
 
 const base = (f: string) => f.replace(/\.mp4$/, "");
 
-/** Generic inner-page layout driven by content data. SSR + scroll reveals. */
-export default function PageShell({ content, faqs }: { content: PageContent; faqs?: Faq[] }) {
+/**
+ * Generic inner-page layout driven by content data. SSR + scroll reveals.
+ *
+ * `noCta` — client, meeting 00:43:53, while looking at the Ports & Logistics
+ * portfolio page: "No call to action in the pages." Enquiry lives on Reach Us,
+ * which is reachable from the nav and footer; portfolio pages present the
+ * portfolio and nothing else. Suppresses BOTH the hero button and the closing
+ * CTA band. Non-portfolio pages (About, Why Us, Invest/Work With Us) keep theirs.
+ */
+export default function PageShell({
+  content,
+  faqs,
+  noCta = false,
+}: {
+  content: PageContent;
+  faqs?: Faq[];
+  noCta?: boolean;
+}) {
   return (
     <>
       {/* ---------- Hero ---------- */}
@@ -79,7 +100,7 @@ export default function PageShell({ content, faqs }: { content: PageContent; faq
           <Reveal eager index={2}>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-200">{content.intro}</p>
           </Reveal>
-          {content.cta && (
+          {content.cta && !noCta && (
             <Reveal eager index={3}>
               <Link href={content.cta.href} className="btn btn-primary mt-8">
                 {content.cta.label} <span aria-hidden>→</span>
@@ -88,6 +109,29 @@ export default function PageShell({ content, faqs }: { content: PageContent; faq
           )}
         </div>
       </section>
+
+      {/* ---------- Coming Soon placard (unreleased portfolios) ---------- */}
+      {content.comingSoon && (
+        <section className="section bg-white">
+          <div className="shell">
+            <Reveal variant="scale">
+              <div className="mx-auto max-w-2xl rounded-3xl border border-dashed border-navy/15 bg-slate-50 px-8 py-20 text-center">
+                <p className="eyebrow !text-brand justify-center">In Development</p>
+                <h2 className="mt-5 font-display text-4xl font-extrabold text-navy md:text-5xl">
+                  Coming Soon
+                </h2>
+                <p className="mx-auto mt-5 max-w-md leading-relaxed text-slate-600">
+                  This portfolio is being finalised. For early access or partnership
+                  discussions, reach our team directly.
+                </p>
+                <Link href="/reach-us" className="btn btn-primary mt-8">
+                  Reach Us <span aria-hidden>→</span>
+                </Link>
+              </div>
+            </Reveal>
+          </div>
+        </section>
+      )}
 
       {/* ---------- Body sections ---------- */}
       {content.sections?.map((s, i) => (
@@ -188,18 +232,24 @@ export default function PageShell({ content, faqs }: { content: PageContent; faq
         </section>
       ) : null}
 
-      {/* ---------- Closing CTA ---------- */}
+      {/* ---------- Closing CTA (suppressed on portfolio pages — see `noCta`) ---------- */}
+      {!noCta && (
       <section className="bg-navy-900 text-white">
         <div className="shell flex flex-col items-start justify-between gap-6 py-14 md:flex-row md:items-center">
           <div>
-            <h2 className="text-2xl font-bold md:text-3xl">Connect with an expert</h2>
-            <p className="mt-2 text-slate-300">Talk to our team about your operations, project, or investment.</p>
+            {/* Client (2026-07-20): Promax Global is an investment firm / portfolio,
+                NOT a consultancy. The previous "Connect with an expert / Talk to our
+                team about your operations" read as a services pitch — replaced with
+                investment-and-partnership framing. */}
+            <h2 className="text-2xl font-bold md:text-3xl">Explore this opportunity</h2>
+            <p className="mt-2 text-slate-300">Discuss investment, partnership, or co-development with Promax Global.</p>
           </div>
-          <Link href="/contact" className="btn btn-primary shrink-0">
+          <Link href="/reach-us" className="btn btn-primary shrink-0">
             Transmit Corporate Inquiry <span aria-hidden>→</span>
           </Link>
         </div>
       </section>
+      )}
     </>
   );
 }

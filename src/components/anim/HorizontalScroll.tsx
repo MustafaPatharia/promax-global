@@ -64,14 +64,14 @@ export default function HorizontalScroll({ panels }: { panels: Panel[] }) {
           className={`flex gap-6 px-6 md:gap-8 md:px-[8vw] ${pinned ? "" : "overflow-x-auto"}`}
         >
           {/* intro panel */}
-          <div className="flex w-[78vw] shrink-0 flex-col justify-center md:w-[34vw]">
-            <p className="eyebrow !text-brand">Global Divisions</p>
-            <h2 className="mt-4 text-4xl font-bold leading-tight md:text-5xl">
+          <div className="flex w-[82vw] shrink-0 flex-col justify-center md:w-[40vw]">
+            <p className="eyebrow !text-brand">Our Portfolios</p>
+            <h2 className="mt-4 text-5xl font-bold leading-[1.08] md:text-6xl lg:text-7xl">
               Six ways we move <span className="text-brand">world trade</span>
             </h2>
-            <p className="mt-5 max-w-md leading-relaxed text-slate-300">
-              Scroll through the portfolio — each division is a distinct, real-asset business under
-              one UAE-headquartered mandate.
+            <p className="mt-6 max-w-lg text-lg leading-relaxed text-slate-300 md:text-xl">
+              Scroll through our portfolios — each is a distinct, real-asset business under one
+              UAE-headquartered mandate.
             </p>
             <span className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-brand">
               Keep scrolling <span aria-hidden>→</span>
@@ -82,7 +82,7 @@ export default function HorizontalScroll({ panels }: { panels: Panel[] }) {
             <Link
               key={p.slug}
               href={`/portfolio/${p.slug}`}
-              className="group relative flex aspect-[3/4] h-[60vh] shrink-0 overflow-hidden rounded-3xl md:aspect-[4/5] md:h-[74vh]"
+              className="group relative flex aspect-4/5 h-[46vh] shrink-0 overflow-hidden rounded-3xl md:aspect-5/4 md:h-[54vh]"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img

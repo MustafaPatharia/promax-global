@@ -3,6 +3,8 @@ import { Poppins, Inter, Alex_Brush } from "next/font/google";
 import "./globals.css";
 import { site } from "@/lib/site";
 import Nav from "@/components/Nav";
+import UtilityBar from "@/components/UtilityBar";
+import PartnerStrip from "@/components/PartnerStrip";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
 import SmoothScroll from "@/components/SmoothScroll";
@@ -67,8 +69,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       >
         <JsonLd />
         <SmoothScroll>
+          <UtilityBar />
           <Nav />
           <main className="flex-1">{children}</main>
+          {/* Client (00:35:19): the faded partner strip runs on EVERY page, just
+              above the footer — not only on Home. Hence layout level, not a block. */}
+          <PartnerStrip />
           <Footer />
         </SmoothScroll>
       </body>

@@ -9,27 +9,95 @@ export const site = {
   tagline: "From UAE to the World",
   description:
     "Promax Global is a UAE-headquartered group delivering integrated port management, trade, technology, energy, and strategic investment — Abu Dhabi to the world.",
-  url: "https://promaxglobal.com",
+  url: "https://promaxglobal.ae",
   locale: "en_AE",
   contact: {
     address: "Alia Tower 05, Corniche Abu Dhabi, United Arab Emirates",
-    poBox: "P.O. Box 54300, Abu Dhabi, UAE",
-    email: "hello@promaxglobal.com",
-    careersEmail: "career@promaxglobal.com",
-    // PLACEHOLDER — dummy number. Replace with real number before launch.
-    // (Old scrape number was Promax United's — never ship it.)
-    phone: "+971 00 000 0000",
+    // Client-confirmed 2026-07-20: the content doc is authoritative, NOT the old
+    // live site. Anything reading info@promaxunited.com is old-brand and wrong.
+    email: "info@promaxglobal.ae",
+    // From the client content doc's top utility bar. Same digits as the old
+    // Promax United listing — kept per the doc-is-authoritative rule above.
+    phone: "+971 56 601 0848",
+    phoneHref: "tel:+971566010848",
   },
   stats: [
-    { value: "25+", label: "Countries — Global Presence" },
-    { value: "8", label: "Mandated Projects" },
-    { value: "5", label: "Industry Verticals" },
-    { value: "50+", label: "Active Terminal Advisories" },
+    { value: "25+", label: "Multi-Jurisdiction Operations" },
+    { value: "6", label: "Strategic Platforms" },
+    // Client-corrected 2026-07-20: the doc says 5, but there are 6 portfolios.
+    { value: "6", label: "Core Portfolios" },
+    { value: "50+", label: "Institutional Network" },
   ],
 } as const;
 
+/**
+ * Strategic Partners — the 15 names are verbatim from the client content doc
+ * (para 152–153), in the doc's own order.
+ *
+ * `logo: null` = the file has not been supplied yet. The doc lists the names as
+ * TEXT only; these six logos come from the old-site scrape. `PartnerStrip` renders
+ * only the entries that have a logo, so adding one is a two-step change: drop the
+ * file into `public/partners/` and set the path here.
+ *
+ * FICCI and GTSC are not on the doc's list of 15 but the client supplied their
+ * logo files directly (2026-07-20) and asked for them to be included.
+ */
+export const partners: { name: string; logo: string | null }[] = [
+  { name: "Promax Global", logo: null },
+  { name: "Promax United", logo: null },
+  { name: "Trot Global", logo: null },
+  { name: "Youth Chamber of Commerce", logo: "/partners/youth-chamber-of-commerce.jpg" },
+  { name: "Plambeck", logo: null },
+  { name: "Promax Enjoy", logo: null },
+  { name: "Trot Solutions", logo: "/partners/trot-solutions.png" },
+  { name: "Solveeasy", logo: "/partners/solveeasy.jpg" },
+  { name: "Promax Digital", logo: null },
+  { name: "Trot Holdings", logo: "/partners/trot-holdings.png" },
+  { name: "Abu Dhabi International Factory", logo: null },
+  { name: "Promax Investments", logo: null },
+  { name: "Promax Easypay", logo: null },
+  { name: "Goldwin Mines", logo: null },
+  { name: "Starboard Ports", logo: null },
+  // Client-supplied 2026-07-20, additional to the doc's list of 15.
+  { name: "FICCI", logo: "/partners/ficci.jpg" },
+  { name: "GTSC", logo: "/partners/gtsc.png" },
+];
+
 export type NavItem = { label: string; href: string; children?: NavItem[] };
 
+/**
+ * Level-2 dropdown entries that are REAL routes (/portfolio/<slug>/<sub>), not
+ * anchors. Meeting 2026-07-20 contradicts itself here: at 00:38 Paresh says
+ * "ports and logistics will be on one page", but from 00:40 he specs each
+ * sub-item as its own page with its own header ("Portfolio of Ports & Logistics
+ * → Port Management Services"), its own grid (3×2 management, 4×2 advisory) and
+ * at 00:53 "now advisory there will be a new page coming, right?". The later,
+ * more specific pass governs.
+ *
+ * Only Ports & Logistics is rolled out — the other portfolios' level-2 items are
+ * still card content, not page content, and stay as anchors until the client
+ * sends copy. Adding them later is a data change here + a content.ts entry.
+ */
+export const portfolioSubPages: Record<string, { slug: string; label: string }[]> = {
+  "ports-logistics": [
+    { slug: "management-services", label: "Management Services" },
+    { slug: "advisory-planning", label: "Advisory & Planning" },
+    { slug: "strategic-equipment", label: "Strategic Equipment" },
+  ],
+};
+
+/** Build level-2 nav children from the sub-page map so nav can't drift from routes. */
+const subNav = (parent: string): NavItem[] =>
+  (portfolioSubPages[parent] ?? []).map((s) => ({
+    label: s.label,
+    href: `/portfolio/${parent}/${s.slug}`,
+  }));
+
+/**
+ * Primary navigation per client content doc + 2026-07-20 meeting.
+ * Portfolio is a MULTI-LEVEL dropdown: level 1 = the 6 portfolios, level 2 = real
+ * sub-pages where `portfolioSubPages` defines them, anchors otherwise.
+ */
 export const nav: NavItem[] = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/about" },
@@ -37,69 +105,120 @@ export const nav: NavItem[] = [
     label: "Portfolio",
     href: "/portfolio",
     children: [
-      { label: "Port Management", href: "/portfolio/port-management" },
-      { label: "Port Advisory", href: "/portfolio/port-advisory" },
-      { label: "Infrastructure", href: "/portfolio/infrastructure" },
-      { label: "Strategic Equipment", href: "/portfolio/strategic-equipment" },
-      { label: "Skills & Education", href: "/portfolio/skills-education" },
-      { label: "Trade Hub & Food Security", href: "/portfolio/trade-hub" },
-      { label: "Technology & Fintech", href: "/portfolio/technology-fintech" },
-      { label: "Smart & Green Energy", href: "/portfolio/smart-energy" },
-      { label: "Strategic Projects", href: "/portfolio/strategic-projects" },
+      {
+        label: "Ports & Logistics",
+        href: "/portfolio/ports-logistics",
+        children: subNav("ports-logistics"),
+      },
+      {
+        label: "Skills & Education",
+        href: "/portfolio/skills-education",
+        children: [
+          { label: "Skill Development & Workforce Mobility", href: "/portfolio/skills-education#skill-development" },
+          { label: "Women Empowerment", href: "/portfolio/skills-education#women-empowerment" },
+          { label: "Startup & Incubation Centres", href: "/portfolio/skills-education#startup-incubation" },
+          { label: "Digital Finance & Fintech Inclusion", href: "/portfolio/skills-education#digital-finance" },
+          { label: "Agriculture & Rural Development", href: "/portfolio/skills-education#agriculture-rural" },
+          { label: "Entrepreneurship & Innovation", href: "/portfolio/skills-education#entrepreneurship" },
+          { label: "UN SDG-Aligned Programs", href: "/portfolio/skills-education#un-sdg" },
+          { label: "Policy Advocacy & Research", href: "/portfolio/skills-education#policy-advocacy" },
+        ],
+      },
+      { label: "AI & Fintech", href: "/portfolio/ai-fintech" },
+      { label: "Trade Hub", href: "/portfolio/trade-hub" },
+      {
+        label: "Smart & Green Energy",
+        href: "/portfolio/smart-green-energy",
+        children: [
+          { label: "Smart Energy Management", href: "/portfolio/smart-green-energy#smart-energy" },
+          { label: "Green Energy", href: "/portfolio/smart-green-energy#green-energy" },
+        ],
+      },
+      {
+        label: "Infrastructure & Asset Holdings",
+        href: "/portfolio/infrastructure-asset-holdings",
+        children: [
+          { label: "Blue Port Project", href: "/portfolio/infrastructure-asset-holdings#blue-port" },
+          { label: "Dry Port Development", href: "/portfolio/infrastructure-asset-holdings#dry-port" },
+          { label: "Bulk / BreakBulk Port", href: "/portfolio/infrastructure-asset-holdings#bulk-breakbulk" },
+          { label: "Industrial Manufacturing Investments", href: "/portfolio/infrastructure-asset-holdings#industrial-manufacturing" },
+          { label: "Freehold Real Estate Development", href: "/portfolio/infrastructure-asset-holdings#freehold-real-estate" },
+          { label: "Trailer Manufacturing Plant", href: "/portfolio/infrastructure-asset-holdings#trailer-manufacturing" },
+          { label: "Smart City Development Project", href: "/portfolio/infrastructure-asset-holdings#smart-city" },
+          { label: "Mining Rights & Natural Resource Development", href: "/portfolio/infrastructure-asset-holdings#mining-rights" },
+        ],
+      },
     ],
   },
-  { label: "Work With Us", href: "/work-with-us" },
-  { label: "Invest With Us", href: "/invest-with-us" },
-  { label: "Contact", href: "/contact" },
+  { label: "Strategic Ventures", href: "/strategic-ventures" },
+  { label: "Why Us", href: "/why-us" },
+  { label: "Insights", href: "/insights" },
+  { label: "Reach Us", href: "/reach-us" },
 ];
+
+/** The 6 portfolio page slugs (level-1 dropdown → real routes). */
+export const portfolioSlugs = [
+  "ports-logistics",
+  "skills-education",
+  "ai-fintech",
+  "trade-hub",
+  "smart-green-energy",
+  "infrastructure-asset-holdings",
+] as const;
 
 /** Flat list of every route for sitemap generation. */
 export const allRoutes: string[] = [
   "/",
   "/about",
   "/portfolio",
-  ...(nav.find((n) => n.href === "/portfolio")?.children?.map((c) => c.href) ?? []),
+  ...portfolioSlugs.flatMap((s) => [
+    `/portfolio/${s}`,
+    ...(portfolioSubPages[s] ?? []).map((sub) => `/portfolio/${s}/${sub.slug}`),
+  ]),
+  "/strategic-ventures",
+  "/why-us",
+  "/insights",
+  "/reach-us",
   "/work-with-us",
   "/invest-with-us",
-  "/contact",
 ];
 
-/** The 5 headline portfolio verticals shown on the homepage grid. */
+/** The 6 portfolios — must match the Portfolio dropdown exactly (meeting 00:26). */
 export const verticals = [
   {
-    slug: "port-management",
+    slug: "ports-logistics",
     title: "Ports & Logistics",
     blurb:
-      "End-to-end capabilities across port operations, terminal efficiency, supply-chain optimization, multimodal logistics, and infrastructure modernization.",
+      "Management services, advisory and planning, and strategic equipment across port and terminal operations — from start-ups and developing ports through to established operations.",
   },
   {
     slug: "skills-education",
     title: "Skills & Education",
     blurb:
-      "National-priority programs for workforce development, vocational training, digital skills, and sector-specific capability building.",
+      "A tri-regional socio-economic development alliance covering India, GCC, and Africa — empowering students, women, and entrepreneurs for a bright future.",
+  },
+  {
+    slug: "ai-fintech",
+    title: "AI & Fintech",
+    blurb:
+      "Large-scale digital infrastructure and inclusive financial systems that accelerate national development and strengthen economic transparency.",
   },
   {
     slug: "trade-hub",
-    title: "Trade Hub & Food Security",
+    title: "Trade Hub",
     blurb:
-      "Cross-border sourcing, commodity management, strategic reserves, and resilient supply-chain frameworks connecting GCC, India, Africa, and Asia.",
+      "Integrated trade hubs and food security systems connecting GCC, India, Africa, and Asia — reliable, cost-efficient, and resilient supply chains.",
   },
   {
-    slug: "technology-fintech",
-    title: "Technology & Fintech",
-    blurb:
-      "Enterprise-grade digital infrastructure — data centres, cybersecurity, smart grids, digital banking, and financial inclusion.",
-  },
-  {
-    slug: "smart-energy",
+    slug: "smart-green-energy",
     title: "Smart & Green Energy",
     blurb:
-      "Decarbonization strategies, solar microgrids, hybrid/electric equipment conversion, and ESG-aligned sustainable infrastructure.",
+      "Intelligent monitoring and optimization of energy consumption, plus renewable integration, hybrid conversions, and ESG-aligned decarbonization.",
   },
   {
-    slug: "strategic-projects",
-    title: "Strategic Projects",
+    slug: "infrastructure-asset-holdings",
+    title: "Infrastructure & Asset Holdings",
     blurb:
-      "Diversified portfolio of mandated, high-value projects across ports, logistics, industrial development, real estate, and natural resources.",
+      "A diversified portfolio of mandated, acquired, and high-value strategic projects across ports, logistics, industrial development, real estate, and natural resources.",
   },
 ] as const;

@@ -2,13 +2,17 @@ import Link from "next/link";
 import Image from "next/image";
 import SectionTitle from "@/components/SectionTitle";
 import Reveal from "@/components/anim/Reveal";
-import { Icons } from "@/components/Icons";
 import { img } from "@/lib/images";
 import type { ServiceOverlayBlock } from "./types";
 
 /**
- * Image cards with a bottom-up gradient, icon and title sitting over the photo
- * (Transland .single-our-service). The content block overlaps the image edge.
+ * Image cards with a bottom-up gradient and the title sitting over the photo
+ * (Transland .single-our-service).
+ *
+ * NO ICON (client, 2026-07-20): a green glyph floating over the photo read badly —
+ * it fought the image and added nothing the title didn't already say. The card is
+ * photo + title now. `item.icon` is still accepted by the type (other blocks use
+ * it) but is deliberately not rendered here.
  */
 export default function ServiceOverlay({
   eyebrow,
@@ -32,17 +36,17 @@ export default function ServiceOverlay({
         </div>
         <div className={`grid gap-6 ${cols}`}>
           {items.map((it, i) => {
-            const Icon = it.icon ? Icons[it.icon] : null;
             const inner = (
               <>
                 <div className="relative aspect-[4/5]">
                   <Image src={img(it.image)} alt={it.title} fill sizes="(max-width:1024px) 100vw, 33vw" className="object-cover transition duration-700 group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy-900 via-navy-900/40 to-transparent" />
+                  {/* Deeper wash than before: the title stepped up in size, so it
+                      needs more contrast under it to stay readable on busy photos. */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-navy-900 via-navy-900/55 to-transparent" />
                 </div>
-                <div className="absolute inset-x-0 bottom-0 p-6 text-white">
-                  {Icon && <Icon className="mb-3 h-9 w-9 text-brand" />}
-                  <h3 className="text-lg font-bold capitalize">{it.title}</h3>
-                  {it.text && <p className="mt-2 text-sm leading-relaxed text-slate-200">{it.text}</p>}
+                <div className="absolute inset-x-0 bottom-0 p-7 text-white">
+                  <h3 className="font-display text-2xl font-bold capitalize leading-tight md:text-[1.7rem]">{it.title}</h3>
+                  {it.text && <p className="mt-2.5 leading-relaxed text-slate-200">{it.text}</p>}
                   {it.href && (
                     <span className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-brand">
                       Learn more <span aria-hidden className="transition group-hover:translate-x-1">→</span>

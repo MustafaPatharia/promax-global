@@ -1,7 +1,17 @@
 import Link from "next/link";
 import Image from "next/image";
-import { nav, site, verticals } from "@/lib/site";
+import { site, verticals } from "@/lib/site";
 import { asset } from "@/lib/assets";
+
+/** Footer columns are fixed by the client content doc: Our Portfolio · Strategic Platforms · Find Us. */
+const strategicPlatforms = [
+  "Infrastructure & Economic Cities",
+  "Natural Resources",
+  "Digital Economy",
+  "Energy Transition",
+  "Investment & Capital",
+  "National Capability Development",
+];
 
 export default function Footer() {
   const year = 2026; // static; bump or compute at build if desired
@@ -16,14 +26,15 @@ export default function Footer() {
             height={232}
             className="h-10 w-auto"
           />
-          <p className="mt-3 text-sm leading-relaxed text-slate-400">
-            {site.tagline} — crafting a legacy of global success stories. Under patronage of
-            Promax United.
+          <p className="mt-4 text-sm leading-relaxed text-slate-400">
+            Rooted in the UAE&rsquo;s spirit of innovation. We transform bold local ideas into
+            global realities, delivering future-forward solutions from the heart of the Middle
+            East.
           </p>
         </div>
 
         <div>
-          <h3 className="text-sm font-semibold uppercase tracking-wide text-white">Portfolio</h3>
+          <h3 className="text-sm font-semibold uppercase tracking-wide text-white">Our Portfolio</h3>
           <ul className="mt-4 space-y-2 text-sm">
             {verticals.map((v) => (
               <li key={v.slug}>
@@ -36,31 +47,29 @@ export default function Footer() {
         </div>
 
         <div>
-          <h3 className="text-sm font-semibold uppercase tracking-wide text-white">Company</h3>
-          <ul className="mt-4 space-y-2 text-sm">
-            {nav
-              .filter((n) => !n.children)
-              .map((n) => (
-                <li key={n.href}>
-                  <Link href={n.href} className="hover:text-brand">
-                    {n.label}
-                  </Link>
-                </li>
-              ))}
+          <h3 className="text-sm font-semibold uppercase tracking-wide text-white">
+            Strategic Platforms
+          </h3>
+          <ul className="mt-4 space-y-2 text-sm text-slate-400">
+            {strategicPlatforms.map((p) => (
+              <li key={p}>{p}</li>
+            ))}
           </ul>
         </div>
 
         <div>
-          <h3 className="text-sm font-semibold uppercase tracking-wide text-white">Corporate Office</h3>
-          <address className="mt-4 space-y-2 text-sm not-italic text-slate-400">
-            <p>{site.contact.address}</p>
+          <h3 className="text-sm font-semibold uppercase tracking-wide text-white">Find Us</h3>
+          <address className="mt-4 space-y-3 text-sm not-italic text-slate-400">
+            <p>📍 {site.contact.address}</p>
             <p>
+              ✉️{" "}
               <a href={`mailto:${site.contact.email}`} className="hover:text-brand">
                 {site.contact.email}
               </a>
             </p>
             <p>
-              <a href={`tel:${site.contact.phone.replace(/\s/g, "")}`} className="hover:text-brand">
+              📞{" "}
+              <a href={site.contact.phoneHref} className="hover:text-brand">
                 {site.contact.phone}
               </a>
             </p>
@@ -71,7 +80,9 @@ export default function Footer() {
       <div className="border-t border-white/10">
         <div className="shell flex flex-col items-center justify-between gap-2 py-6 text-xs text-slate-400 md:flex-row">
           <p>© {year} Promax Global. Under patronage of Promax United. All rights reserved.</p>
-          <p className="uppercase tracking-wide">{site.tagline}</p>
+          <p className="font-semibold uppercase tracking-wide text-white">
+            Building the Future of Nations
+          </p>
         </div>
       </div>
     </footer>

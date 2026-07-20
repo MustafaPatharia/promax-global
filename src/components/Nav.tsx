@@ -9,6 +9,19 @@ import { asset } from "@/lib/assets";
  * Sticky header. Shrinks + gains shadow on scroll (Transland signature).
  * Portfolio dropdown + mobile menu use native <details> so they work
  * without extra JS state. Respects the smooth-scroll layout.
+ *
+ * BILINGUAL LOCKUP (client, meeting 00:33:22 + content doc):
+ *   "add Arabic Promax Global Logo in right & English in Left.
+ *    Remaining all other info in centre"
+ * The bar runs EXTREME LEFT → EXTREME RIGHT (full-bleed, not `shell`), with the
+ * English mark hard left and the Arabic mark hard right, BOTH visible at once —
+ * including on the English page.
+ *
+ * The positions NEVER swap. Client said "All conditions left" three times: even on
+ * the Arabic (RTL) build the logos hold these sides. That is why this header is
+ * pinned `dir="ltr"` while the document flips — the rationale given was
+ * "we are asserting we are originating from Middle East", so the pairing itself
+ * is the message and mirroring it would destroy the point.
  */
 /** Close the enclosing native <details> after a client-side nav (open sticks otherwise). */
 const closeDetails = (e: React.MouseEvent<HTMLAnchorElement>) =>
@@ -26,16 +39,19 @@ export default function Nav() {
 
   return (
     <header
+      dir="ltr"
       className={`sticky top-0 z-50 border-b bg-white/90 backdrop-blur transition-all duration-300 ${
         scrolled ? "border-slate-100 shadow-[0_8px_30px_-16px_rgba(18,41,63,0.25)]" : "border-transparent"
       }`}
     >
+      {/* Full-bleed: px only, NOT `shell` — the bar must reach both screen edges. */}
       <div
-        className={`shell flex items-center justify-between gap-4 transition-all duration-300 ${
+        className={`flex items-center gap-4 px-5 transition-all duration-300 md:px-8 ${
           scrolled ? "h-16" : "h-20"
         }`}
       >
-        <Link href="/" className="flex items-center" aria-label="Promax Global — home">
+        {/* --- EXTREME LEFT: English mark (locked, never mirrors) --- */}
+        <Link href="/" className="flex shrink-0 items-center" aria-label="Promax Global — home">
           <Image
             src={asset("/brand/promax-logo-color.png")}
             alt="Promax Global"
@@ -46,8 +62,8 @@ export default function Nav() {
           />
         </Link>
 
-        {/* Desktop nav */}
-        <nav className="hidden items-center gap-7 lg:flex">
+        {/* Desktop nav — centred between the two marks */}
+        <nav className="mx-auto hidden items-center gap-7 lg:flex">
           {nav.map((item) =>
             item.children ? (
               <details key={item.href} className="group relative">
@@ -55,16 +71,39 @@ export default function Nav() {
                   {item.label}
                   <span className="text-slate-400 transition group-open:rotate-180">▾</span>
                 </summary>
-                <ul className="absolute left-1/2 top-full mt-3 w-64 -translate-x-1/2 rounded-xl border border-slate-100 bg-white p-2 shadow-[0_20px_50px_-20px_rgba(18,41,63,0.35)]">
+                {/* Level 1 = the 6 portfolios. Hovering one with children opens the
+                    level-2 flyout of that portfolio's page sections. */}
+                <ul className="absolute left-1/2 top-full mt-3 w-72 -translate-x-1/2 rounded-xl border border-slate-100 bg-white p-2 shadow-[0_20px_50px_-20px_rgba(18,41,63,0.35)]">
                   {item.children.map((c) => (
-                    <li key={c.href}>
+                    <li key={c.href} className="group/sub relative">
                       <Link
                         href={c.href}
                         onClick={closeDetails}
-                        className="block rounded-lg px-3 py-2 text-sm text-slate-600 transition hover:bg-brand-050 hover:text-brand"
+                        className="flex items-center justify-between gap-2 rounded-lg px-3 py-2 text-sm text-slate-600 transition hover:bg-brand-050 hover:text-brand"
                       >
                         {c.label}
+                        {c.children && (
+                          <span aria-hidden className="text-slate-300 group-hover/sub:text-brand">
+                            ›
+                          </span>
+                        )}
                       </Link>
+
+                      {c.children && (
+                        <ul className="invisible absolute left-full top-0 ms-1 w-72 rounded-xl border border-slate-100 bg-white p-2 opacity-0 shadow-[0_20px_50px_-20px_rgba(18,41,63,0.35)] transition group-hover/sub:visible group-hover/sub:opacity-100">
+                          {c.children.map((g) => (
+                            <li key={g.href}>
+                              <Link
+                                href={g.href}
+                                onClick={closeDetails}
+                                className="block rounded-lg px-3 py-2 text-sm text-slate-600 transition hover:bg-brand-050 hover:text-brand"
+                              >
+                                {g.label}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
                     </li>
                   ))}
                 </ul>
@@ -82,16 +121,15 @@ export default function Nav() {
         </nav>
 
         <div className="hidden items-center gap-3 lg:flex">
-          <Link href="/work-with-us" className="btn btn-navy btn-outline !border-navy !bg-transparent !text-navy hover:!bg-navy hover:!text-white">
-            Work With Us
-          </Link>
           <Link href="/invest-with-us" className="btn btn-primary">
-            Get Started <span aria-hidden>→</span>
+            Invest With Us <span aria-hidden>→</span>
           </Link>
         </div>
 
-        {/* Mobile menu */}
-        <details className="lg:hidden">
+        {/* Mobile menu — sits BEFORE the Arabic mark so that mark keeps the far
+            right edge at every breakpoint. `ms-auto` because the centring nav
+            that would otherwise push it is hidden below lg. */}
+        <details className="ms-auto lg:hidden">
           <summary className="flex cursor-pointer list-none items-center text-navy" aria-label="Menu">
             <span className="text-2xl">≡</span>
           </summary>
@@ -130,6 +168,25 @@ export default function Nav() {
             </div>
           </div>
         </details>
+
+        {/* --- EXTREME RIGHT: Arabic mark (locked, never mirrors) ---
+            Decorative twin of the English lockup, so it carries an empty alt and
+            the link is labelled instead — a screen reader shouldn't hear the
+            company name twice in one bar. */}
+        <Link
+          href="/"
+          className="ms-4 flex shrink-0 items-center"
+          aria-label="بروماكس جلوبال — الصفحة الرئيسية"
+        >
+          <Image
+            src={asset("/brand/promax-logo-arabic.jpeg")}
+            alt=""
+            width={196}
+            height={62}
+            priority
+            className={`w-auto transition-all duration-300 ${scrolled ? "h-6" : "h-8"}`}
+          />
+        </Link>
       </div>
     </header>
   );

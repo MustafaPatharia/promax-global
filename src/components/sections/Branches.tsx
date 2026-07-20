@@ -3,14 +3,11 @@ import SectionTitle from "@/components/SectionTitle";
 import Reveal from "@/components/anim/Reveal";
 import { img } from "@/lib/images";
 import type { BranchesBlock } from "./types";
+import { Icons } from "@/components/Icons";
 
-/** Brand map-pin (no `pin` in Icons; `globe` is the closest but reads worse here). */
-const Pin = ({ className }: { className?: string }) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden>
-    <path d="M12 21s7-6.2 7-11a7 7 0 0 0-14 0c0 4.8 7 11 7 11Z" />
-    <circle cx="12" cy="10" r="2.5" />
-  </svg>
-);
+/** Was a local 24×24 stroke pin; now the shared duotone `pin` so the whole site
+ *  draws from one icon set (client: build the vectors, use them everywhere). */
+const Pin = Icons.pin;
 
 /**
  * Regional office / presence cards (Transland .our-branch-wrapper).

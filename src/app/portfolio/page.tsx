@@ -26,7 +26,7 @@ export default function PortfolioPage() {
           </Reveal>
           <Reveal index={2}>
             <p className="mt-6 max-w-2xl text-lg text-slate-200">
-              A global, multi-dimensional, multi-sectoral business portfolio spanning five core
+              A global, multi-dimensional, multi-sectoral business portfolio spanning six core
               operational zones — plus our mandated strategic projects.
             </p>
           </Reveal>

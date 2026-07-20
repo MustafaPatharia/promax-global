@@ -1,21 +1,29 @@
 import Link from "next/link";
+import Image from "next/image";
 import SectionTitle from "@/components/SectionTitle";
 import Reveal from "@/components/anim/Reveal";
 import { Icons } from "@/components/Icons";
+import { img } from "@/lib/images";
 import type { ServiceFreightBlock } from "./types";
 
 /**
  * Ghost-icon service cards with a checklist (Transland .single-freight-service).
  * White cards; a large faint icon sits behind the top-right corner, and a brand
  * bottom bar wipes in left-to-right as the card lifts on hover.
+ *
+ * An item may carry a header `image` — client asked for a bright header photo on
+ * the Advisory cards (00:55:38). Cards without one keep the plain ghost-icon look,
+ * so mixing is safe.
  */
 export default function ServiceFreight({
   eyebrow,
   heading,
   intro,
   items,
+  columns = 3,
   bg = "bg-white",
 }: ServiceFreightBlock & { bg?: string }) {
+  const cols = { 2: "sm:grid-cols-2", 3: "sm:grid-cols-2 lg:grid-cols-3", 4: "sm:grid-cols-2 lg:grid-cols-4" }[columns];
   return (
     <section className={`section ${bg}`}>
       <div className="shell">
@@ -27,12 +35,24 @@ export default function ServiceFreight({
             </Reveal>
           )}
         </div>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className={`grid gap-6 ${cols}`}>
           {items.map((it, i) => {
             const Icon = it.icon ? Icons[it.icon] : null;
             return (
-              <Reveal key={it.title} variant="up" index={i % 3}>
-                <div className="group relative isolate h-full overflow-hidden rounded-2xl border border-slate-200/70 bg-white p-8 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl">
+              <Reveal key={it.title} variant="up" index={i % Number(columns)}>
+                <div className="group relative isolate flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200/70 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl">
+                  {it.image && (
+                    <div className="relative aspect-video overflow-hidden">
+                      <Image
+                        src={img(it.image)}
+                        alt={it.imageAlt ?? it.title}
+                        fill
+                        sizes="(max-width:640px) 100vw, (max-width:1024px) 50vw, 25vw"
+                        className="object-cover transition duration-700 group-hover:scale-105"
+                      />
+                    </div>
+                  )}
+                  <div className="relative isolate flex flex-1 flex-col p-8">
                   {/* Ghost icon behind the corner */}
                   {Icon && (
                     <Icon
@@ -72,6 +92,7 @@ export default function ServiceFreight({
                     aria-hidden
                     className="absolute inset-x-0 bottom-0 h-0.5 w-0 bg-brand transition-all duration-500 group-hover:w-full"
                   />
+                  </div>
                 </div>
               </Reveal>
             );

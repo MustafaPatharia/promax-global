@@ -50,7 +50,18 @@ export type ServiceFreightBlock = {
   eyebrow?: string;
   heading: string;
   intro?: string;
-  items: { icon?: IconName; title: string; text?: string; checklist?: string[]; href?: string }[];
+  /** Grid width at lg+. Advisory & Planning is spec'd 4×2 (meeting 00:53:55). */
+  columns?: 2 | 3 | 4;
+  items: {
+    icon?: IconName;
+    title: string;
+    text?: string;
+    checklist?: string[];
+    href?: string;
+    /** Header photo above the card body — client asked for a "bright" header (00:55:38). */
+    image?: string;
+    imageAlt?: string;
+  }[];
 };
 
 /** Animated skill/capability bars — Transland .skill-bars. */
@@ -108,7 +119,29 @@ export type GalleryBlock = {
   images: { src: string; alt: string }[];
 };
 
+/**
+ * Media-left / copy-right overview band, matching the Home page's Corporate
+ * Overview (client: "same style like company overview section").
+ */
+export type OverviewBlock = {
+  type: "overview";
+  /** Small kicker above the heading. */
+  eyebrow?: string;
+  /** Faint watermark word behind the heading. */
+  ghost?: string;
+  /** Plain string — `content.ts` is not a .tsx, so it cannot carry JSX. */
+  heading: string;
+  /** Trailing phrase rendered in the accent colour (SectionTitle's <span>). */
+  accent?: string;
+  /** Optional bold one-liner between heading and body. */
+  lead?: string;
+  paragraphs: string[];
+  image: string;
+  imageAlt?: string;
+};
+
 export type Block =
+  | OverviewBlock
   | FeatureCardsBlock
   | WorkStepsBlock
   | ServiceOverlayBlock
