@@ -56,44 +56,35 @@ section; para 186 writes it *"Loui Mohammed Ali"*. Confirm the correct spelling 
 - [x] **Strategic Partners strip** — above the footer on EVERY page via `layout.tsx`; **max 6 at a time, auto-rotating** (client 2026-07-20, replaced the continuous ticker); faded grayscale → full colour on hover; pauses on hover/focus; static under reduced motion. 8 logos wired (`PartnerStrip.tsx`, list in `site.ts`)
 - [x] **Consultancy framing removed** — "Connect with an expert / Talk to our team about your operations" → "Explore this opportunity / Discuss investment, partnership, or co-development" (`PageShell.tsx`)
 - [x] **Hero globe moved LEFT** — copy occupies the right half from lg up; readability veil flipped; hero accent gradient corrected from leftover **orange** to brand green (`HeroParticles.tsx`, `page.tsx`)
+- [x] **No CTA on portfolio pages** — `noCta` prop on `PageShell` kills both the hero button and the closing band; wired to `[slug]` and `[slug]/[sub]` (00:43:53). Non-portfolio pages keep theirs
+- [x] **"Where we manage" images** now the client's own — docx `image18–23` → `public/images/mgmt-*`; replaced the scraped stand-ins (incl. the Adani photo)
+- [x] **"What management services covers"** rebuilt as an `overview` block matching Home's Corporate Overview (5fr/7fr, 4:5 media left, tinted copy panel), and reordered **WHERE → WHAT**. Both bands moved into `blocks` because `PageShell` renders all `sections` before any `blocks`
+- [x] **Green icons removed** from the where-grid cards; title `text-lg` → `text-2xl/1.7rem`; gradient wash deepened to `via-navy-900/55` for contrast under the larger type
 - [x] **Icons** — no icon library is installed anywhere; every call site already routes through the duotone `Icons` registry. Added duotone `pin` and retired the last stray 24×24 stroke SVG in `Branches.tsx`; `statIcon` remapped to match the stats in order
 
 ---
 
 ## 🟠 2. BUILDABLE NOW — highest priority first
 
-### 2.1 Header / bilingual logo lockup — **MISSED IN EARLIER LISTS** (00:33:22)
-- [ ] Header bar spans **extreme left → extreme right** (full-bleed, not shell-width)
-- [ ] **English "Promax Global" logo at extreme LEFT**, **Arabic logo at extreme RIGHT** — BOTH visible at once, on the English page too
-- [ ] Positions are **FROZEN**: *"All conditions left"* (said 3×). Even on the Arabic RTL page the logos do **NOT** mirror. Needs `dir="ltr"` locked on the header while the body flips
-- [ ] Rationale to preserve: *"we are asserting we are originating from Middle East"*
-- [ ] Blocked on **C1** for the Arabic mark — build with a placeholder slot
+### 2.1 Header / bilingual logo lockup (00:33:22) — ✅ **BUILT**, see §2′
+### 2.2 Above-footer partner strip (00:35:19) — ✅ **BUILT**, see §2′ (10 of 18 logos still missing → C2)
+### 2.3 Kill consultancy framing — ✅ **BUILT**, see §2′
+- [ ] One line survives: `content.ts:243` *"Talk to our friendly team … online or in person"*. Consultancy-flavoured, but **verbatim client-doc copy**, so left alone pending a decision
 
-### 2.2 Above-footer partner strip — **MISSED IN EARLIER LISTS** (00:35:19)
-- [ ] Small **faded** partner logos, auto-running strip, **right → left**
-- [ ] Sits **just above the footer on EVERY page** — global band, not a per-page block
-- [ ] Currently `BrandShowcase` is an opt-in content block only → promote to layout level
-- [ ] Blocked on **C2** for the logos
-
-### 2.3 Kill consultancy framing — **MISSED IN EARLIER LISTS**
-- [ ] Remove **"Connect with an expert"** + *"Talk to our team about your operations"* — `PageShell.tsx:223`. Wrong for an investment portfolio
-- [ ] Replace with investment/partnership framing
-- [ ] Sweep the whole site for advisory/consultation-flavoured CTAs and labels
-- [ ] Note: *"Connect with experts"* also appears on the Advisory page content (00:53:55) — same treatment
-
-### 2.4 Multilingual (00:29:09, 00:33:22)
-- [ ] **EN / AR / FR / LA** language switcher — does not exist at all
-- [ ] `layout.tsx:58` hardcodes `lang="en"` → must be dynamic
+### 2.4 Multilingual (00:29:09, 00:33:22) — **NOT BUILT** (switcher is a visual shell only)
+- [ ] AR/FR/LA are inert `<span>`s in `UtilityBar.tsx` — no locale routes exist
+- [ ] `layout.tsx:60` hardcodes `lang="en"` → must be dynamic
 - [ ] **Arabic renders RTL** (body flips; header logos do not — see §2.1)
 
 ### 2.5 Hero (00:08:16, 00:09:24)
-- [ ] Globe: continent **borders** + dots in a **contrast** colour
-- [ ] **Move the globe to the LEFT** of the content — *this half was dropped from earlier lists*
-- [ ] Background uses the provided video assets
+- [x] **Globe moved LEFT**, copy to the right half
+- [x] Dots in a contrast colour (`#dbe6f3` over navy) + green accent layer
+- [ ] Continent **borders** — dots only at present, no border linework
+- [ ] Background uses the provided video assets — blocked on **C3**
 
 ### 2.6 Navigation
-- [ ] Portfolio **multi-level dropdown** wired: Ports & Logistics · Skills & Education · AI & Fintech · Trade Hub · Smart & Green Energy · Infrastructure & Asset Holdings
-- [ ] Utility bar (location / email / phone / language)
+- [x] Portfolio **multi-level dropdown** — level-2 flyout via nested `<details>`, all 6 portfolios
+- [x] Utility bar (location / email / phone / language)
 
 ### 2.7 Portfolio inner pages
 - [x] **Level-2 dropdown items are REAL pages**, not anchors — `/portfolio/ports-logistics/{management-services,advisory-planning,strategic-equipment}`. The transcript contradicts itself (00:38 "one page" vs 00:40–00:53 "there will be a new page coming"); the later, more specific pass governs. Route is generic (`[slug]/[sub]`) and driven by `portfolioSubPages` in `site.ts` + a `"<slug>/<sub>"` key in `content.ts`
