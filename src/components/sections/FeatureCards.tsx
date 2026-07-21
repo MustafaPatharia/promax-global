@@ -1,6 +1,6 @@
 import SectionTitle from "@/components/SectionTitle";
 import Reveal from "@/components/anim/Reveal";
-import { Icons } from "@/components/Icons";
+import LineIcon, { type LineName } from "@/components/LineIcon";
 import type { FeatureCardsBlock } from "./types";
 
 /**
@@ -31,7 +31,6 @@ export default function FeatureCards({
         </div>
         <div className={`grid gap-6 ${cols}`}>
           {items.map((it, i) => {
-            const Icon = it.icon ? Icons[it.icon] : null;
             return (
               <Reveal key={it.title} variant="up" index={i % Number(columns)}>
                 <div
@@ -41,13 +40,15 @@ export default function FeatureCards({
                       : "card hover:border-brand/40"
                   }`}
                 >
-                  <span
-                    className={`mb-5 grid h-14 w-14 place-items-center rounded-xl transition ${
-                      dark ? "bg-brand/15 text-brand group-hover:bg-brand group-hover:text-white" : "bg-brand-050 text-brand group-hover:bg-brand group-hover:text-white"
-                    }`}
-                  >
-                    {Icon ? <Icon className="h-7 w-7" /> : <span className="font-display text-xl font-bold">{String(i + 1).padStart(2, "0")}</span>}
-                  </span>
+                  {it.icon && (
+                    <span
+                      className={`mb-5 grid h-14 w-14 place-items-center rounded-xl transition ${
+                        dark ? "bg-brand/15 text-brand group-hover:bg-brand group-hover:text-white" : "bg-brand-050 text-brand group-hover:bg-brand group-hover:text-white"
+                      }`}
+                    >
+                      <LineIcon name={it.icon as LineName} className="h-7 w-7" />
+                    </span>
+                  )}
                   <h3 className={`text-lg font-bold ${dark ? "text-white" : "text-navy"}`}>{it.title}</h3>
                   {it.text && <p className={`mt-3 text-sm leading-relaxed ${dark ? "text-slate-300" : "text-slate-500"}`}>{it.text}</p>}
                 </div>

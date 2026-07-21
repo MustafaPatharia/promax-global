@@ -75,7 +75,7 @@ export default function HorizontalScroll({ panels }: { panels: Panel[] }) {
               long-term success of ports and national infrastructure projects.
             </p>
             <span className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-brand">
-              Keep scrolling <span aria-hidden>→</span>
+              Keep scrolling
             </span>
           </div>
 
@@ -97,7 +97,7 @@ export default function HorizontalScroll({ panels }: { panels: Panel[] }) {
                 <h3 className="text-3xl font-bold md:text-4xl">{p.title}</h3>
                 <p className="mt-3 max-w-sm text-base leading-relaxed text-slate-300 md:text-lg">{p.blurb}</p>
                 <span className="mt-4 inline-flex items-center gap-1 text-base font-semibold text-brand">
-                  Explore <span aria-hidden className="transition group-hover:translate-x-1">→</span>
+                  Explore
                 </span>
               </div>
             </Link>

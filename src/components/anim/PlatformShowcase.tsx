@@ -199,16 +199,6 @@ export default function PlatformShowcase({
                         className="group/btn mt-6 inline-flex w-fit items-center gap-2.5 font-display text-[0.78rem] font-bold uppercase tracking-[0.18em] text-white transition-colors hover:text-gold"
                       >
                         {isOpen ? "Close" : "Learn More"}
-                        <span
-                          aria-hidden
-                          className={`grid h-7 w-7 place-items-center rounded-full bg-navy-800 text-[0.7rem] text-gold ring-1 ring-gold/55 transition-transform duration-500 ${
-                            isOpen
-                              ? "rotate-90"
-                              : "group-hover/btn:translate-x-1"
-                          }`}
-                        >
-                          →
-                        </span>
                       </button>
                     </div>
                   </div>

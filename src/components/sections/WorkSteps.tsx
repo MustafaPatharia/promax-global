@@ -1,6 +1,6 @@
 import SectionTitle from "@/components/SectionTitle";
 import Reveal from "@/components/anim/Reveal";
-import { Icons } from "@/components/Icons";
+import LineIcon, { type LineName } from "@/components/LineIcon";
 import type { WorkStepsBlock } from "./types";
 
 /**
@@ -27,15 +27,11 @@ export default function WorkSteps({
         </div>
         <div className="grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
           {steps.map((s, i) => {
-            const Icon = s.icon ? Icons[s.icon] : null;
             return (
               <Reveal key={s.title} variant="up" index={i % 4}>
                 <div className="text-center">
                   <div className="relative mx-auto grid h-28 w-28 place-items-center rounded-full bg-white text-brand shadow-[0_10px_40px_0_rgba(0,0,0,0.08)]">
-                    {Icon ? <Icon className="h-11 w-11" /> : <span className="font-display text-3xl font-extrabold">{i + 1}</span>}
-                    <span className="absolute -right-1 top-0 grid h-10 w-10 place-items-center rounded-full border border-brand bg-white font-display text-sm font-bold text-brand">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
+                    {s.icon && <LineIcon name={s.icon as LineName} className="h-11 w-11" />}
                   </div>
                   <h3 className="mt-6 text-lg font-bold capitalize text-navy">{s.title}</h3>
                   {s.text && <p className="mx-auto mt-2 max-w-xs text-sm leading-relaxed text-slate-500">{s.text}</p>}

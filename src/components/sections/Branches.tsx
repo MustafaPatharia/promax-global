@@ -3,11 +3,7 @@ import SectionTitle from "@/components/SectionTitle";
 import Reveal from "@/components/anim/Reveal";
 import { img } from "@/lib/images";
 import type { BranchesBlock } from "./types";
-import { Icons } from "@/components/Icons";
-
-/** Was a local 24×24 stroke pin; now the shared duotone `pin` so the whole site
- *  draws from one icon set (client: build the vectors, use them everywhere). */
-const Pin = Icons.pin;
+import LineIcon from "@/components/LineIcon";
 
 /**
  * Regional office / presence cards (Transland .our-branch-wrapper).
@@ -49,7 +45,7 @@ export default function Branches({
               ) : (
                 <div className="h-full overflow-hidden rounded-2xl bg-navy-900 p-7 text-white">
                   <span className="mb-5 grid h-12 w-12 place-items-center rounded-xl bg-brand/15 text-brand">
-                    <Pin className="h-6 w-6" />
+                    <LineIcon name="pin" className="h-6 w-6" />
                   </span>
                   <h3 className="font-display text-lg font-bold text-white">{b.region}</h3>
                   {b.address && <p className="mt-1 text-sm text-slate-400">{b.address}</p>}

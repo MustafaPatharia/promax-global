@@ -15,7 +15,6 @@ import { gsap, prefersReducedMotion } from "@/lib/gsap";
 export default function ScrubBand({
   src,
   poster,
-  eyebrow,
   subtitle,
   title,
   text,
@@ -144,7 +143,6 @@ export default function ScrubBand({
           className="absolute inset-0 bg-gradient-to-b from-navy-900/80 via-navy-900/92 to-navy-900/85"
         />
         <div ref={copyRef} style={{ opacity: 0, visibility: "hidden" }} className="shell relative z-10 text-center">
-          {eyebrow && <p className="eyebrow justify-center !text-brand">{eyebrow}</p>}
           <h2 className="mx-auto max-w-3xl text-3xl font-bold leading-tight md:text-5xl">
             {title}
           </h2>

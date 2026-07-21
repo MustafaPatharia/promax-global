@@ -49,7 +49,7 @@ export default function ServiceOverlay({
                   {it.text && <p className="mt-2.5 leading-relaxed text-slate-200">{it.text}</p>}
                   {it.href && (
                     <span className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-brand">
-                      Learn more <span aria-hidden className="transition group-hover:translate-x-1">→</span>
+                      Learn more
                     </span>
                   )}
                 </div>

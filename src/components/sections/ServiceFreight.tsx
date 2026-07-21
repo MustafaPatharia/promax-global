@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import SectionTitle from "@/components/SectionTitle";
 import Reveal from "@/components/anim/Reveal";
-import { Icons } from "@/components/Icons";
+import LineIcon, { type LineName } from "@/components/LineIcon";
 import { img } from "@/lib/images";
 import type { ServiceFreightBlock } from "./types";
 
@@ -37,7 +37,6 @@ export default function ServiceFreight({
         </div>
         <div className={`grid gap-6 ${cols}`}>
           {items.map((it, i) => {
-            const Icon = it.icon ? Icons[it.icon] : null;
             return (
               <Reveal key={it.title} variant="up" index={i % Number(columns)}>
                 <div className="group relative isolate flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200/70 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl">
@@ -54,9 +53,9 @@ export default function ServiceFreight({
                   )}
                   <div className="relative isolate flex flex-1 flex-col p-8">
                   {/* Ghost icon behind the corner */}
-                  {Icon && (
-                    <Icon
-                      aria-hidden
+                  {it.icon && (
+                    <LineIcon
+                      name={it.icon as LineName}
                       className="pointer-events-none absolute -right-3 top-2 -z-10 h-32 w-32 text-slate-100 transition duration-500 group-hover:-translate-x-2 group-hover:scale-105"
                     />
                   )}
@@ -84,7 +83,7 @@ export default function ServiceFreight({
                       href={it.href}
                       className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-brand"
                     >
-                      Learn more <span aria-hidden className="transition group-hover:translate-x-1">→</span>
+                      Learn more
                     </Link>
                   )}
                   {/* Brand bottom bar wipes in on hover */}

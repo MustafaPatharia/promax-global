@@ -113,10 +113,10 @@ export const pages: Record<string, PageContent & { metaDescription: string }> = 
         intro: "We structure partnerships that turn national priorities into deployable programs across trade, infrastructure, governance, and technology.",
         columns: 4,
         items: [
-          { image: "0665834b_photo-1558494949-ef010cbdcc31.jpg", icon: "globe", title: "Trade corridors" },
-          { image: "10c34884_photo-1454165804606-c3d57bc86b40.jpg", icon: "anchor", title: "Port operations" },
-          { image: "1318030e_photo-1494412574643-ff11b0a5c1c3.jpg", icon: "crane", title: "Industrial zones" },
-          { image: "23f9bc2f_photo-1509391366360-2e959784a276.jpg", icon: "layers", title: "Digital infrastructure" },
+          { image: "gallery-trade-corridors.jpg", icon: "globe", title: "Trade corridors" },
+          { image: "gallery-port-operations.jpg", icon: "anchor", title: "Port operations" },
+          { image: "gallery-industrial-zones.jpg", icon: "crane", title: "Industrial zones" },
+          { image: "gallery-digital-infrastructure.jpg", icon: "layers", title: "Digital infrastructure" },
         ],
       },
     ],
@@ -140,9 +140,9 @@ export const pages: Record<string, PageContent & { metaDescription: string }> = 
         columns: 3,
         items: [
           { icon: "briefcase", title: "Institutional credibility", text: "Billion-dollar group backing and government alignment." },
-          { icon: "layers", title: "8 mandated projects", text: "Government-backed investment rights, ~$1B each." },
-          { icon: "globe", title: "25+ countries", text: "Multi-country operations across emerging markets." },
-          { icon: "compass", title: "6 resilient portfolios", text: "Diversified across ports and logistics, skills and education, AI and fintech, trade hub, energy, and infrastructure." },
+          { icon: "layers", title: "Mandated projects", text: "Government-backed investment rights, ~$1B each." },
+          { icon: "globe", title: "Global presence", text: "Multi-country operations across emerging markets." },
+          { icon: "compass", title: "Resilient portfolios", text: "Diversified across ports and logistics, skills and education, AI and fintech, trade hub, energy, and infrastructure." },
           { icon: "bolt", title: "ESG-aligned", text: "Long-term value creation with sustainable infrastructure." },
         ],
       },
@@ -153,12 +153,12 @@ export const pages: Record<string, PageContent & { metaDescription: string }> = 
         intro: "Structured for institutional investors, sovereign wealth funds, private equity, and family offices.",
         columns: 3,
         items: [
-          { image: "705a5901_photo-1611974789855-9c2a0a7236a3.jpg", icon: "anchor", title: "Ports & terminals" },
-          { image: "878dc9be_photo-1586528116311-ad8dd3c8310d.jpg", icon: "layers", title: "Logistics hubs" },
-          { image: "9203de11_photo-1578575437130-527eed3abbec.jpg", icon: "crane", title: "Industrial & manufacturing" },
-          { image: "99d9424c_photo-1524178232363-1fb2b075b655.jpg", icon: "building", title: "Real estate" },
-          { image: "b807bc74_photo-1558494949-ef010cbdcc31.jpg", icon: "globe", title: "Food security" },
-          { image: "b769338c_photo-1454165804606-c3d57bc86b40.jpg", icon: "bolt", title: "Energy & resources" },
+          { image: "gallery-ports-terminals.jpg", icon: "anchor", title: "Ports & terminals" },
+          { image: "gallery-logistics-hubs.jpg", icon: "layers", title: "Logistics hubs" },
+          { image: "gallery-industrial-manufacturing.jpg", icon: "crane", title: "Industrial & manufacturing" },
+          { image: "gallery-real-estate.jpg", icon: "building", title: "Real estate" },
+          { image: "gallery-food-security.jpg", icon: "globe", title: "Food security" },
+          { image: "gallery-energy-resources.jpg", icon: "bolt", title: "Energy & resources" },
         ],
       },
     ],
@@ -479,7 +479,7 @@ export const pages: Record<string, PageContent & { metaDescription: string }> = 
       {
         type: "service-freight",
         eyebrow: "Programs",
-        heading: "Eight program areas",
+        heading: "Program areas",
         intro:
           "A tri-regional platform connecting India, the GCC, and Africa across skills, enterprise, finance, agriculture, and policy.",
         items: [
@@ -613,7 +613,7 @@ export const pages: Record<string, PageContent & { metaDescription: string }> = 
       {
         type: "service-freight",
         eyebrow: "Our Green Energy Portfolio",
-        heading: "Six delivery capabilities",
+        heading: "Delivery capabilities",
         items: [
           {
             icon: "bolt",
@@ -693,11 +693,11 @@ export const pages: Record<string, PageContent & { metaDescription: string }> = 
       {
         type: "service-freight",
         eyebrow: "Mandated Projects",
-        heading: "Eight strategic investment opportunities",
+        heading: "Strategic investment opportunities",
         items: [
           {
             icon: "anchor",
-            title: "1. Blue Port Project – Atlantic Ocean Fisheries Rights",
+            title: "Blue Port Project – Atlantic Ocean Fisheries Rights",
             text: "Exclusive rights to develop a Blue Port ecosystem with access to fisheries in the Atlantic Ocean. A high-growth opportunity aligned with global food security and export markets.",
             checklist: [
               "Sustainable fisheries operations",
@@ -708,7 +708,7 @@ export const pages: Record<string, PageContent & { metaDescription: string }> = 
           },
           {
             icon: "building",
-            title: "2. Dry Port Development Mandate – Burkina Faso",
+            title: "Dry Port Development Mandate – Burkina Faso",
             text: "Official mandate to develop a national dry port and logistics hub, strengthening West Africa's trade corridors and regional integration.",
             checklist: [
               "ICD & bonded warehousing",
@@ -719,7 +719,7 @@ export const pages: Record<string, PageContent & { metaDescription: string }> = 
           },
           {
             icon: "crane",
-            title: "3. Bulk / BreakBulk Port – Lumut, Malaysia",
+            title: "Bulk / BreakBulk Port – Lumut, Malaysia",
             text: "Co-development of a bulk and break-bulk terminal in a strategic Southeast Asian location. Ideal for serving minerals, agri-commodities, and industrial cargo markets.",
             checklist: [
               "Berths & port infrastructure ready",
@@ -730,7 +730,7 @@ export const pages: Record<string, PageContent & { metaDescription: string }> = 
           },
           {
             icon: "layers",
-            title: "4. Industrial Manufacturing Investments – Duqm, Oman",
+            title: "Industrial Manufacturing Investments – Duqm, Oman",
             text: "Opportunities to establish manufacturing units within our industrial park in SEZAD, supported by Duqm's tax incentives and global connectivity.",
             checklist: [
               "Light & Medium Industry manufacturing",
@@ -741,7 +741,7 @@ export const pages: Record<string, PageContent & { metaDescription: string }> = 
           },
           {
             icon: "briefcase",
-            title: "5. Freehold Real Estate Development – Duqm, Oman",
+            title: "Freehold Real Estate Development – Duqm, Oman",
             text: "Investment participation in freehold residential, commercial, and mixed-use developments, leveraging Duqm's rapid transformation into a major industrial and logistics hub.",
             checklist: [
               "Residential communities",
@@ -752,7 +752,7 @@ export const pages: Record<string, PageContent & { metaDescription: string }> = 
           },
           {
             icon: "compass",
-            title: "6. Trailer Manufacturing Plant – UAE (Global Brand Partnership)",
+            title: "Trailer Manufacturing Plant – UAE (Global Brand Partnership)",
             text: "Strategic partnership to establish a trailer manufacturing facility for a globally reputed brand, positioning investors in the GCC's fast-growing logistics equipment market.",
             checklist: [
               "Manufacturing line setup",
@@ -763,7 +763,7 @@ export const pages: Record<string, PageContent & { metaDescription: string }> = 
           },
           {
             icon: "globe",
-            title: "7. Smart City Development Project – United Arab Emirates",
+            title: "Smart City Development Project – United Arab Emirates",
             text: "A next-generation Smart City in the UAE integrating digital infrastructure, sustainable mobility, and intelligent urban systems — a flagship project aligned with the UAE's national digital transformation and sustainability vision.",
             checklist: [
               "Smart utilities & energy systems",
@@ -775,7 +775,7 @@ export const pages: Record<string, PageContent & { metaDescription: string }> = 
           },
           {
             icon: "bolt",
-            title: "8. Mining Rights & Natural Resource Development",
+            title: "Mining Rights & Natural Resource Development",
             text: "Access to mining rights in select high-value mineral regions — a strategic opportunity in a sector with strong global demand and long-term value potential.",
             checklist: [
               "Exploration & extraction",
