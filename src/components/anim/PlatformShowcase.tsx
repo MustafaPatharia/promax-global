@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Icons, type IconName } from "@/components/Icons";
+import { type IconName } from "@/components/Icons";
 import { img } from "@/lib/images";
 
 export type Platform = {
@@ -14,11 +14,11 @@ export type Platform = {
 /**
  * Strategic Business Platforms — premium investor-facing showcase.
  *
- * LAYOUT is lifted from the Transland template's `.single-our-service` block
- * (`_references/.../transland-html/assets/css/style.css`), which the rest of this
- * site's design system already comes from: a tall image `thumb`, a bottom-up
- * gradient wash over it, and a bordered `content` box pulled UP over the image
- * (`margin-top:-90px`) carrying the icon + title. Rebuilt here with brand tokens.
+ * LAYOUT (client, 2026-07-21): each card is a FULL-BLEED image with the text
+ * overlaid ON TOP over a bottom-up navy wash — never split into a half-image /
+ * half-navy box. This mirrors the HorizontalScroll portfolio panels and is the
+ * treatment to use for image cards everywhere on the site. Rebuilt with brand
+ * tokens; green glow + gold edges preserved.
  *
  * Content rule (client doc + meeting 00:19–00:24): the card shows ONLY heading +
  * "Learn More". Capability bullets are NOT on the card — Learn More reveals them
@@ -33,15 +33,21 @@ export type Platform = {
  * carries vertical padding — without it the hover lift + glow get sliced off.
  */
 
-const AUTOPLAY_MS = 5000;
+const AUTOPLAY_MS = 3200;
 
 export default function PlatformShowcase({
   platforms,
 }: {
   platforms: Platform[];
 }) {
+  const n = platforms.length;
   const [perView, setPerView] = useState(3);
-  const [page, setPage] = useState(0);
+  // INFINITE LOOP (client 2026-07-21): render three copies of the deck and keep
+  // the index in the MIDDLE copy [n, 2n). Stepping past either edge snaps back
+  // by one deck with animation OFF, so the wrap is invisible — after card 7 the
+  // first card follows with no empty slots, forever, in both directions.
+  const [index, setIndex] = useState(n);
+  const [animate, setAnimate] = useState(true);
   const [paused, setPaused] = useState(false);
   const [open, setOpen] = useState<number | null>(null);
   const detailRef = useRef<HTMLDivElement>(null);
@@ -56,28 +62,43 @@ export default function PlatformShowcase({
     return () => window.removeEventListener("resize", set);
   }, []);
 
-  const pages = Math.max(1, Math.ceil(platforms.length / perView));
-  // Derived, not an effect: when perView shrinks the page count, clamp during
-  // render rather than setState-ing in an effect (avoids a cascading render).
-  const current = Math.min(page, pages - 1);
+  const loop = [...platforms, ...platforms, ...platforms];
+  const cardW = 100 / perView;
 
-  const go = useCallback(
-    (dir: 1 | -1) => {
-      setPage((p) => (Math.min(p, pages - 1) + dir + pages) % pages);
+  const step = useCallback((dir: 1 | -1) => setIndex((i) => i + dir), []);
+
+  // auto-advance one card — respects reduced motion, hover/focus, open panel
+  useEffect(() => {
+    if (paused || open !== null) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const id = window.setInterval(() => step(1), AUTOPLAY_MS);
+    return () => window.clearInterval(id);
+  }, [paused, open, step]);
+
+  // after a wrap step lands on a clone deck, snap back into the middle band
+  // with animation disabled so the jump can't be seen. Guarded to the track's
+  // OWN transform transition — card hover/image transitions bubble here too.
+  const onTrackEnd = useCallback(
+    (e: React.TransitionEvent<HTMLDivElement>) => {
+      if (e.target !== e.currentTarget || e.propertyName !== "transform") return;
+      setIndex((i) => {
+        if (i >= 2 * n) { setAnimate(false); return i - n; }
+        if (i < n) { setAnimate(false); return i + n; }
+        return i;
+      });
     },
-    [pages],
+    [n],
   );
 
-  // auto-rotation — respects reduced motion, hover/focus, and an open detail panel
+  // re-enable the transition the frame after a silent snap
   useEffect(() => {
-    if (paused || open !== null || pages <= 1) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const id = window.setInterval(() => go(1), AUTOPLAY_MS);
-    return () => window.clearInterval(id);
-  }, [paused, open, pages, go]);
+    if (animate) return;
+    const id = requestAnimationFrame(() => setAnimate(true));
+    return () => cancelAnimationFrame(id);
+  }, [animate]);
 
-  const learnMore = useCallback((i: number) => {
-    setOpen((cur) => (cur === i ? null : i));
+  const learnMore = useCallback((original: number) => {
+    setOpen((cur) => (cur === original ? null : original));
     requestAnimationFrame(() => {
       detailRef.current?.scrollIntoView({
         behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
@@ -100,19 +121,22 @@ export default function PlatformShowcase({
       {/* viewport — py gives the hover lift + glow room inside the clip box */}
       <div className="overflow-hidden py-10">
         <div
-          className="flex transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
-          style={{ transform: `translate3d(-${current * 100}%, 0, 0)` }}
+          className={`flex ease-[cubic-bezier(0.22,1,0.36,1)] ${
+            animate ? "transition-transform duration-700" : ""
+          }`}
+          style={{ transform: `translate3d(-${index * cardW}%, 0, 0)` }}
+          onTransitionEnd={onTrackEnd}
         >
-          {platforms.map((p, i) => {
-            const Icon = Icons[p.icon];
-            const isOpen = open === i;
+          {loop.map((p, i) => {
+            const original = i % n;
+            const isOpen = open === original;
             return (
               <article
-                key={p.title}
+                key={i}
                 className="group shrink-0 px-3"
-                style={{ width: `${100 / perView}%` }}
+                style={{ width: `${cardW}%` }}
                 aria-roledescription="slide"
-                aria-label={`${i + 1} of ${platforms.length}: ${p.title}`}
+                aria-label={`${original + 1} of ${n}: ${p.title}`}
               >
                 {/* Wrapper exists so the running-border arc can live OUTSIDE the
                     card — the card is overflow-hidden and would clip it. */}
@@ -128,48 +152,37 @@ export default function PlatformShowcase({
                     />
                   )}
 
-                  {/* ONE bordered container wraps thumb + content. Splitting the
-                      border across two boxes (as the template does) left a visible
-                      hairline seam where the translucent content box met the image
-                      bottom — client flagged it. Single border, opaque content, and
-                      the image gradient resolving to the same navy = no seam. */}
+                  {/* FULL-BLEED image card (client, 2026-07-21): the image always
+                      fills the whole card and the text sits ON TOP of it over a
+                      bottom-up navy wash — never split into half-image / half-navy
+                      box. Same treatment as the HorizontalScroll portfolio panels
+                      below, applied consistently. Single border, green glow, gold
+                      edges preserved. */}
                   <div
-                    className={`relative flex h-full flex-col overflow-hidden rounded-2xl border bg-navy-900 transition-colors duration-500 ${
+                    className={`relative flex h-full min-h-[26rem] flex-col justify-end overflow-hidden rounded-2xl border bg-navy-900 transition-colors duration-500 ${
                       isOpen
-                        ? "border-gold/50 shadow-[0_24px_50px_-20px_rgba(58,163,40,0.55)]"
+                        ? "border-gold/60 shadow-[0_24px_50px_-20px_rgba(212,175,55,0.65)]"
                         : "border-white/12 group-hover:border-gold/45"
                     }`}
                   >
-                    {/* --- thumb: image + bottom-up navy wash (template .thumb::after) --- */}
-                    <div className="relative h-62.5 shrink-0">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src={img(p.image)}
-                        alt=""
-                        loading="lazy"
-                        className={`h-full w-full object-cover transition-transform duration-[1.2s] ease-out ${
-                          isOpen ? "scale-105" : "group-hover:scale-105"
-                        }`}
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-navy-900 via-navy-900/55 to-navy-900/5" />
-                    </div>
+                    {/* image fills the card */}
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={img(p.image)}
+                      alt=""
+                      loading="lazy"
+                      className={`absolute inset-0 h-full w-full object-cover transition-transform duration-[1.2s] ease-out ${
+                        isOpen ? "scale-105" : "group-hover:scale-105"
+                      }`}
+                    />
+                    {/* bottom-up navy wash — keeps overlay text legible while the
+                        image stays fully in view above it */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-navy-900 via-navy-900/75 to-navy-900/10" />
 
-                    {/* --- content: pulled UP over the thumb (template margin-top:-90px) --- */}
-                    <div className="relative -mt-[60px] flex min-h-[12.5rem] flex-1 flex-col bg-navy-900 px-7 pb-8">
-                      {/* Icon plate — dark ground + gold hairline + gold glyph. A solid
-                        green plate here read flat and loud (client, 2026-07-20); green
-                        now survives only as the glow cast beneath it. */}
-                      <span
-                        className={`grid h-16 w-16 place-items-center rounded-2xl bg-gradient-to-br from-navy-800 to-navy-900 text-gold shadow-[0_16px_34px_-12px_rgba(58,163,40,0.75)] ring-1 ring-gold/55 transition-transform duration-500 ${
-                          isOpen
-                            ? "-translate-y-8 scale-105"
-                            : "-translate-y-8 group-hover:scale-105"
-                        }`}
-                      >
-                        <Icon className="h-8 w-8" />
-                      </span>
-
-                      <h3 className="-mt-4 font-display text-[1.45rem] font-bold leading-[1.22] tracking-tight text-white">
+                    {/* --- content: overlaid on the image, anchored to the bottom --- */}
+                    {/* Icons removed (client 2026-07-21): title leads the card. */}
+                    <div className="relative flex flex-col p-7">
+                      <h3 className="font-display text-[1.45rem] font-bold leading-[1.22] tracking-tight text-white">
                         {p.title}
                       </h3>
 
@@ -180,10 +193,10 @@ export default function PlatformShowcase({
 
                       <button
                         type="button"
-                        onClick={() => learnMore(i)}
+                        onClick={() => learnMore(original)}
                         aria-expanded={isOpen}
                         aria-controls="platform-detail"
-                        className="group/btn mt-auto inline-flex w-fit items-center gap-2.5 pt-7 font-display text-[0.78rem] font-bold uppercase tracking-[0.18em] text-white transition-colors hover:text-gold"
+                        className="group/btn mt-6 inline-flex w-fit items-center gap-2.5 font-display text-[0.78rem] font-bold uppercase tracking-[0.18em] text-white transition-colors hover:text-gold"
                       >
                         {isOpen ? "Close" : "Learn More"}
                         <span
@@ -206,48 +219,23 @@ export default function PlatformShowcase({
         </div>
       </div>
 
-      {/* forced rotation — dots + arrows */}
-      {pages > 1 && (
-        <div className="mt-4 flex items-center justify-between gap-6 px-3">
-          <div
-            className="flex gap-2"
-            role="tablist"
-            aria-label="Platform pages"
-          >
-            {Array.from({ length: pages }).map((_, i) => (
-              <button
-                key={i}
-                role="tab"
-                aria-selected={i === current}
-                aria-label={`Go to platform page ${i + 1}`}
-                onClick={() => setPage(i)}
-                className={`h-1.5 rounded-full transition-all duration-500 ${
-                  i === current
-                    ? "gold-fill w-10"
-                    : "w-4 bg-white/25 hover:bg-white/40"
-                }`}
-              />
-            ))}
-          </div>
-
-          <div className="flex gap-3">
-            <button
-              onClick={() => go(-1)}
-              aria-label="Previous platforms"
-              className="grid h-12 w-12 place-items-center rounded-full border border-white/20 text-white transition hover:border-transparent hover:bg-brand hover:shadow-[0_14px_30px_-12px_rgba(58,163,40,0.9)]"
-            >
-              <span aria-hidden>←</span>
-            </button>
-            <button
-              onClick={() => go(1)}
-              aria-label="Next platforms"
-              className="grid h-12 w-12 place-items-center rounded-full border border-white/20 text-white transition hover:border-transparent hover:bg-brand hover:shadow-[0_14px_30px_-12px_rgba(58,163,40,0.9)]"
-            >
-              <span aria-hidden>→</span>
-            </button>
-          </div>
-        </div>
-      )}
+      {/* infinite loop — manual prev/next (no page dots; the deck never ends) */}
+      <div className="mt-4 flex items-center justify-end gap-3 px-3">
+        <button
+          onClick={() => step(-1)}
+          aria-label="Previous platform"
+          className="grid h-12 w-12 place-items-center rounded-full border border-white/20 text-white transition hover:border-transparent hover:bg-brand hover:shadow-[0_14px_30px_-12px_rgba(58,163,40,0.9)]"
+        >
+          <span aria-hidden>←</span>
+        </button>
+        <button
+          onClick={() => step(1)}
+          aria-label="Next platform"
+          className="grid h-12 w-12 place-items-center rounded-full border border-white/20 text-white transition hover:border-transparent hover:bg-brand hover:shadow-[0_14px_30px_-12px_rgba(58,163,40,0.9)]"
+        >
+          <span aria-hidden>→</span>
+        </button>
+      </div>
 
       {/* ---- detail panel: bullets live here, not on the cards ---- */}
       <div
@@ -264,21 +252,10 @@ export default function PlatformShowcase({
             <div className="gold-edge rounded-[1.5rem]">
               <div className="relative overflow-hidden rounded-[calc(1.5rem-1px)] p-8 md:p-12">
                 <div className="flex flex-wrap items-end justify-between gap-6">
-                  <div className="flex items-start gap-5">
-                    <span className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-navy-800 to-navy-900 text-gold shadow-[0_16px_34px_-12px_rgba(58,163,40,0.75)] ring-1 ring-gold/55">
-                      {(() => {
-                        const Icon = Icons[active.icon];
-                        return <Icon className="h-8 w-8" />;
-                      })()}
-                    </span>
-                    <div>
-                      <p className="gold-text font-display text-xs font-bold uppercase tracking-[0.3em]">
-                        Platform {String((open ?? 0) + 1).padStart(2, "0")}
-                      </p>
-                      <h3 className="mt-2 font-display text-3xl font-bold tracking-tight text-white md:text-[2.4rem]">
-                        {active.title}
-                      </h3>
-                    </div>
+                  <div>
+                    <h3 className="font-display text-3xl font-bold tracking-tight text-white md:text-[2.4rem]">
+                      {active.title}
+                    </h3>
                   </div>
                   <button
                     type="button"
@@ -298,11 +275,11 @@ export default function PlatformShowcase({
                     >
                       <span
                         aria-hidden
-                        className="gold-text font-display text-xs font-bold tabular-nums"
+                        className="gold-text font-display text-lg font-bold tabular-nums md:text-xl"
                       >
                         {String(i + 1).padStart(2, "0")}
                       </span>
-                      <span className="text-[0.95rem] leading-snug text-slate-200 transition-colors duration-300 group-hover/pt:text-white">
+                      <span className="text-[1.3rem] leading-snug text-slate-200 transition-colors duration-300 group-hover/pt:text-white">
                         {pt}
                       </span>
                     </li>

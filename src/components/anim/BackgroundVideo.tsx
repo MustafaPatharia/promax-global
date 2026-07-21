@@ -16,12 +16,27 @@ export default function BackgroundVideo({
   className,
   overlay = "bg-navy-900/70",
   interactive = true,
+  objectPosition = "center",
+  zoom = 1,
+  shiftX = "0%",
 }: {
   src: string;
   poster: string;
   className?: string;
   overlay?: string;
   interactive?: boolean;
+  /** CSS object-position for the cover-cropped frame. */
+  objectPosition?: string;
+  /**
+   * Scale the video up to create overflow room so it can be re-framed
+   * horizontally without exposing a gap (e.g. 1.3). Default 1 = no zoom.
+   */
+  zoom?: number;
+  /**
+   * Slide the (zoomed) video horizontally. Positive moves a centred subject
+   * RIGHT. Keep |shiftX| under the overflow the zoom creates (~(zoom-1)/2).
+   */
+  shiftX?: string;
 }) {
   // cursor-parallax (spring-smoothed, small px drift)
   const x = useSpring(0, { stiffness: 60, damping: 20 });
@@ -48,6 +63,10 @@ export default function BackgroundVideo({
           loop
           playsInline
           preload="metadata"
+          style={{
+            objectPosition,
+            transform: `scale(${zoom}) translateX(${shiftX})`,
+          }}
           className="h-full w-full object-cover"
         />
       </motion.div>

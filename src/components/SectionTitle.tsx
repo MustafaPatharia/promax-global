@@ -18,8 +18,12 @@ export default function SectionTitle({
 }: {
   /** Big faint watermark word behind the heading (e.g. "Service"). */
   ghost: string;
-  /** Small orange label with the rule (e.g. "Featured Service"). */
-  kicker: string;
+  /**
+   * Small orange label with the rule (e.g. "Featured Service").
+   * Optional: the client removed all kicker/eyebrow text site-wide
+   * (2026-07-21), so omit it and nothing renders in its place.
+   */
+  kicker?: string;
   /** Heading; wrap the accent phrase in <span> for the orange second colour. */
   heading: React.ReactNode;
   /** "dark" = white stroke/heading for navy sections. */
@@ -32,9 +36,11 @@ export default function SectionTitle({
       <Reveal variant="up">
         <span className="ghost" aria-hidden>{ghost}</span>
       </Reveal>
-      <Reveal variant="up" index={1}>
-        <p className="kicker">{kicker}</p>
-      </Reveal>
+      {kicker && (
+        <Reveal variant="up" index={1}>
+          <p className="kicker">{kicker}</p>
+        </Reveal>
+      )}
       <Reveal variant="up" index={2}>
         <h2>{heading}</h2>
       </Reveal>

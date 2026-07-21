@@ -7,7 +7,6 @@ import Counter from "@/components/anim/Counter";
 import Marquee from "@/components/anim/Marquee";
 import KineticHeading from "@/components/anim/KineticHeading";
 import SectionTitle from "@/components/SectionTitle";
-import HeroParticles from "@/components/anim/hero/HeroParticles";
 import BackgroundVideo from "@/components/anim/BackgroundVideo";
 import ParallaxMedia from "@/components/anim/ParallaxMedia";
 import ScrubBand from "@/components/anim/ScrubBand";
@@ -15,74 +14,83 @@ import VideoGrid, { type Tile } from "@/components/anim/VideoGrid";
 import HorizontalScroll, { type Panel } from "@/components/anim/HorizontalScroll";
 import PlatformShowcase, { type Platform } from "@/components/anim/PlatformShowcase";
 import { video, poster } from "@/lib/videos";
-import { Icons, type IconName } from "@/components/Icons";
 
-/** Strategic Business Platforms — 6 platforms, each with its bullet capabilities (verbatim). */
+/**
+ * Strategic Business Platforms — "Integrated National Development Capabilities".
+ * 7 cards, each heading + 5 sub-points, VERBATIM from the client content doc
+ * (§5.3). Card = heading + Learn More; the 5 points reveal in the panel below.
+ */
 const platforms: Platform[] = [
   {
-    icon: "building",
-    image: "c820e038_Civil_Infrastructure_Development.png",
-    title: "Infrastructure & Economic Cities",
+    icon: "layers",
+    image: "6c067065_Bulk_Ports_Management.png",
+    title: "Mining & Critical Minerals",
     points: [
-      "Ports & Marine Infrastructure",
-      "Industrial & Manufacturing Zones",
-      "Special Economic Zones (SEZ)",
-      "Logistics & Distribution Hubs",
-      "Transport & Mobility Corridors",
-      "Smart Urban Infrastructure",
-      "Technology & Innovation Cities",
-      "Housing & Community Infrastructure",
+      "Mining Logistics",
+      "Mineral Export Terminals",
+      "Bulk Handling Infrastructure",
+      "Critical Mineral Supply Chains",
+      "Commodity Gateway Development",
     ],
   },
   {
-    icon: "layers",
-    image: "40b2f196_Strategic_Projects.jpg",
-    title: "Natural Resources",
+    icon: "building",
+    image: "c820e038_Civil_Infrastructure_Development.png",
+    title: "Industrial Zones & Economic Corridors",
     points: [
-      "Mining & Mineral Development",
-      "Gold & Precious Metals",
-      "Critical Minerals & Energy Transition Materials",
-      "Commodity Trading & Global Procurement",
-      "Food Security Systems",
-      "Agriculture & AgriInfrastructure",
-      "Fisheries & Marine Resources",
+      "Industrial Zones",
+      "Special Economic Zones",
+      "Logistics Parks",
+      "Trade Corridors",
+      "Port-Linked Industrial Development",
+    ],
+  },
+  {
+    icon: "bolt",
+    image: "3065eb1c_Smart_Green_Energy.jpg",
+    title: "Energy & Utilities",
+    points: [
+      "Port Utilities",
+      "Power Infrastructure",
+      "Renewable Energy Integration",
+      "Shore Power",
+      "Energy-Efficient Port Systems",
     ],
   },
   {
     icon: "chip",
     image: "4cae52b3_Digital_Infrastructure.png",
-    title: "Digital Economy",
+    title: "Digital Infrastructure",
     points: [
-      "Artificial Intelligence & Automation",
-      "Fintech & Digital Finance",
-      "Tokenization & Blockchain Systems",
-      "Digital Assets & Custody Infrastructure",
-      "Cybersecurity & Digital Protection",
-      "Smart Government & Public Digital Services",
+      "Artificial Intelligence",
+      "Digital Trade Platforms",
+      "Data Infrastructure",
+      "Smart Government Integration",
+      "Secure Digital Ecosystems",
     ],
   },
   {
-    icon: "bolt",
-    image: "150e6b22_sustainability_green.jpg",
-    title: "Energy Transition",
+    icon: "truck",
+    image: "345d5917_Trade_Hub_Food_Security.jpg",
+    title: "Food Security & Agri-Logistics",
     points: [
-      "Renewable Energy Systems",
-      "Utilities & Clean Infrastructure",
-      "Smart Grid & Digital Energy",
-      "Hydrogen & Future Fuels",
-      "Carbon Management & CCUS",
+      "Food Terminals",
+      "Cold-Chain Infrastructure",
+      "Agri-Logistics",
+      "Storage and Distribution",
+      "Import and Export Platforms",
     ],
   },
   {
     icon: "growth",
     image: "87eaa230_Multi_Dimensional_Portfolio.jpeg",
-    title: "Investment & Capital",
+    title: "Investment & Project Structuring",
     points: [
-      "PPP Structuring & Concessions",
-      "Project Finance & Bankability",
-      "Investment Structuring & Capital Architecture",
-      "Institutional Capital & CoInvestment Platforms",
-      "Asset Development & Monetization",
+      "Public-Private Partnerships",
+      "Project Finance",
+      "Investment Structuring",
+      "Institutional Capital",
+      "Strategic Partner Development",
     ],
   },
   {
@@ -90,18 +98,26 @@ const platforms: Platform[] = [
     image: "0b46d0da_training_change.jpg",
     title: "National Capability Development",
     points: [
-      "Education & Workforce Development",
-      "Women & Youth Empowerment Programs",
-      "Innovation Ecosystems & R&D",
-      "Government Advisory & Public Sector Transformation",
+      "Port Training and Education",
+      "Technical Capability Building",
+      "Workforce Development",
+      "Knowledge Transfer",
+      "Institutional Development",
     ],
   },
 ];
 
-/** Icon per headline stat (funfact row). */
-/** Matched to `site.stats` in order: multi-jurisdiction ops · strategic platforms
- *  · core portfolios · institutional network. */
-const statIcon: IconName[] = ["globe", "layers", "briefcase", "growth"];
+/**
+ * Animated Statistics (§5.4) — the numeric stats, single row, VERBATIM from the
+ * client doc. Client 2026-07-21: removed the "$8B" figure, the icons, and the
+ * qualitative "UAE Headquarters" tile; bigger sizing, count-up on scroll.
+ */
+const statsRow: { value: string; label: string; sub: string }[] = [
+  { value: "25+", label: "Countries & Jurisdictions", sub: "International Reach" },
+  { value: "8", label: "Integrated Port Capabilities", sub: "End-to-End Solutions" },
+  { value: "5", label: "Core Service Areas", sub: "Specialized Port Expertise" },
+  { value: "50+", label: "Institutional Relationships", sub: "Global Partner Network" },
+];
 
 /** Real corporate leadership — real headshots where we have them, else monogram. */
 const leadership: { name: string; role: string; note: string; photo?: string }[] = [
@@ -178,17 +194,23 @@ const panels: Panel[] = verticals.map((v) => ({
 export default function Home() {
   return (
     <>
-      {/* ---------- Hero (WebGL particle globe) ---------- */}
-      <section className="relative flex min-h-screen items-center overflow-hidden bg-navy-900 text-white">
-        <HeroParticles />
-        {/* Globe sits LEFT (client 00:08:16 — "move the globe to the left side of
-            the content"), so the copy occupies the right half from lg up. Below lg
-            it goes full width and the globe reads as a backdrop. */}
+      {/* ---------- Hero (cinematic loop video — client-specified) ---------- */}
+      {/* Client 2026-07-21: replace the WebGL globe with the supplied hero clip
+          (digital-globe-iot-network-loop). No kicker (site-wide no-eyebrow rule). */}
+      {/* No opaque bg on the section: BackgroundVideo sits at -z-10 and an opaque
+          section background would paint over it (the poster + navy overlay below
+          provide the dark backdrop / fallback). */}
+      <section className="relative flex min-h-screen items-center overflow-hidden text-white">
+        <BackgroundVideo
+          src={video("digital-globe-iot-network-loop.mp4")}
+          poster={poster("digital-globe-iot-network-loop")}
+          overlay="bg-navy-900/70"
+          zoom={1.35}
+          shiftX="12%"
+        />
+        {/* Copy occupies the right half from lg up; below lg it goes full width
+            and the video reads as a backdrop. */}
         <div className="shell relative z-10 py-28 lg:ms-auto lg:w-[58%] lg:ps-4">
-          <Reveal variant="blur">
-            <p className="eyebrow !text-brand">Abu Dhabi Economic Gateway</p>
-          </Reveal>
-
           <KineticHeading
             text="From UAE to the World"
             highlight={["World"]}
@@ -196,30 +218,39 @@ export default function Home() {
           />
 
           <Reveal variant="up" index={3}>
-            <p className="mt-7 max-w-2xl text-lg leading-relaxed text-slate-200">
-              We support governments, regulators, Port Authorities, Energy Transition stakeholders
-              and industry leaders with integrated, future-ready capabilities that strengthen
-              national competitiveness and long-term economic resilience
+            <p className="mt-6 max-w-2xl font-display text-xl font-semibold text-white md:text-2xl">
+              Building the Future of Ports. Enabling National Prosperity.
+            </p>
+            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-200">
+              Promax Global, one of the specialized subsidiaries of Promax United Group, delivers
+              world-class integrated solutions across the full port ecosystem. From port strategy and
+              infrastructure development to terminal operations, smart port technologies, logistics
+              integration, and strategic equipment, we partner with governments, port authorities,
+              investors, and terminal operators to develop efficient, resilient, and future-ready ports
+              that drive global trade and sustainable economic growth.
             </p>
           </Reveal>
 
           <Reveal variant="up" index={4}>
             <div className="mt-9 flex flex-wrap gap-3">
-              <Link href="/portfolio" className="btn btn-primary">
-                Explore Our Platforms <span aria-hidden>→</span>
+              {/* Client 2026-07-21: drop "Work With Us"; keep "Invest With Us"
+                  with NO arrow (per utility-bar note). */}
+              <Link href="/invest-with-us" className="btn btn-primary">
+                Invest With Us
               </Link>
-              <Link href="/portfolio/infrastructure-asset-holdings" className="btn btn-ghost-light">
-                Global Projects
+              <Link href="/portfolio" className="btn btn-ghost-light">
+                Explore Our Capabilities
               </Link>
             </div>
           </Reveal>
 
-          {/* in-hero counters (motion-plan: count up once hero settles) */}
+          {/* in-hero counters — same count-up as the stats band (IntersectionObserver;
+              fires on load since the hero is in view). */}
           <dl className="mt-14 grid max-w-3xl grid-cols-2 gap-6 border-t border-white/10 pt-8 sm:grid-cols-4">
             {site.stats.map((s, i) => (
               <Reveal key={s.label} variant="up" index={5 + i} as="div">
                 <dt className="font-display text-4xl font-extrabold text-brand">
-                  <Counter value={s.value} immediate />
+                  <Counter value={s.value} />
                 </dt>
                 <dd className="mt-1 text-xs leading-snug text-slate-300">{s.label}</dd>
               </Reveal>
@@ -248,8 +279,8 @@ export default function Home() {
           <Reveal variant="left">
             <div className="relative">
               <ParallaxMedia
-                src={video("shipping-port-aerial-panorama.mp4")}
-                poster={poster("shipping-port-aerial-panorama")}
+                src={video("abu-dhabi-ports.mp4")}
+                poster={poster("abu-dhabi-ports")}
                 className="aspect-[4/5] rounded-3xl shadow-[var(--shadow-card-hover)]"
               />
               <div className="pointer-events-none absolute inset-0 rounded-3xl ring-1 ring-inset ring-navy/10" />
@@ -259,39 +290,27 @@ export default function Home() {
           <div className="lg:ps-4">
             <SectionTitle
               ghost="Overview"
-              kicker="Proudly Headquartered in Abu Dhabi"
               heading={<>Corporate <span>Overview</span></>}
             />
             <Reveal variant="up" index={0}>
               <p className="mt-4 font-display text-lg font-semibold text-navy">
-                Inspired by the UAE. Connected to the World.
+                Building the Future of Ports. Enabling National Prosperity
               </p>
             </Reveal>
             <div className="mt-6 space-y-4 rounded-2xl bg-slate-50 p-6 md:p-8">
               <Reveal variant="up" index={1}>
                 <p className="leading-relaxed text-slate-600">
-                  Promax Global is proudly headquartered in Abu Dhabi, United Arab Emirates—a nation
-                  internationally recognized for visionary leadership, economic resilience,
-                  world-class infrastructure, and its role as a global bridge connecting East and
-                  West.
+                  From Abu Dhabi to the world, Promax Global delivers world-class integrated solutions across the full port ecosystem. As one of the specialized subsidiaries of Promax United Group, the company brings together port development, management, advisory, infrastructure, terminal operations, logistics integration, smart technologies, and strategic equipment under one integrated platform.
                 </p>
               </Reveal>
               <Reveal variant="up" index={2}>
                 <p className="leading-relaxed text-slate-600">
-                  As the international strategic investment and development platform of the Promax
-                  United Group, Promax Global leverages Abu Dhabi&rsquo;s strategic position to
-                  originate, structure, and deliver transformative projects across port management
-                  and development, strategic infrastructure, logistics, energy, digital economy,
-                  commodities, and sustainable development.
+                  Through international expertise, operational excellence, and strategic partnerships, Promax Global enables governments, port authorities, investors, and operators to develop efficient, resilient, and future-ready ports that advance global trade and create lasting economic value.
                 </p>
               </Reveal>
               <Reveal variant="up" index={3}>
                 <p className="leading-relaxed text-slate-600">
-                  Inspired by the UAE&rsquo;s commitment to innovation, international cooperation, and
-                  long-term prosperity, Promax Global partners with governments, institutional
-                  investors, port authorities, and global industry leaders to develop integrated
-                  platforms that generate sustainable economic growth and lasting national impact
-                  across the GCC and international markets.
+                  While integrated port development, management, and advisory remain our primary specialization, Promax Global extends its value through Integrated National Development Capabilities that connect ports with logistics, industrial growth, energy, digital infrastructure, investment, and trade—creating resilient economic ecosystems that maximize long-term national value.
                 </p>
               </Reveal>
             </div>
@@ -312,13 +331,13 @@ export default function Home() {
                   <p className="font-display font-bold leading-tight text-navy">H.E. Louai Mohamed Ali</p>
                   <span className="text-sm text-slate-500">Chairman</span>
                 </div>
-                <span className="signature" aria-hidden>Louai Ali</span>
+                {/* <span className="signature" aria-hidden>Louai Ali</span> */}
               </div>
             </Reveal>
 
             <Reveal variant="up" index={3}>
-              <Link href="/about" className="btn btn-navy mt-8">
-                About Promax Global <span aria-hidden>→</span>
+              <Link href="/portfolio" className="btn btn-navy mt-8">
+                Explore Our Capabilities <span aria-hidden>→</span>
               </Link>
             </Reveal>
           </div>
@@ -333,7 +352,6 @@ export default function Home() {
             <SectionTitle
               tone="dark"
               ghost="Platforms"
-              kicker="What We Build"
               heading={<>Strategic Business <span>Platforms</span></>}
             />
           </div>
@@ -350,37 +368,21 @@ export default function Home() {
           poster={poster("world-map-grid-motion-bg")}
           overlay="bg-navy/88"
         />
-        <div className="shell relative py-16 md:py-20">
-          {/* Transland mask-outline: giant textured figure over the dot-map */}
-          <div className="mb-12 text-center md:mb-16">
-            <Reveal variant="scale">
-              <p className="mask-number">$8B</p>
-            </Reveal>
-            <Reveal variant="up" index={1}>
-              <p className="mt-2 text-sm font-semibold uppercase tracking-widest text-slate-300">
-                In mandated flagship projects across four continents
-              </p>
-            </Reveal>
-          </div>
-          <dl className="grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-4">
-            {site.stats.map((s, i) => {
-              const Icon = Icons[statIcon[i]];
-              return (
-                <Reveal key={s.label} variant="scale" index={i}>
-                  <div className="flex flex-col items-center gap-3 text-center sm:flex-row sm:items-start sm:gap-4 sm:text-left">
-                    <span className="grid h-14 w-14 shrink-0 place-items-center rounded-xl bg-brand/15 text-brand">
-                      <Icon className="h-7 w-7" />
-                    </span>
-                    <div>
-                      <dt className="font-display text-5xl font-extrabold text-brand">
-                        <Counter value={s.value} />
-                      </dt>
-                      <dd className="mt-1 text-sm leading-snug text-slate-300">{s.label}</dd>
-                    </div>
-                  </div>
-                </Reveal>
-              );
-            })}
+        <div className="shell relative py-16 md:py-24">
+          <dl className="grid grid-cols-2 gap-x-8 gap-y-12 md:grid-cols-4 md:gap-x-6">
+            {statsRow.map((s, i) => (
+              <Reveal key={s.label} variant="scale" index={i % 4}>
+                <div className="flex h-full flex-col items-center justify-end gap-2 text-center">
+                  <dt className="font-display text-6xl font-extrabold leading-none text-brand md:text-7xl">
+                    <Counter value={s.value} />
+                  </dt>
+                  <dd className="font-display text-lg font-bold leading-snug text-white md:text-xl">
+                    {s.label}
+                  </dd>
+                  <dd className="text-xs uppercase tracking-widest text-slate-300">{s.sub}</dd>
+                </div>
+              </Reveal>
+            ))}
           </dl>
         </div>
       </section>
@@ -404,7 +406,6 @@ export default function Home() {
           <div>
             <SectionTitle
               ghost="Reach"
-              kicker="Global Reach"
               heading={<>One UAE hub, four <span>continents</span></>}
             />
             <Reveal variant="right" index={2}>
@@ -428,12 +429,40 @@ export default function Home() {
       </section>
 
       {/* ---------- Cinematic scroll-scrub band (scroll drives the footage) ---------- */}
+      {/* §5.5 "After Strategic Platform" — full client copy, carried by the
+          cinematic scrub band (client 2026-07-21). */}
       <ScrubBand
         src={video("container-port-night-topdown-aerial.mp4")}
         poster={poster("container-port-night-topdown-aerial")}
-        eyebrow="Ports That Never Sleep"
-        title={<>Moving trade from the <span className="text-brand">quay to the cloud</span></>}
-        text="Round-the-clock terminal operations, digital-twin oversight, and connected supply chains — engineered for uptime, safety, and long-horizon value. Scroll to move through the night shift."
+        height="220vh"
+        title={<>From Abu Dhabi. Connecting <span className="text-brand">Global Trade.</span></>}
+        subtitle="Inspired by the UAE. Connecting Ports to the World."
+        text={
+          <>
+            <p>
+              Headquartered in Abu Dhabi, United Arab Emirates, Promax Global is one of the
+              specialized subsidiaries of Promax United Group and a leading port development,
+              management, and advisory company. Positioned at the crossroads of global trade, the
+              company leverages the UAE&rsquo;s strategic location, world-class infrastructure, and
+              maritime leadership to deliver integrated end-to-end solutions across the full port
+              ecosystem, supported by multidisciplinary capabilities that enable sustainable
+              national infrastructure and economic development.
+            </p>
+            <p>
+              From port strategy and master planning to infrastructure development, terminal
+              operations, smart port technologies, logistics integration, and long-term port asset
+              management, Promax Global partners with governments, port authorities, investors, and
+              terminal operators to develop efficient, resilient, and future-ready ports that
+              strengthen global trade connectivity and support sustainable economic growth.
+            </p>
+            <p>
+              Inspired by the UAE&rsquo;s vision for innovation, connectivity, and economic
+              leadership, Promax Global is committed to delivering operational excellence and
+              world-class port solutions that create long-term value for clients, partners, and the
+              communities they serve.
+            </p>
+          </>
+        }
       />
 
       {/* ---------- Sectors in motion (hover-to-play · click to expand) ---------- */}
@@ -443,7 +472,6 @@ export default function Home() {
             <SectionTitle
               tone="dark"
               ghost="Sectors"
-              kicker="Real Assets"
               heading={<>Real assets, <span>in motion</span></>}
             />
             <Reveal variant="up" index={3}>
@@ -464,12 +492,11 @@ export default function Home() {
           <div className="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <SectionTitle
               ghost="Portfolio"
-              kicker="Mandated Portfolio"
               heading={<>8 flagship projects, <span>one strategic portfolio</span></>}
               className="max-w-2xl"
             />
             <Reveal variant="up" index={2}>
-              <Link href="/portfolio/infrastructure-asset-holdings" className="btn btn-outline shrink-0 text-navy">
+              <Link href="/projects" className="btn btn-outline shrink-0 text-navy">
                 View all projects <span aria-hidden>→</span>
               </Link>
             </Reveal>
@@ -495,7 +522,6 @@ export default function Home() {
             <SectionTitle
               align="center"
               ghost="Team"
-              kicker="Corporate Leadership"
               heading={<>Structured oversight, <span>global execution</span></>}
             />
           </div>

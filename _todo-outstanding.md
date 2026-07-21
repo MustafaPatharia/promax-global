@@ -18,34 +18,35 @@
 > several items previously listed as blocked. Remaining blockers below are ones the .docx
 > genuinely does not contain — verified by reading `word/media/` + the paragraph context map.
 
-| # | Item | Needed for |
-|---|------|-----------|
-| ~~C1~~ | ~~Arabic logo~~ | ✅ **FOUND** — `image5.jpeg` (بروماكس جلوبال). English marks: `image4.jpeg` (dark-on-light), `image17.jpeg` (footer) |
-| C2 | **15 partner logos** — ⚠️ **NOT in the .docx.** Para 152–153 gives the *names only*, as text: Promax Global, Promax United, Trot Global, Youth Chamber of Commerce, Plambeck, Promax Enjoy, Trot Solutions, Solveeasy, Promax Digital, Trot Holdings, Abu Dhabi International Factory, Promax Investments, Promax Easypay, Goldwin Mines, Starboard Ports | Above-footer strip (§2.2). Still needed as image files |
-| C3 | **Abu Dhabi skyline drone footage** | Corporate Overview AD → Africa → Europe → Global (00:13:05). Using a stand-in clip meanwhile; client to source from Unsplash/Pexels |
-| ~~C4~~ | ~~Management Services description text~~ | ✅ **NOT BLOCKED — it was in the doc all along** (paras 419–421) and is already on the site verbatim. The meeting action item at 00:46:11 was superseded by the doc |
-| C5 | **Strategic Ventures — 12 box descriptions** | ≥100 chars each, per doc |
-| C6 | **Chairman's Message** — the doc itself says the photo is interim: *"H.E Loui Mohammed Ali High resolution Image will be shared. Meanwhile use the option given"* (para 186). Interim photo = `image14.png`. **Two scripts (Arabic + English) still outstanding** (para 188) | About page. Layout is specified: picture LEFT, scripts RIGHT |
-| C7 | **Insights content** | 8 categories defined, zero items |
-| C8 | **Our Ecosystem partner names** | 6 categories (para 280–285), no names. Doc: *"avoid using logos randomly"* |
-| ~~C9~~ | ~~Abu Dhabi Economic Gateway / LEGACY artwork~~ | ✅ **FOUND** — `image28.jpeg`, the "Global Connectivity / Abu Dhabi Economic Gateway" board. Doc: *"use similar closest template and retain all the content as it is"* |
-| C10 | **About-page stats 27/18/9/36** vs Home 25+/6/6/50+ | Doc contradicts itself; currently using Home numbers |
-| C11 | ⚠️ **Rights check** — `image30.jpeg` is a port photo with visible **Adani** branding on the cranes. Third-party mark; confirm before publishing or swap | Any portfolio/ports section |
+| #      | Item                                                                                                                                                                                                                                                                                                                                                      | Needed for                                                                                                                                                             |
+| ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ~~C1~~ | ~~Arabic logo~~                                                                                                                                                                                                                                                                                                                                           | ✅ **FOUND** — `image5.jpeg` (بروماكس جلوبال). English marks: `image4.jpeg` (dark-on-light), `image17.jpeg` (footer)                                                   |
+| C2     | **15 partner logos** — ⚠️ **NOT in the .docx.** Para 152–153 gives the _names only_, as text: Promax Global, Promax United, Trot Global, Youth Chamber of Commerce, Plambeck, Promax Enjoy, Trot Solutions, Solveeasy, Promax Digital, Trot Holdings, Abu Dhabi International Factory, Promax Investments, Promax Easypay, Goldwin Mines, Starboard Ports | Above-footer strip (§2.2). Still needed as image files                                                                                                                 |
+| C3     | **Abu Dhabi skyline drone footage**                                                                                                                                                                                                                                                                                                                       | Corporate Overview AD → Africa → Europe → Global (00:13:05). Using a stand-in clip meanwhile; client to source from Unsplash/Pexels                                    |
+| ~~C4~~ | ~~Management Services description text~~                                                                                                                                                                                                                                                                                                                  | ✅ **NOT BLOCKED — it was in the doc all along** (paras 419–421) and is already on the site verbatim. The meeting action item at 00:46:11 was superseded by the doc    |
+| C5     | **Strategic Projects — 12 box descriptions**                                                                                                                                                                                                                                                                                                              | ≥100 chars each, per doc                                                                                                                                               |
+| C6     | **Chairman's Message** — the doc itself says the photo is interim: _"H.E Loui Mohammed Ali High resolution Image will be shared. Meanwhile use the option given"_ (para 186). Interim photo = `image14.png`. **Two scripts (Arabic + English) still outstanding** (para 188)                                                                              | About page. Layout is specified: picture LEFT, scripts RIGHT                                                                                                           |
+| C7     | **Insights content**                                                                                                                                                                                                                                                                                                                                      | 8 categories defined, zero items                                                                                                                                       |
+| C8     | **Our Ecosystem partner names**                                                                                                                                                                                                                                                                                                                           | 6 categories (para 280–285), no names. Doc: _"avoid using logos randomly"_                                                                                             |
+| ~~C9~~ | ~~Abu Dhabi Economic Gateway / LEGACY artwork~~                                                                                                                                                                                                                                                                                                           | ✅ **FOUND** — `image28.jpeg`, the "Global Connectivity / Abu Dhabi Economic Gateway" board. Doc: _"use similar closest template and retain all the content as it is"_ |
+| C10    | **About-page stats 27/18/9/36** vs Home 25+/6/6/50+                                                                                                                                                                                                                                                                                                       | Doc contradicts itself; currently using Home numbers                                                                                                                   |
+| C11    | ⚠️ **Rights check** — `image30.jpeg` is a port photo with visible **Adani** branding on the cranes. Third-party mark; confirm before publishing or swap                                                                                                                                                                                                   | Any portfolio/ports section                                                                                                                                            |
 
 ### Image inventory (from `_references/docx-images/`)
-| File | What it is |
-|------|-----------|
-| `image4.jpeg` / `image17.jpeg` | Promax Global English logo (header / footer variants) |
-| `image5.jpeg` | **Promax Global Arabic logo** |
-| `image14.png` | Chairman H.E. Louai Mohamed Ali (interim — high-res pending) |
-| `image28.jpeg` | Abu Dhabi Economic Gateway "Global Connectivity" board |
-| `image18–23` | Management Services 3×2: Bulk Ports · Container Terminals · Liquid Port · Logistics Hub · Industrial Park · Blue Ports |
-| `image31–35` | Portfolio tiles: Skills & Education · Trade Hub & Food Security · Smart & Green Energy · Strategic Projects |
-| `image27`, `image29`, `image30` | Port / logistics photography (⚠️ see C11 on `image30`) |
-| `image3`, `image8`, `image15`, `image24`, `image25` | **Transland template screenshots — reference only, NOT assets** |
 
-**Note on the doc's own spelling:** the chairman is *H.E. Louai Mohamed Ali* per the About
-section; para 186 writes it *"Loui Mohammed Ali"*. Confirm the correct spelling before publishing.
+| File                                                | What it is                                                                                                             |
+| --------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `image4.jpeg` / `image17.jpeg`                      | Promax Global English logo (header / footer variants)                                                                  |
+| `image5.jpeg`                                       | **Promax Global Arabic logo**                                                                                          |
+| `image14.png`                                       | Chairman H.E. Louai Mohamed Ali (interim — high-res pending)                                                           |
+| `image28.jpeg`                                      | Abu Dhabi Economic Gateway "Global Connectivity" board                                                                 |
+| `image18–23`                                        | Management Services 3×2: Bulk Ports · Container Terminals · Liquid Port · Logistics Hub · Industrial Park · Blue Ports |
+| `image31–35`                                        | Portfolio tiles: Skills & Education · Trade Hub & Food Security · Smart & Green Energy · Strategic Projects            |
+| `image27`, `image29`, `image30`                     | Port / logistics photography (⚠️ see C11 on `image30`)                                                                 |
+| `image3`, `image8`, `image15`, `image24`, `image25` | **Transland template screenshots — reference only, NOT assets**                                                        |
+
+**Note on the doc's own spelling:** the chairman is _H.E. Louai Mohamed Ali_ per the About
+section; para 186 writes it _"Loui Mohammed Ali"_. Confirm the correct spelling before publishing.
 
 ---
 
@@ -67,35 +68,43 @@ section; para 186 writes it *"Loui Mohammed Ali"*. Confirm the correct spelling 
 ## 🟠 2. BUILDABLE NOW — highest priority first
 
 ### 2.1 Header / bilingual logo lockup (00:33:22) — ✅ **BUILT**, see §2′
+
 ### 2.2 Above-footer partner strip (00:35:19) — ✅ **BUILT**, see §2′ (10 of 18 logos still missing → C2)
+
 ### 2.3 Kill consultancy framing — ✅ **BUILT**, see §2′
-- [ ] One line survives: `content.ts:243` *"Talk to our friendly team … online or in person"*. Consultancy-flavoured, but **verbatim client-doc copy**, so left alone pending a decision
+
+- [ ] One line survives: `content.ts:243` _"Talk to our friendly team … online or in person"_. Consultancy-flavoured, but **verbatim client-doc copy**, so left alone pending a decision
 
 ### 2.4 Multilingual (00:29:09, 00:33:22) — **NOT BUILT** (switcher is a visual shell only)
+
 - [ ] AR/FR/LA are inert `<span>`s in `UtilityBar.tsx` — no locale routes exist
 - [ ] `layout.tsx:60` hardcodes `lang="en"` → must be dynamic
 - [ ] **Arabic renders RTL** (body flips; header logos do not — see §2.1)
 
 ### 2.5 Hero (00:08:16, 00:09:24)
+
 - [x] **Globe moved LEFT**, copy to the right half
 - [x] Dots in a contrast colour (`#dbe6f3` over navy) + green accent layer
 - [ ] Continent **borders** — dots only at present, no border linework
 - [ ] Background uses the provided video assets — blocked on **C3**
 
 ### 2.6 Navigation
+
 - [x] Portfolio **multi-level dropdown** — level-2 flyout via nested `<details>`, all 6 portfolios
 - [x] Utility bar (location / email / phone / language)
 
 ### 2.7 Portfolio inner pages
+
 - [x] **Level-2 dropdown items are REAL pages**, not anchors — `/portfolio/ports-logistics/{management-services,advisory-planning,strategic-equipment}`. The transcript contradicts itself (00:38 "one page" vs 00:40–00:53 "there will be a new page coming"); the later, more specific pass governs. Route is generic (`[slug]/[sub]`) and driven by `portfolioSubPages` in `site.ts` + a `"<slug>/<sub>"` key in `content.ts`
-- [x] Every sub-page header carries the parent portfolio name (00:41:47) — eyebrow *"Portfolio of Ports & Logistics"* over the service title
-- [x] Ports & Logistics landing reads *Portfolio → Ports & Logistics* and now lists the three service pages as cards
+- [x] Every sub-page header carries the parent portfolio name (00:41:47) — eyebrow _"Portfolio of Ports & Logistics"_ over the service title
+- [x] Ports & Logistics landing reads _Portfolio → Ports & Logistics_ and now lists the three service pages as cards
 - [x] Management Services **3×2 grid** — wired to the client's own docx images (`mgmt-*`)
 - [x] Advisory Service **4×2 grid** with a bright header photo per discipline — `service-freight` gained optional `columns` + per-item `image`; the 8 discipline photos were sitting unused in `public/images/`
 - [x] Management Services body text — doc paras 419–421, in place verbatim. Not blocked (earlier note claiming an old-site stand-in was wrong)
 - [ ] Remaining portfolios' level-2 items stay as anchors — their sub-items are card content, not page content, until the client sends copy. Promoting them = add to `portfolioSubPages` + a `content.ts` entry, no new route code
 
 ### 2.8 Icons
+
 - [ ] Roll the new duotone icon set out **site-wide** — client asked for it everywhere instead of an icon library. `statIcon` in `page.tsx` and other call sites still unaudited
 
 ---

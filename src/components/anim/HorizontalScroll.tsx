@@ -65,20 +65,21 @@ export default function HorizontalScroll({ panels }: { panels: Panel[] }) {
         >
           {/* intro panel */}
           <div className="flex w-[82vw] shrink-0 flex-col justify-center md:w-[40vw]">
-            <p className="eyebrow !text-brand">Our Portfolios</p>
-            <h2 className="mt-4 text-5xl font-bold leading-[1.08] md:text-6xl lg:text-7xl">
-              Six ways we move <span className="text-brand">world trade</span>
+            {/* Copy is the client doc §5.9 "Our Portfolio (Global Divisions)"
+                intro — verbatim. No eyebrow (site-wide no-kicker rule). */}
+            <h2 className="text-5xl font-bold leading-[1.08] md:text-6xl lg:text-7xl">
+              Our <span className="text-brand">portfolio</span>
             </h2>
             <p className="mt-6 max-w-lg text-lg leading-relaxed text-slate-300 md:text-xl">
-              Scroll through our portfolios — each is a distinct, real-asset business under one
-              UAE-headquartered mandate.
+              Explore our integrated capabilities that support the development, operation, and
+              long-term success of ports and national infrastructure projects.
             </p>
             <span className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-brand">
               Keep scrolling <span aria-hidden>→</span>
             </span>
           </div>
 
-          {panels.map((p, i) => (
+          {panels.map((p) => (
             <Link
               key={p.slug}
               href={`/portfolio/${p.slug}`}
@@ -92,12 +93,10 @@ export default function HorizontalScroll({ panels }: { panels: Panel[] }) {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-navy-900 via-navy-900/40 to-transparent" />
               <div className="relative mt-auto p-7">
-                <span className="font-display text-sm font-bold text-brand">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <h3 className="mt-1 text-2xl font-bold">{p.title}</h3>
-                <p className="mt-2 max-w-xs text-sm leading-relaxed text-slate-300">{p.blurb}</p>
-                <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand">
+                {/* Numbers removed (client 2026-07-21); larger title + blurb. */}
+                <h3 className="text-3xl font-bold md:text-4xl">{p.title}</h3>
+                <p className="mt-3 max-w-sm text-base leading-relaxed text-slate-300 md:text-lg">{p.blurb}</p>
+                <span className="mt-4 inline-flex items-center gap-1 text-base font-semibold text-brand">
                   Explore <span aria-hidden className="transition group-hover:translate-x-1">→</span>
                 </span>
               </div>

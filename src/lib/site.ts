@@ -21,12 +21,15 @@ export const site = {
     phone: "+971 56 601 0848",
     phoneHref: "tel:+971566010848",
   },
+  // Animated statistics — verbatim from the client content doc (Section 1,
+  // "Develop Animated statistics"). The doc lists a 5th qualitative stat,
+  // "UAE Headquarters / Based in Abu Dhabi"; that is carried by the eyebrow +
+  // Corporate Overview, so the numeric four fill the 4-up stat grid.
   stats: [
-    { value: "25+", label: "Multi-Jurisdiction Operations" },
-    { value: "6", label: "Strategic Platforms" },
-    // Client-corrected 2026-07-20: the doc says 5, but there are 6 portfolios.
-    { value: "6", label: "Core Portfolios" },
-    { value: "50+", label: "Institutional Network" },
+    { value: "25+", label: "Countries & Jurisdictions" },
+    { value: "8", label: "Integrated Port Capabilities" },
+    { value: "5", label: "Core Service Areas" },
+    { value: "50+", label: "Institutional Relationships" },
   ],
 } as const;
 
@@ -62,7 +65,7 @@ export const partners: { name: string; logo: string | null }[] = [
   { name: "Goldwin Mines", logo: null },
   { name: "Starboard Ports", logo: null },
   // Client-supplied 2026-07-20, additional to the doc's list of 15.
-  { name: "FICCI", logo: "/partners/ficci.jpg" },
+  // FICCI removed per client (2026-07-21).
   { name: "GTSC", logo: "/partners/gtsc.png" },
 ];
 
@@ -153,7 +156,7 @@ export const nav: NavItem[] = [
       },
     ],
   },
-  { label: "Strategic Ventures", href: "/strategic-ventures" },
+  { label: "Strategic Projects", href: "/projects" },
   { label: "Why Us", href: "/why-us" },
   { label: "Insights", href: "/insights" },
   { label: "Reach Us", href: "/reach-us" },
@@ -178,7 +181,7 @@ export const allRoutes: string[] = [
     `/portfolio/${s}`,
     ...(portfolioSubPages[s] ?? []).map((sub) => `/portfolio/${s}/${sub.slug}`),
   ]),
-  "/strategic-ventures",
+  "/projects",
   "/why-us",
   "/insights",
   "/reach-us",

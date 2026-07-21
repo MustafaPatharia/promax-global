@@ -34,7 +34,7 @@ export const faqs: Record<string, Faq[]> = {
   "invest-with-us": [
     {
       q: "What investment opportunities does Promax Global offer?",
-      a: "A curated portfolio of mandated infrastructure projects, trade hubs, energy assets, and technology ventures across high-growth emerging markets.",
+      a: "A curated portfolio of mandated infrastructure projects, trade hubs, energy assets, and technology projects across high-growth emerging markets.",
     },
     {
       q: "Why invest with Promax Global?",

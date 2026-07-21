@@ -129,9 +129,9 @@ export const pages: Record<string, PageContent & { metaDescription: string }> = 
     heroVideo: "digital-globe-iot-network-loop.mp4",
     heroStyle: "kenburns",
     intro:
-      "Access a curated portfolio of mandated infrastructure projects, trade hubs, energy assets, and technology ventures across high-growth emerging markets — backed by UAE government alignment and Promax United Group patronage.",
+      "Access a curated portfolio of mandated infrastructure projects, trade hubs, energy assets, and technology projects across high-growth emerging markets — backed by UAE government alignment and Promax United Group patronage.",
     metaDescription:
-      "Invest with Promax Global — mandated port, infrastructure, logistics, energy, fintech, and food-security ventures across GCC, Africa, India, and Asia.",
+      "Invest with Promax Global — mandated port, infrastructure, logistics, energy, fintech, and food-security projects across GCC, Africa, India, and Asia.",
     blocks: [
       {
         type: "feature-cards",

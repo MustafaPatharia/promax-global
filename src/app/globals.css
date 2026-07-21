@@ -136,7 +136,7 @@ html.lenis, html.lenis body { height: auto; }
   }
   .btn:hover { transform: translateY(-2px); }
   .btn-primary { background: var(--color-brand); color: #fff; }
-  .btn-primary:hover { background: var(--color-brand-600); box-shadow: 0 12px 24px -10px rgb(249 115 22 / 0.6); }
+  .btn-primary:hover { background: var(--color-brand-600); box-shadow: 0 12px 24px -10px rgb(58 163 40 / 0.55); }
   .btn-navy { background: var(--color-navy); color: #fff; }
   .btn-navy:hover { background: var(--color-navy-900); }
   .btn-outline { border: 1.5px solid currentColor; }
