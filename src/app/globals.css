@@ -305,8 +305,18 @@ html.lenis, html.lenis body { height: auto; }
   margin-bottom: -0.42em;   /* pull the kicker/heading up into the watermark */
   user-select: none;
   pointer-events: none;
+  transition: -webkit-text-stroke-color 0.5s ease, opacity 0.5s ease;
 }
 .sectitle.tone-dark .ghost { -webkit-text-stroke-color: #fff; opacity: 0.11; }
+
+/* Transland hover: recolor the ghost outline to the brand accent when the
+ * section-title block is hovered (and lift the watermark so it reads). */
+.sectitle:hover .ghost { -webkit-text-stroke-color: var(--color-brand); opacity: 0.32; }
+.sectitle.tone-dark:hover .ghost { -webkit-text-stroke-color: var(--color-brand); opacity: 0.38; }
+
+@media (prefers-reduced-motion: reduce) {
+  .sectitle .ghost { transition: none; }
+}
 
 /* ------------------------------------------------------------------ *
  * Gold foil — premium accent surfaces (Strategic Business Platforms).

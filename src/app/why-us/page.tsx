@@ -4,47 +4,100 @@ import { pageMeta } from "@/lib/seo";
 import Reveal from "@/components/anim/Reveal";
 import PageSchema from "@/components/PageSchema";
 import SectionTitle from "@/components/SectionTitle";
-import { Icons, type IconName } from "@/components/Icons";
+import LineIcon, { type LineName } from "@/components/LineIcon";
 
 export const metadata: Metadata = pageMeta({
   title: "Why Us",
   description:
-    "Why governments choose Promax Global — government engagement, investment structuring, global partnerships, integrated delivery, operational excellence, and long-term asset stewardship.",
+    "Why governments choose Promax Global — government engagement, port & infrastructure expertise, investment structuring, global partnerships, integrated delivery, operational excellence, technology integration, and long-term asset stewardship.",
   path: "/why-us",
 });
 
-/** "Why Governments Choose Promax" — the 8 pillars from the client content doc. */
-const pillars: { icon: IconName; title: string }[] = [
-  { icon: "building", title: "Port & Infrastructure Expertise"},
-  { icon: "briefcase", title: "Investment Structuring" },
-  { icon: "globe", title: "Global Partnerships" },
-  { icon: "layers", title: "Integrated Project Delivery" },
-  { icon: "compass", title: "Operational Excellence" },
-  { icon: "anchor", title: "Long-Term Asset Stewardship" },
-  { icon: "bolt", title: "Technology Integration" },
-  { icon: "clipboard", title: "Institutional Governance" },
+/** §9.1 — sub-points under "Government & Institutional Engagement" (title + description, verbatim from spec). */
+const reasons: { icon: LineName; title: string; desc: string }[] = [
+  {
+    icon: "anchor",
+    title: "Port & Infrastructure Expertise",
+    desc: "Our expertise spans the full port ecosystem, including port development, terminal operations, marine infrastructure, logistics integration, and strategic port equipment.",
+  },
+  {
+    icon: "briefcase",
+    title: "Investment Structuring",
+    desc: "We help develop commercially sustainable investment models, including public-private partnerships (PPPs), strategic financing structures, and long-term investment frameworks.",
+  },
+  {
+    icon: "handshake",
+    title: "Global Partnerships",
+    desc: "Through a trusted international network of operators, investors, technology providers, and industry specialists, we bring together the right partners to deliver successful projects.",
+  },
+  {
+    icon: "layers",
+    title: "Integrated Project Delivery",
+    desc: "We provide an integrated approach that aligns strategy, infrastructure, technology, commercial objectives, and operational requirements under one coordinated delivery model.",
+  },
+  {
+    icon: "compass",
+    title: "Operational Excellence",
+    desc: "We are committed to delivering efficient, reliable, and high-performing solutions that meet international standards and create long-term operational value.",
+  },
+  {
+    icon: "cpu",
+    title: "Technology Integration",
+    desc: "We integrate smart technologies, digital platforms, automation, and data-driven solutions to enhance operational performance and support the future of modern ports.",
+  },
+  {
+    icon: "growth",
+    title: "Long-Term Asset Stewardship",
+    desc: "Our approach focuses on maximizing the long-term performance, resilience, and sustainability of critical infrastructure through effective asset lifecycle management.",
+  },
 ];
 
-/** From Strategy to Delivery — the 8-stage lifecycle. */
+/** §9.2 — Sustainability pillars (name + description, verbatim from spec). */
+const pillars: { icon: LineName; title: string; desc: string }[] = [
+  {
+    icon: "leaf",
+    title: "Environmental",
+    desc: "Supporting sustainable infrastructure, climate resilience, resource efficiency, and responsible environmental stewardship.",
+  },
+  {
+    icon: "users",
+    title: "Social",
+    desc: "Creating positive social impact through local capacity building, workforce development, community engagement, and knowledge transfer.",
+  },
+  {
+    icon: "shield",
+    title: "Governance",
+    desc: "Upholding the highest standards of ethics, transparency, accountability, and responsible corporate governance.",
+  },
+];
+
+const frameworks = [
+  "United Nations Sustainable Development Goals (UN SDGs)",
+  "UAE Net Zero 2050 Strategic Initiative",
+  "Responsible Investment Principles",
+  "International ESG Best Practices",
+];
+
+/** §9.3 — Our Ecosystem: grouped categories, never a random logo wall (client instruction). */
+const ecosystem: { title: string; text: string; icon: LineName }[] = [
+  { icon: "briefcase", title: "Strategic Partners", text: "Group companies and long-horizon commercial allies." },
+  { icon: "cpu", title: "Technology Partners", text: "OEMs, platform providers, and systems integrators." },
+  { icon: "building", title: "Government Partners", text: "Ministries, regulators, and port authorities." },
+  { icon: "graduation", title: "Academic & Research Partners", text: "Universities, research bodies, and training institutes." },
+  { icon: "growth", title: "Investment Partners", text: "Sovereign funds, institutional capital, and co-investors." },
+  { icon: "globe", title: "International Organizations", text: "Multilateral and development agencies." },
+];
+
+/** §9.4 — From Strategy to Delivery: the lifecycle stages (verbatim from spec). */
 const workflow = [
   "Identify Opportunity",
   "Strategic Assessment",
   "Government Engagement",
   "Investment Structuring",
-  "Design",
-  "Development",
+  "Planning & Development",
+  "Project Delivery",
   "Operations",
   "Long-term Management",
-];
-
-/** Our Ecosystem — grouped, never a random logo wall (client instruction). */
-const ecosystem: { title: string; text: string; icon: IconName }[] = [
-  { icon: "briefcase", title: "Strategic Partners", text: "Group companies and long-horizon commercial allies." },
-  { icon: "bolt", title: "Technology Partners", text: "OEMs, platform providers, and systems integrators." },
-  { icon: "building", title: "Government Partners", text: "Ministries, regulators, and port authorities." },
-  { icon: "clipboard", title: "Academic Partners", text: "Universities and research and training institutes." },
-  { icon: "layers", title: "Investment Partners", text: "Sovereign funds, institutional capital, and co-investors." },
-  { icon: "globe", title: "International Organizations", text: "Multilateral and development agencies." },
 ];
 
 export default function WhyUsPage() {
@@ -62,117 +115,180 @@ export default function WhyUsPage() {
         <div className="dotted-map pointer-events-none absolute inset-0 text-white" />
         <div className="shell relative py-24 md:py-32">
           <Reveal eager>
-            <p className="eyebrow !text-brand">Why Us</p>
-          </Reveal>
-          <Reveal eager index={1}>
-            <h1 className="mt-4 max-w-3xl font-display text-4xl font-extrabold leading-tight md:text-6xl">
+            <h1 className="max-w-3xl font-display text-4xl font-extrabold leading-tight md:text-6xl">
               Why Governments Choose Promax
             </h1>
           </Reveal>
-          <Reveal eager index={2}>
+          <Reveal eager index={1}>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-200">
-              Mandated rights, government-aligned frameworks, and proven execution — from first
-              assessment through to long-term asset stewardship.
+              Promax Global combines sector expertise, strategic partnerships, and integrated
+              delivery capabilities to support governments and port authorities in developing
+              resilient, commercially sustainable, and future-ready infrastructure.
             </p>
           </Reveal>
         </div>
       </section>
 
-      {/* ---------- 8 pillars ---------- */}
+      {/* ---------- §9.1 · Reasons ---------- */}
       <section className="section bg-white">
         <div className="shell">
           <div className="mb-12 max-w-3xl">
             <SectionTitle
               ghost="Why Us"
-              kicker=""
-              heading={<>Government & Institutional <span>Engagement</span></>}
+              heading={<>Government &amp; Institutional <span>Engagement</span></>}
             />
+            <Reveal variant="up" index={1}>
+              <p className="mt-6 text-lg leading-relaxed text-slate-600">
+                We work closely with governments, public authorities, and strategic stakeholders to
+                support the planning, development, and successful delivery of complex infrastructure
+                and port projects.
+              </p>
+            </Reveal>
           </div>
-          <p>We work closely with governments, public authorities, and strategic stakeholders to support the planning, development, and successful delivery of complex infrastructure and port projects.</p>
-          <br></br>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {pillars.map((p, i) => {
-              const Icon = Icons[p.icon];
-              return (
-                <Reveal key={p.title} variant="up" index={i % 4}>
-                  <div className="group h-full rounded-2xl border border-slate-200 bg-white p-7 transition hover:-translate-y-1.5 hover:border-brand/40 hover:shadow-[var(--shadow-card-hover)]">
-                    <span className="mb-5 grid h-14 w-14 place-items-center rounded-xl bg-brand/10 text-brand transition group-hover:bg-brand group-hover:text-white">
-                      <Icon className="h-7 w-7" />
-                    </span>
-                    <h3 className="font-display text-base font-bold leading-snug text-navy">
-                      {p.title}
-                    </h3>
-                  </div>
-                </Reveal>
-              );
-            })}
+
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {reasons.map((r, i) => (
+              <Reveal key={r.title} variant="up" index={i % 3}>
+                <div className="card group relative h-full overflow-hidden p-7 transition-colors duration-500 hover:border-brand/40">
+                  <span
+                    aria-hidden
+                    className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-brand transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-x-100"
+                  />
+                  <span className="grid h-14 w-14 place-items-center rounded-xl bg-brand/10 text-brand transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-rotate-6 group-hover:scale-110 group-hover:bg-brand group-hover:text-white">
+                    <LineIcon name={r.icon} className="h-7 w-7" />
+                  </span>
+                  <h3 className="mt-5 font-display text-lg font-bold leading-snug text-navy transition-colors duration-300 group-hover:text-brand">
+                    {r.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-slate-600">{r.desc}</p>
+                </div>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* ---------- From Strategy to Delivery ---------- */}
+      {/* ---------- §9.2 · Sustainability ---------- */}
+      <section className="section bg-slate-50">
+        <div className="shell">
+          <div className="mb-10 max-w-3xl">
+            <SectionTitle
+              ghost="Sustainability"
+              heading={<>Creating Long-Term Value Through <span>Responsible Growth</span></>}
+            />
+            <Reveal variant="up" index={1}>
+              <p className="mt-6 text-lg leading-relaxed text-slate-600">
+                Promax Global is committed to creating long-term value through responsible
+                infrastructure development, sustainable business practices, and strong governance
+                that supports resilient economies and future generations.
+              </p>
+            </Reveal>
+          </div>
+
+          <div className="grid gap-6 lg:grid-cols-3">
+            {pillars.map((p, i) => (
+              <Reveal key={p.title} variant="up" index={i}>
+                <div className="card group relative h-full overflow-hidden p-7 transition-colors duration-500 hover:border-brand/40">
+                  <span
+                    aria-hidden
+                    className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-brand transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-x-100"
+                  />
+                  <span className="grid h-14 w-14 place-items-center rounded-xl bg-brand/10 text-brand transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-rotate-6 group-hover:scale-110 group-hover:bg-brand group-hover:text-white">
+                    <LineIcon name={p.icon} className="h-7 w-7" />
+                  </span>
+                  <h3 className="mt-5 font-display text-xl font-bold text-navy transition-colors duration-300 group-hover:text-brand">
+                    {p.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-slate-600">{p.desc}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          {/* Aligned with global frameworks */}
+          <Reveal variant="up">
+            <div className="card mt-6 p-7 md:p-9">
+              <p className="text-base font-semibold text-navy md:text-lg">
+                Aligned with global frameworks
+              </p>
+              <ul className="mt-5 grid gap-4 sm:grid-cols-2">
+                {frameworks.map((f) => (
+                  <li key={f} className="flex items-start gap-3 text-base font-semibold text-slate-700 md:text-lg">
+                    <LineIcon name="check" className="mt-0.5 h-6 w-6 shrink-0 text-brand" />
+                    <span>{f}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ---------- §9.3 · Our Ecosystem ---------- */}
+      <section className="section bg-white">
+        <div className="shell">
+          <div className="mb-12 max-w-3xl">
+            <SectionTitle
+              ghost="Ecosystem"
+              heading={<>Ecosystem <span>Categories</span></>}
+            />
+            <Reveal variant="up" index={1}>
+              <p className="mt-6 text-lg leading-relaxed text-slate-600">
+                Promax Global collaborates with governments, strategic investors, technology
+                providers, industry leaders, and international institutions to deliver sustainable
+                port, infrastructure, and economic development solutions across global markets.
+              </p>
+            </Reveal>
+          </div>
+
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {ecosystem.map((e, i) => (
+              <Reveal key={e.title} variant="up" index={i % 3}>
+                <div className="group h-full rounded-2xl border border-slate-200 bg-white p-7 transition-colors duration-500 hover:border-[#d6dbe2] hover:bg-[#eef1f5]">
+                  <span className="grid h-12 w-12 place-items-center rounded-xl bg-navy/10 text-navy transition-colors duration-500 group-hover:bg-navy group-hover:text-white">
+                    <LineIcon name={e.icon} className="h-6 w-6" />
+                  </span>
+                  <h3 className="mt-5 font-display text-lg font-bold text-navy">{e.title}</h3>
+                  <p className="mt-2.5 text-sm leading-relaxed text-slate-500">{e.text}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ---------- §9.4 · From Strategy to Delivery ---------- */}
       <section className="section relative overflow-hidden bg-navy-900 text-white">
         <div className="dotted-map pointer-events-none absolute inset-0 text-white" />
         <div className="shell relative">
-          <div className="mb-14 max-w-2xl">
+          <div className="mb-6 max-w-2xl">
             <SectionTitle
               tone="dark"
               ghost="Delivery"
-              kicker="End-to-End"
               heading={<>From Strategy <span>to Delivery</span></>}
             />
           </div>
+          <Reveal variant="up" index={1}>
+            <p className="mb-14 max-w-2xl text-lg leading-relaxed text-slate-200">
+              A structured approach that transforms strategic opportunities into sustainable
+              infrastructure and long-term operational success.
+            </p>
+          </Reveal>
 
-          <ol className="relative grid gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
-            {/* connecting rail */}
-            <span
-              aria-hidden
-              className="pointer-events-none absolute inset-x-0 top-7 hidden h-px bg-gradient-to-r from-brand/60 via-brand/25 to-transparent lg:block"
-            />
+          <ol className="grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
             {workflow.map((step, i) => (
               <Reveal key={step} variant="up" index={i % 4} as="li">
-                <div className="relative pe-6">
-                  <span className="relative z-10 grid h-14 w-14 place-items-center rounded-full border border-brand/40 bg-navy-900 font-display text-lg font-extrabold text-brand">
-                    {String(i + 1).padStart(2, "0")}
+                <div className="group relative flex gap-4 pe-2">
+                  <span className="mt-0.5 grid h-11 w-11 shrink-0 place-items-center rounded-full border border-brand/40 bg-navy-900 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110 group-hover:border-brand group-hover:bg-brand">
+                    <span className="h-2.5 w-2.5 rounded-full bg-brand transition-colors duration-500 group-hover:bg-white" />
                   </span>
-                  <h3 className="mt-5 font-display text-base font-bold leading-snug text-white">
+                  <h3 className="pt-2 font-display text-base font-bold leading-snug text-white transition-colors duration-300 group-hover:text-brand">
                     {step}
                   </h3>
                 </div>
               </Reveal>
             ))}
           </ol>
-        </div>
-      </section>
-
-      {/* ---------- Our Ecosystem ---------- */}
-      <section className="section bg-slate-50">
-        <div className="shell">
-          <div className="mb-12 max-w-2xl">
-            <SectionTitle
-              ghost="Ecosystem"
-              kicker=""
-              heading={<>Ecosystem <span>Categories</span></>}
-            />
-          </div>
-          <p>Promax Global collaborates with governments, strategic investors, technology providers, industry leaders, and international institutions to deliver sustainable port, infrastructure, and economic development solutions across global markets.</p>
-          <br />
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {ecosystem.map((e, i) => {
-              const Icon = Icons[e.icon];
-              return (
-                <Reveal key={e.title} variant="up" index={i % 3}>
-                  <div className="card h-full p-7">
-                    <span className="mb-5 grid h-12 w-12 place-items-center rounded-xl bg-navy text-white">
-                      <Icon className="h-6 w-6" />
-                    </span>
-                    <h3 className="font-display text-lg font-bold text-navy">{e.title}</h3>
-                    <p className="mt-2.5 text-sm leading-relaxed text-slate-500">{e.text}</p>
-                  </div>
-                </Reveal>
-              );
-            })}
-          </div>
         </div>
       </section>
 
