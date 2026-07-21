@@ -13,7 +13,6 @@ const base = (f: string) => f.replace(/\.mp4$/, "");
 
 export default function SplitBand({
   src,
-  eyebrow,
   heading,
   text,
   flip = false,
@@ -43,11 +42,8 @@ export default function SplitBand({
 
   const copy = (
     <div>
-      <Reveal variant="up">
-        <p className="eyebrow">{eyebrow}</p>
-      </Reveal>
       <Reveal variant="up" index={1}>
-        <h2 className="mt-4 text-3xl font-bold leading-tight text-navy md:text-4xl">{heading}</h2>
+        <h2 className="text-3xl font-bold leading-tight text-navy md:text-4xl">{heading}</h2>
       </Reveal>
       <Reveal variant="up" index={2}>
         <p className="mt-5 leading-relaxed text-slate-600">{text}</p>

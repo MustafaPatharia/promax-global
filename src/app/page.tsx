@@ -337,7 +337,7 @@ export default function Home() {
 
             <Reveal variant="up" index={3}>
               <Link href="/portfolio" className="btn btn-navy mt-8">
-                Explore Our Capabilities <span aria-hidden>→</span>
+                Explore Our Capabilities
               </Link>
             </Reveal>
           </div>
@@ -496,8 +496,8 @@ export default function Home() {
               className="max-w-2xl"
             />
             <Reveal variant="up" index={2}>
-              <Link href="/projects" className="btn btn-outline shrink-0 text-navy">
-                View all projects <span aria-hidden>→</span>
+              <Link href="/strategic-projects" className="btn btn-outline shrink-0 text-navy">
+                View all projects
               </Link>
             </Reveal>
           </div>
@@ -595,7 +595,7 @@ export default function Home() {
             </p>
           </div>
           <Link href="/reach-us" className="btn btn-primary shrink-0">
-            Transmit Corporate Inquiry <span aria-hidden>→</span>
+            Transmit Corporate Inquiry
           </Link>
         </div>
       </section>

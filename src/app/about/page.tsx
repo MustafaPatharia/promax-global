@@ -620,7 +620,7 @@ export default function AboutPage() {
             </p>
           </div>
           <Link href="/reach-us" className="btn btn-primary shrink-0">
-            Reach Us <span aria-hidden>→</span>
+            Reach Us
           </Link>
         </div>
       </section>

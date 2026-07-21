@@ -118,6 +118,31 @@ section metadata above, **(3)** the 59 images.
 - GEO: `robots.ts` explicitly allow-lists AI crawlers; `/llms.txt` gives them a clean summary.
 - Any new route → add to `allRoutes` in `site.ts` (drives sitemap).
 
+## Client design invariants (NON-NEGOTIABLE — apply site-wide, every page)
+
+These are hard rules the client has repeated many times. Never reintroduce them; when
+touching ANY page, sweep for violations, not just the section you were asked about.
+
+- **Line icons only — none-or-all.** The whole site uses thin stroke (LINE) icons via
+  `@/components/LineIcon` (`<LineIcon name=… />`). NEVER the duotone `@/components/Icons`
+  set. If a needed glyph isn't in `LineIcon`, ADD it there (svgapi.com / Lucide, same
+  24×24 / 1.5-stroke idiom) so every icon on a surface is a line icon. If you can't make
+  them ALL line icons, use NO icons on that surface — never mix line + duotone.
+- **No numbers in titles/headings.** Never spell out or digit a count in a heading or card
+  title — not "Eight Program Areas", "Six Delivery Capabilities", "8 mandated projects",
+  nor numbered list titles ("1. Blue Port…"). Counts change; titles must not encode them.
+  (Extends the existing no-section-numbers rule — see the memory file.)
+- **No kicker / eyebrow anywhere.** Do not render the small label above a heading
+  (`SectionTitle` `kicker`, `PageShell` `eyebrow`, block `eyebrow`). Ghost watermark +
+  two-tone heading only.
+- **No decorative arrows on buttons/CTAs/links.** No trailing `→` / leading `←` glyph next
+  to a label ("Invest With Us →", "View project →", "Read more →"). Plain label only.
+  (Functional carousel prev/next nav buttons are not CTAs — those may keep their arrow.)
+- **Copy comes from the docs only.** All visible copy must trace to `_content/website-content-spec.md`
+  or the client meeting notes. If copy for something isn't in the docs, ASK — do not invent
+  marketing prose. Use `[ TBA ]` markers for pending content (copy AND images) so gaps are
+  obvious in review.
+
 ## Rules of thumb
 
 - **Identity/contact/nav/copy → edit `lib/site.ts` (or `content.ts`), not components.** One source.

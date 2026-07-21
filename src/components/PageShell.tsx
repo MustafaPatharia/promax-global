@@ -87,13 +87,8 @@ export default function PageShell({
           </>
         )}
         <div className="shell relative py-24 md:py-32">
-          {content.eyebrow && (
-            <Reveal eager>
-              <p className="eyebrow !text-brand">{content.eyebrow}</p>
-            </Reveal>
-          )}
           <Reveal eager index={1}>
-            <h1 className="mt-4 max-w-3xl text-4xl font-bold leading-tight md:text-5xl">
+            <h1 className="max-w-3xl text-4xl font-bold leading-tight md:text-5xl">
               {content.title}
             </h1>
           </Reveal>
@@ -103,7 +98,7 @@ export default function PageShell({
           {content.cta && !noCta && (
             <Reveal eager index={3}>
               <Link href={content.cta.href} className="btn btn-primary mt-8">
-                {content.cta.label} <span aria-hidden>→</span>
+                {content.cta.label}
               </Link>
             </Reveal>
           )}
@@ -116,8 +111,7 @@ export default function PageShell({
           <div className="shell">
             <Reveal variant="scale">
               <div className="mx-auto max-w-2xl rounded-3xl border border-dashed border-navy/15 bg-slate-50 px-8 py-20 text-center">
-                <p className="eyebrow !text-brand justify-center">In Development</p>
-                <h2 className="mt-5 font-display text-4xl font-extrabold text-navy md:text-5xl">
+                <h2 className="font-display text-4xl font-extrabold text-navy md:text-5xl">
                   Coming Soon
                 </h2>
                 <p className="mx-auto mt-5 max-w-md leading-relaxed text-slate-600">
@@ -125,7 +119,7 @@ export default function PageShell({
                   discussions, reach our team directly.
                 </p>
                 <Link href="/reach-us" className="btn btn-primary mt-8">
-                  Reach Us <span aria-hidden>→</span>
+                  Reach Us
                 </Link>
               </div>
             </Reveal>
@@ -245,7 +239,7 @@ export default function PageShell({
             <p className="mt-2 text-slate-300">Discuss investment, partnership, or co-development with Promax Global.</p>
           </div>
           <Link href="/reach-us" className="btn btn-primary shrink-0">
-            Transmit Corporate Inquiry <span aria-hidden>→</span>
+            Transmit Corporate Inquiry
           </Link>
         </div>
       </section>

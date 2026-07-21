@@ -192,7 +192,7 @@ export default function ReachUsForms() {
           )}
 
           <button type="submit" className="btn btn-primary mt-7 w-full justify-center">
-            Transmit Inquiry <span aria-hidden>→</span>
+            Transmit Inquiry
           </button>
         </form>
       )}

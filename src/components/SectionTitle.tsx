@@ -10,7 +10,6 @@ import Reveal from "@/components/anim/Reveal";
  */
 export default function SectionTitle({
   ghost,
-  kicker,
   heading,
   tone = "light",
   align = "left",
@@ -36,11 +35,8 @@ export default function SectionTitle({
       <Reveal variant="up">
         <span className="ghost" aria-hidden>{ghost}</span>
       </Reveal>
-      {kicker && (
-        <Reveal variant="up" index={1}>
-          <p className="kicker">{kicker}</p>
-        </Reveal>
-      )}
+      {/* Kicker/eyebrow intentionally NOT rendered — client removed all kickers
+          site-wide (2026-07-21). Callers may still pass `kicker`; it is ignored. */}
       <Reveal variant="up" index={2}>
         <h2>{heading}</h2>
       </Reveal>

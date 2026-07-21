@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { pageMeta } from "@/lib/seo";
+import { img } from "@/lib/images";
 import Reveal from "@/components/anim/Reveal";
 import PageSchema from "@/components/PageSchema";
 import SectionTitle from "@/components/SectionTitle";
@@ -111,7 +112,13 @@ export default function WhyUsPage() {
 
       {/* ---------- Hero ---------- */}
       <section className="relative overflow-hidden text-white">
-        <div className="absolute inset-0 bg-gradient-to-br from-navy-900 via-navy to-navy-700" />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={img("a148740f_End_to_End_Port_Operations.png")}
+          alt=""
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-navy-900 via-navy-900/90 to-navy-900/70" />
         <div className="dotted-map pointer-events-none absolute inset-0 text-white" />
         <div className="shell relative py-24 md:py-32">
           <Reveal eager>
@@ -305,7 +312,7 @@ export default function WhyUsPage() {
             </p>
           </div>
           <Link href="/reach-us" className="btn btn-primary shrink-0">
-            Reach Us <span aria-hidden>→</span>
+            Reach Us
           </Link>
         </div>
       </section>

@@ -19,15 +19,12 @@ export default function PortfolioPage() {
         <div className="dotted-map pointer-events-none absolute inset-0 text-white" />
         <div className="shell relative py-24 md:py-32">
           <Reveal>
-            <p className="eyebrow !text-brand">Global Divisions</p>
+            <h1 className="max-w-3xl text-4xl font-bold md:text-5xl">Global Portfolio</h1>
           </Reveal>
           <Reveal index={1}>
-            <h1 className="mt-4 max-w-3xl text-4xl font-bold md:text-5xl">Our Portfolio</h1>
-          </Reveal>
-          <Reveal index={2}>
             <p className="mt-6 max-w-2xl text-lg text-slate-200">
-              A global, multi-dimensional, multi-sectoral business portfolio spanning six core
-              operational zones — plus our mandated strategic projects.
+              A global, multi-dimensional, multi-sectoral business portfolio across our core
+              operational areas — plus our mandated strategic projects.
             </p>
           </Reveal>
         </div>
@@ -42,7 +39,7 @@ export default function PortfolioPage() {
                 <h2 className="text-xl font-bold text-navy transition group-hover:text-brand">{v.title}</h2>
                 <p className="mt-3 text-sm leading-relaxed text-slate-500">{v.blurb}</p>
                 <span className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-brand">
-                  Read more <span aria-hidden className="transition group-hover:translate-x-1">→</span>
+                  Read more
                 </span>
               </Link>
             </Reveal>

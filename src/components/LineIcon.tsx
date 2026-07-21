@@ -26,7 +26,11 @@ export type LineName =
   | "growth"
   | "graduation"
   | "bolt"
-  | "clipboard";
+  | "clipboard"
+  | "newspaper"
+  | "play"
+  | "crane"
+  | "ship";
 
 const LINE_PATHS: Record<LineName, React.ReactNode> = {
   leaf: (
@@ -159,6 +163,33 @@ const LINE_PATHS: Record<LineName, React.ReactNode> = {
       <path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z" />
       <path d="M22 10v6" />
       <path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5" />
+    </>
+  ),
+  newspaper: (
+    <>
+      <path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2" />
+      <path d="M18 14h-8" />
+      <path d="M15 18h-5" />
+      <path d="M10 6h8v4h-8V6Z" />
+    </>
+  ),
+  play: <polygon points="6 3 20 12 6 21 6 3" />,
+  ship: (
+    <>
+      <path d="M12 10.189V14" />
+      <path d="M12 2v3" />
+      <path d="M19 13V7a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v6" />
+      <path d="M19.38 20A11.6 11.6 0 0 0 21 14l-8.188-3.639a2 2 0 0 0-1.624 0L3 14a11.6 11.6 0 0 0 2.81 7.76" />
+      <path d="M2 21c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1s1.2 1 2.5 1c2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1" />
+    </>
+  ),
+  crane: (
+    <>
+      <path d="M5 21V5l14 2.8" />
+      <path d="M5 9h14" />
+      <path d="M16 9v3" />
+      <path d="M13.5 12h5l-2.5 3.5z" />
+      <path d="M2.5 21h5" />
     </>
   ),
 };

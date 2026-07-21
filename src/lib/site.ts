@@ -156,7 +156,7 @@ export const nav: NavItem[] = [
       },
     ],
   },
-  { label: "Strategic Projects", href: "/projects" },
+  { label: "Strategic Projects", href: "/strategic-projects" },
   { label: "Why Us", href: "/why-us" },
   { label: "Insights", href: "/insights" },
   { label: "Reach Us", href: "/reach-us" },
@@ -172,6 +172,87 @@ export const portfolioSlugs = [
   "infrastructure-asset-holdings",
 ] as const;
 
+/**
+ * Strategic Projects grid (spec §8 "Global Project Portfolio" + meeting 2026-07-21
+ * 01:22:45). A 3×3 layout: six core categories + Workforce Mobility + Skill
+ * Development (last row not fully filled is fine). Blue Ports / Dry Ports /
+ * Logistic Hubs / Industrial Parks were CONSOLIDATED into "Port Development"
+ * (meeting 01:20:11) — they live as `highlights` on that card, not standalone.
+ * `tag`/`location`/`body` are verbatim from the spec. `imagePending` = client will
+ * supply the real image (⏳ in spec); current image is a fitting placeholder.
+ * Copy for Workforce Mobility / Skill Development is not in the doc — confirm.
+ */
+export const strategicProjects = [
+  {
+    slug: "port-development",
+    tag: "Port Development",
+    location: "Malaysia • Burkina Faso • Germany",
+    body: "Strategic port development initiatives enhancing regional trade, maritime connectivity, and economic growth.",
+    image: "1ea8c37b_ports_logistics.png",
+    status: "Strategic Development",
+    role: "Strategic Partner & Developer",
+    highlights: ["Blue Ports", "Dry Ports", "Logistic Hubs", "Bulk / Breakbulk Ports"],
+  },
+  {
+    slug: "national-infrastructure",
+    tag: "National Infrastructure",
+    location: "Burkina Faso",
+    body: "National infrastructure modernization supporting utility transformation and sustainable development.",
+    image: "c820e038_Civil_Infrastructure_Development.png",
+    status: "Strategic Development",
+    role: "Strategic Partner & Developer",
+    highlights: ["National Smart Meter Infrastructure"],
+    imagePending: true,
+  },
+  {
+    slug: "food-security",
+    tag: "Food Security",
+    location: "Guinea-Bissau",
+    body: "Integrated fisheries development strengthening maritime industries and food security.",
+    image: "345d5917_Trade_Hub_Food_Security.jpg",
+    highlights: ["Integrated Fisheries Development"],
+    imagePending: true,
+  },
+  {
+    slug: "industrial-development",
+    tag: "Industrial Development",
+    location: "United Arab Emirates",
+    body: "Industrial infrastructure supporting advanced manufacturing and economic diversification.",
+    image: "6c067065_Bulk_Ports_Management.png",
+    highlights: ["Abu Dhabi International Factory"],
+    imagePending: true,
+  },
+  {
+    slug: "digital-infrastructure",
+    tag: "Digital Infrastructure",
+    location: "TokenEazy",
+    body: "Digital investment platform enabling secure and innovative investment ecosystems.",
+    image: "4cae52b3_Digital_Infrastructure.png",
+    imagePending: true,
+  },
+  {
+    slug: "digital-assets",
+    tag: "Digital Assets",
+    location: "GoldFi",
+    body: "Asset-backed digital platform advancing innovative financial infrastructure solutions.",
+    image: "4fc30b83_Technology_Fintech.jpg",
+  },
+  {
+    slug: "workforce-mobility",
+    tag: "Workforce Mobility",
+    body: "[ TBA ]",
+    image: "0b46d0da_training_change.jpg",
+  },
+  {
+    slug: "skill-development",
+    tag: "Skill Development",
+    body: "[ TBA ]",
+    image: "75287166_Skills_Education.jpg",
+  },
+] as const;
+
+export type StrategicProject = (typeof strategicProjects)[number];
+
 /** Flat list of every route for sitemap generation. */
 export const allRoutes: string[] = [
   "/",
@@ -181,7 +262,7 @@ export const allRoutes: string[] = [
     `/portfolio/${s}`,
     ...(portfolioSubPages[s] ?? []).map((sub) => `/portfolio/${s}/${sub.slug}`),
   ]),
-  "/projects",
+  "/strategic-projects",
   "/why-us",
   "/insights",
   "/reach-us",

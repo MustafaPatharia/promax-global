@@ -10,7 +10,6 @@ import type { BrandShowcaseBlock } from "./types";
  * are their own "use client" islands.
  */
 export default function BrandShowcase({
-  eyebrow,
   heading,
   logos,
   stats,
@@ -20,10 +19,7 @@ export default function BrandShowcase({
     <section className={`section ${bg}`}>
       <div className="shell">
         <Reveal variant="up" className="mx-auto mb-12 max-w-2xl text-center">
-          <p className="text-xs font-semibold uppercase tracking-widest text-slate-400">
-            {eyebrow ?? "Trusted across the sector"}
-          </p>
-          <h2 className="mt-3 font-display text-3xl font-extrabold text-navy sm:text-4xl">{heading}</h2>
+          <h2 className="font-display text-3xl font-extrabold text-navy sm:text-4xl">{heading}</h2>
         </Reveal>
 
         <Marquee items={logos} />
