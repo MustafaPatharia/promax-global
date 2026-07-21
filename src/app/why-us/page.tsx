@@ -15,7 +15,7 @@ export const metadata: Metadata = pageMeta({
 
 /** "Why Governments Choose Promax" — the 8 pillars from the client content doc. */
 const pillars: { icon: IconName; title: string }[] = [
-  { icon: "building", title: "Port & Infrastructure Expertise" , subText: "Our expertise spans the full port ecosystem, including port development, terminal operations, marine infrastructure, logistics integration, and strategic port equipment."},
+  { icon: "building", title: "Port & Infrastructure Expertise"},
   { icon: "briefcase", title: "Investment Structuring" },
   { icon: "globe", title: "Global Partnerships" },
   { icon: "layers", title: "Integrated Project Delivery" },
