@@ -21,12 +21,15 @@ export const site = {
     phone: "+971 56 601 0848",
     phoneHref: "tel:+971566010848",
   },
+  // Animated statistics — verbatim from the client content doc (Section 1,
+  // "Develop Animated statistics"). The doc lists a 5th qualitative stat,
+  // "UAE Headquarters / Based in Abu Dhabi"; that is carried by the eyebrow +
+  // Corporate Overview, so the numeric four fill the 4-up stat grid.
   stats: [
-    { value: "25+", label: "Multi-Jurisdiction Operations" },
-    { value: "6", label: "Strategic Platforms" },
-    // Client-corrected 2026-07-20: the doc says 5, but there are 6 portfolios.
-    { value: "6", label: "Core Portfolios" },
-    { value: "50+", label: "Institutional Network" },
+    { value: "25+", label: "Countries & Jurisdictions" },
+    { value: "8", label: "Integrated Port Capabilities" },
+    { value: "5", label: "Core Service Areas" },
+    { value: "50+", label: "Institutional Relationships" },
   ],
 } as const;
 
@@ -43,23 +46,26 @@ export const site = {
  * logo files directly (2026-07-20) and asked for them to be included.
  */
 export const partners: { name: string; logo: string | null }[] = [
-  { name: "Promax Global", logo: null },
-  { name: "Promax United", logo: null },
-  { name: "Trot Global", logo: null },
+  { name: "Promax Global", logo: "/partners/promax-global.png" },
+  { name: "Promax United", logo: "/partners/promax-united.jpg" },
+  { name: "Trot Global", logo: "/partners/trot-global.png" },
   { name: "Youth Chamber of Commerce", logo: "/partners/youth-chamber-of-commerce.jpg" },
-  { name: "Plambeck", logo: null },
-  { name: "Promax Enjoy", logo: null },
+  // Supplied as a 1200×630 social "sharepic": white mark on a solid navy field,
+  // not a transparent logo. It reads as a dark rectangle in the faded strip —
+  // ask the client for the plain mark before launch.
+  { name: "Plambeck", logo: "/partners/plambeck.jpg" },
+  { name: "Promax Enjoy", logo: "/partners/promax-enjoy.jpeg" },
   { name: "Trot Solutions", logo: "/partners/trot-solutions.png" },
   { name: "Solveeasy", logo: "/partners/solveeasy.jpg" },
-  { name: "Promax Digital", logo: null },
+  { name: "Promax Digital", logo: "/partners/promax-digital.jpeg" },
   { name: "Trot Holdings", logo: "/partners/trot-holdings.png" },
-  { name: "Abu Dhabi International Factory", logo: null },
-  { name: "Promax Investments", logo: null },
+  { name: "Abu Dhabi International Factory", logo: "/partners/abu-dhabi-international-factory.png" },
+  { name: "Promax Investments", logo: "/partners/promax-investments.png" },
   { name: "Promax Easypay", logo: null },
   { name: "Goldwin Mines", logo: null },
   { name: "Starboard Ports", logo: null },
   // Client-supplied 2026-07-20, additional to the doc's list of 15.
-  { name: "FICCI", logo: "/partners/ficci.jpg" },
+  // FICCI removed per client (2026-07-21).
   { name: "GTSC", logo: "/partners/gtsc.png" },
 ];
 
@@ -150,7 +156,7 @@ export const nav: NavItem[] = [
       },
     ],
   },
-  { label: "Strategic Ventures", href: "/strategic-ventures" },
+  { label: "Strategic Projects", href: "/projects" },
   { label: "Why Us", href: "/why-us" },
   { label: "Insights", href: "/insights" },
   { label: "Reach Us", href: "/reach-us" },
@@ -175,7 +181,7 @@ export const allRoutes: string[] = [
     `/portfolio/${s}`,
     ...(portfolioSubPages[s] ?? []).map((sub) => `/portfolio/${s}/${sub.slug}`),
   ]),
-  "/strategic-ventures",
+  "/projects",
   "/why-us",
   "/insights",
   "/reach-us",

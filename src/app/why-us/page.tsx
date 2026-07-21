@@ -15,10 +15,10 @@ export const metadata: Metadata = pageMeta({
 
 /** "Why Governments Choose Promax" — the 8 pillars from the client content doc. */
 const pillars: { icon: IconName; title: string }[] = [
-  { icon: "building", title: "Government Engagement" },
+  { icon: "building", title: "Port & Infrastructure Expertise" , subText: "Our expertise spans the full port ecosystem, including port development, terminal operations, marine infrastructure, logistics integration, and strategic port equipment."},
   { icon: "briefcase", title: "Investment Structuring" },
   { icon: "globe", title: "Global Partnerships" },
-  { icon: "layers", title: "Integrated Delivery" },
+  { icon: "layers", title: "Integrated Project Delivery" },
   { icon: "compass", title: "Operational Excellence" },
   { icon: "anchor", title: "Long-Term Asset Stewardship" },
   { icon: "bolt", title: "Technology Integration" },
@@ -81,13 +81,15 @@ export default function WhyUsPage() {
       {/* ---------- 8 pillars ---------- */}
       <section className="section bg-white">
         <div className="shell">
-          <div className="mb-12 max-w-2xl">
+          <div className="mb-12 max-w-3xl">
             <SectionTitle
               ghost="Why Us"
-              kicker="Eight Reasons"
-              heading={<>Built for <span>national outcomes</span></>}
+              kicker=""
+              heading={<>Government & Institutional <span>Engagement</span></>}
             />
           </div>
+          <p>We work closely with governments, public authorities, and strategic stakeholders to support the planning, development, and successful delivery of complex infrastructure and port projects.</p>
+          <br></br>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {pillars.map((p, i) => {
               const Icon = Icons[p.icon];
@@ -149,10 +151,12 @@ export default function WhyUsPage() {
           <div className="mb-12 max-w-2xl">
             <SectionTitle
               ghost="Ecosystem"
-              kicker="Our Ecosystem"
-              heading={<>Six partner <span>categories</span></>}
+              kicker=""
+              heading={<>Ecosystem <span>Categories</span></>}
             />
           </div>
+          <p>Promax Global collaborates with governments, strategic investors, technology providers, industry leaders, and international institutions to deliver sustainable port, infrastructure, and economic development solutions across global markets.</p>
+          <br />
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {ecosystem.map((e, i) => {
               const Icon = Icons[e.icon];

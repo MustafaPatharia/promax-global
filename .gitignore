@@ -34,6 +34,16 @@ yarn-error.log*
 .env*
 !.env.example
 
+# project working docs & reference material — local only, NOT deployed.
+# Convention: any root file/dir prefixed with "_" is metadata (plans, matrices,
+# mockups, source .docx). Only shipped files belong here.
+/_*
+# ...except the content spec itself — that one deliverable stays tracked, while
+# its heavy reference/ (mockups, source .docx, clips) remains local.
+!/_content/
+/_content/*
+!/_content/website-content-spec.md
+
 # source / reference material — not part of the deployed app
 /Trot Videos/
 /transland-transportation-logistics-theme/

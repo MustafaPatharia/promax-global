@@ -122,7 +122,7 @@ export default function Nav() {
 
         <div className="hidden items-center gap-3 lg:flex">
           <Link href="/invest-with-us" className="btn btn-primary">
-            Invest With Us <span aria-hidden>→</span>
+            Invest With Us
           </Link>
         </div>
 
@@ -178,14 +178,16 @@ export default function Nav() {
           className="ms-4 flex shrink-0 items-center"
           aria-label="بروماكس جلوبال — الصفحة الرئيسية"
         >
-          <Image
-            src={asset("/brand/promax-logo-arabic.jpeg")}
-            alt=""
-            width={196}
-            height={62}
-            priority
-            className={`w-auto transition-all duration-300 ${scrolled ? "h-6" : "h-8"}`}
-          />
+          {/* Arabic wordmark as bold text (client 2026-07-21) — no image. */}
+          <span
+            dir="rtl"
+            aria-hidden
+            className={`font-display font-bold leading-none tracking-tight text-navy transition-all duration-300 ${
+              scrolled ? "text-lg" : "text-xl md:text-2xl"
+            }`}
+          >
+            بروماكس جلوبال
+          </span>
         </Link>
       </div>
     </header>

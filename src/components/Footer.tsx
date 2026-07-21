@@ -1,7 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
 import { site, verticals } from "@/lib/site";
-import { asset } from "@/lib/assets";
 
 /** Footer columns are fixed by the client content doc: Our Portfolio · Strategic Platforms · Find Us. */
 const strategicPlatforms = [
@@ -19,13 +17,10 @@ export default function Footer() {
     <footer className="bg-navy text-slate-300">
       <div className="shell grid gap-10 py-14 md:grid-cols-4">
         <div className="md:col-span-1">
-          <Image
-            src={asset("/brand/promax-logo-white.png")}
-            alt="Promax Global"
-            width={541}
-            height={232}
-            className="h-10 w-auto"
-          />
+          {/* Client 2026-07-21: no logo in the footer. */}
+          <p className="text-sm font-semibold uppercase tracking-wide text-white">
+            From the UAE to the World. Building the Future of Nations.
+          </p>
           <p className="mt-4 text-sm leading-relaxed text-slate-400">
             Rooted in the UAE&rsquo;s spirit of innovation. We transform bold local ideas into
             global realities, delivering future-forward solutions from the heart of the Middle

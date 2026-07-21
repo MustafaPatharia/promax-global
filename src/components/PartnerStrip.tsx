@@ -15,8 +15,8 @@ import { partners } from "@/lib/site";
  * ticker looped visibly fast and read as a thin network. Paging holds each set
  * still long enough to actually be read.
  *
- * Logos are faded (grayscale + low opacity) per the brief and resolve to full
- * colour on hover. Rotation pauses on hover/focus and stops entirely under
+ * Logos always render in full colour (client 2026-07-21) and lift slightly on
+ * hover. Rotation pauses on hover/focus and stops entirely under
  * `prefers-reduced-motion`, which leaves a static first page — no motion, no
  * hidden content, since the dots still page manually.
  *
@@ -94,7 +94,7 @@ export default function PartnerStrip() {
                     width={200}
                     height={80}
                     loading="lazy"
-                    className="h-9 w-auto max-w-full object-contain opacity-55 grayscale transition duration-500 hover:opacity-100 hover:grayscale-0 md:h-12"
+                    className="h-9 w-auto max-w-full object-contain transition duration-500 hover:scale-105 md:h-12"
                   />
                 </li>
               ))}

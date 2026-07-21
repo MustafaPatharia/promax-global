@@ -10,12 +10,13 @@
  * viewport): this one pins, giving the full clip real scrub distance.
  */
 import { useEffect, useRef } from "react";
-import { gsap, ScrollTrigger, prefersReducedMotion } from "@/lib/gsap";
+import { gsap, prefersReducedMotion } from "@/lib/gsap";
 
 export default function ScrubBand({
   src,
   poster,
   eyebrow,
+  subtitle,
   title,
   text,
   /** Section scroll travel — more = slower, longer scrub. */
@@ -23,65 +24,90 @@ export default function ScrubBand({
 }: {
   src: string;
   poster: string;
-  eyebrow: string;
+  /** Optional small label above the title (omit under the no-kicker rule). */
+  eyebrow?: string;
+  /** Optional line under the title. */
+  subtitle?: string;
   title: React.ReactNode;
-  text: string;
+  /** Body copy — a string or a set of <p> paragraphs. */
+  text: React.ReactNode;
   height?: string;
 }) {
   const sectionRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const copyRef = useRef<HTMLDivElement>(null);
+  const scrimRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const section = sectionRef.current;
     const video = videoRef.current;
     if (!section || !video) return;
 
-    if (prefersReducedMotion()) return; // poster-only, handled in markup
+    const scrim = scrimRef.current;
+    const copy = copyRef.current;
 
-    const triggers: ScrollTrigger[] = [];
+    // Reduced motion: no scrub — jump to the readable, fully-dark static state.
+    if (prefersReducedMotion()) {
+      if (scrim) gsap.set(scrim, { opacity: 1 });
+      if (copy) gsap.set(copy, { autoAlpha: 1, y: 0 });
+      return;
+    }
 
-    const setup = () => {
-      const duration = video.duration || 0;
-      if (!duration) return;
+    let tl: gsap.core.Timeline | null = null;
+
+    // ONE scrubbed timeline. Positions below are FRACTIONS of the total scroll
+    // through the pinned section (total normalizes to 1):
+    //   0.00–0.45  video fast-forwards through the whole clip
+    //   0.06–0.28  background darkens (starts almost immediately)
+    //   0.26–0.40  text fades / rises in, right after it's dark
+    //   0.40–1.00  everything holds (dark + text) — comfortable reading room
+    const build = () => {
+      if (tl) return;
       video.pause();
-      triggers.push(
-        ScrollTrigger.create({
-          trigger: section,
-          start: "top top",
-          end: "bottom bottom",
-          scrub: 0.4,
-          onUpdate: (self) => {
-            if (video.readyState >= 2) video.currentTime = self.progress * duration;
-          },
-        }),
-      );
-      // copy: rise + fade as the panel pins through
-      if (copyRef.current) {
-        gsap.fromTo(
-          copyRef.current,
-          { y: 60, autoAlpha: 0.15 },
+      const duration = video.duration || 0;
+
+      tl = gsap.timeline({
+        scrollTrigger: { trigger: section, start: "top top", end: "bottom bottom", scrub: 0.3 },
+      });
+
+      if (duration) {
+        const proxy = { t: 0 };
+        tl.to(
+          proxy,
           {
-            y: -60,
-            autoAlpha: 1,
+            t: duration,
+            duration: 0.45,
             ease: "none",
-            scrollTrigger: {
-              trigger: section,
-              start: "top top",
-              end: "bottom bottom",
-              scrub: true,
+            onUpdate: () => {
+              if (video.readyState >= 2) video.currentTime = proxy.t;
             },
           },
+          0,
         );
       }
+      if (scrim) tl.fromTo(scrim, { opacity: 0.05 }, { opacity: 1, duration: 0.22, ease: "power1.in" }, 0.06);
+      if (copy) tl.fromTo(copy, { autoAlpha: 0, y: 28 }, { autoAlpha: 1, y: 0, duration: 0.14, ease: "power1.out" }, 0.26);
+      // spacer → hold everything to the end; keeps the timeline total = 1
+      tl.to({}, { duration: 0.6 }, 0.4);
     };
 
-    if (video.readyState >= 1) setup();
-    else video.addEventListener("loadedmetadata", setup, { once: true });
+    // Fade/scrim don't need the video; build as soon as we can. If metadata is
+    // still pending, wait for it (adds the video fast-forward), else build now.
+    if (video.readyState >= 1) build();
+    else video.addEventListener("loadedmetadata", build, { once: true });
+
+    // Safety: if the clip can't load at all, still reveal the copy (no seek).
+    const onErr = () => {
+      if (scrim) gsap.set(scrim, { opacity: 1 });
+      if (copy) gsap.set(copy, { autoAlpha: 1, y: 0 });
+    };
+    video.addEventListener("error", onErr);
 
     return () => {
-      triggers.forEach((t) => t.kill());
-      video.removeEventListener("loadedmetadata", setup);
+      tl?.scrollTrigger?.kill();
+      tl?.kill();
+      video.removeEventListener("loadedmetadata", build);
+      video.removeEventListener("error", onErr);
     };
   }, []);
 
@@ -109,13 +135,27 @@ export default function ScrubBand({
           aria-hidden
           className="absolute inset-0 hidden h-full w-full object-cover motion-reduce:block"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-navy-900 via-navy-900/50 to-navy-900/75" />
-        <div ref={copyRef} className="shell relative z-10 text-center">
-          <p className="eyebrow justify-center !text-brand">{eyebrow}</p>
-          <h2 className="mx-auto mt-4 max-w-3xl text-3xl font-bold leading-tight md:text-5xl">
+        {/* Scrim — scroll-driven: near-transparent at the top of the scrub (video
+            fully visible), darkening as you scroll so the copy becomes legible.
+            Opacity is animated in the effect; this is its "full" dark state. */}
+        <div
+          ref={scrimRef}
+          style={{ opacity: 0.05 }}
+          className="absolute inset-0 bg-gradient-to-b from-navy-900/80 via-navy-900/92 to-navy-900/85"
+        />
+        <div ref={copyRef} style={{ opacity: 0, visibility: "hidden" }} className="shell relative z-10 text-center">
+          {eyebrow && <p className="eyebrow justify-center !text-brand">{eyebrow}</p>}
+          <h2 className="mx-auto max-w-3xl text-3xl font-bold leading-tight md:text-5xl">
             {title}
           </h2>
-          <p className="mx-auto mt-5 max-w-2xl leading-relaxed text-slate-300">{text}</p>
+          {subtitle && (
+            <p className="mx-auto mt-4 max-w-2xl font-display text-lg font-semibold text-white md:text-xl">
+              {subtitle}
+            </p>
+          )}
+          <div className="mx-auto mt-5 max-w-2xl space-y-4 leading-relaxed text-slate-300">
+            {text}
+          </div>
         </div>
       </div>
     </section>

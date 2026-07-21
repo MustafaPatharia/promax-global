@@ -71,7 +71,7 @@ export const pages: Record<string, PageContent & { metaDescription: string }> = 
     stats: [
       { value: "25+", label: "Countries — Global Presence" },
       { value: "8", label: "Mandated Projects" },
-      { value: "5", label: "Industry Verticals" },
+      { value: "6", label: "Core Portfolios" },
       { value: "50+", label: "Active Terminal Advisories" },
     ],
     quote: {
@@ -129,9 +129,9 @@ export const pages: Record<string, PageContent & { metaDescription: string }> = 
     heroVideo: "digital-globe-iot-network-loop.mp4",
     heroStyle: "kenburns",
     intro:
-      "Access a curated portfolio of mandated infrastructure projects, trade hubs, energy assets, and technology ventures across high-growth emerging markets — backed by UAE government alignment and Promax United Group patronage.",
+      "Access a curated portfolio of mandated infrastructure projects, trade hubs, energy assets, and technology projects across high-growth emerging markets — backed by UAE government alignment and Promax United Group patronage.",
     metaDescription:
-      "Invest with Promax Global — mandated port, infrastructure, logistics, energy, fintech, and food-security ventures across GCC, Africa, India, and Asia.",
+      "Invest with Promax Global — mandated port, infrastructure, logistics, energy, fintech, and food-security projects across GCC, Africa, India, and Asia.",
     blocks: [
       {
         type: "feature-cards",
@@ -142,7 +142,7 @@ export const pages: Record<string, PageContent & { metaDescription: string }> = 
           { icon: "briefcase", title: "Institutional credibility", text: "Billion-dollar group backing and government alignment." },
           { icon: "layers", title: "8 mandated projects", text: "Government-backed investment rights, ~$1B each." },
           { icon: "globe", title: "25+ countries", text: "Multi-country operations across emerging markets." },
-          { icon: "compass", title: "5 resilient verticals", text: "Diversified across ports, trade, tech, energy, and skills." },
+          { icon: "compass", title: "6 resilient portfolios", text: "Diversified across ports and logistics, skills and education, AI and fintech, trade hub, energy, and infrastructure." },
           { icon: "bolt", title: "ESG-aligned", text: "Long-term value creation with sustainable infrastructure." },
         ],
       },
@@ -165,7 +165,7 @@ export const pages: Record<string, PageContent & { metaDescription: string }> = 
     stats: [
       { value: "8", label: "Mandated Projects (~$1B each)" },
       { value: "25+", label: "Countries of Operation" },
-      { value: "5", label: "Resilient Verticals" },
+      { value: "6", label: "Resilient Portfolios" },
       { value: "4", label: "Regions — GCC · Africa · India · Asia" },
     ],
     cta: { label: "Submit Investment Interest", href: "/reach-us" },
