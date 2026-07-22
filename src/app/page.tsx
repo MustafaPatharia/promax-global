@@ -201,17 +201,21 @@ export default function Home() {
           section background would paint over it (the poster + navy overlay below
           provide the dark backdrop / fallback). */}
       <section className="relative flex min-h-screen items-center overflow-hidden text-white">
+        {/* Solid fill (#030609) — sits BEHIND the video (-z-20 < the video's
+            -z-10) as the base layer. No transparency. */}
+        <div className="pointer-events-none absolute inset-0 -z-20 bg-[#030609]" />
         <BackgroundVideo
           src={video("digital-globe-iot-network-loop.mp4")}
           poster={poster("digital-globe-iot-network-loop")}
-          overlay="bg-navy-900/70"
-          zoom={1.15}
-          shiftX="16%"
+          overlay="bg-transparent"
+          objectPosition="center 30%"
+          zoom={1}
+          shiftX="24%"
+          shiftY="-41px"
         />
-        {/* The globe clip isn't wide enough to fill the frame, so the left reads
-            as empty. This navy gradient (client 2026-07-22) fills that side with
-            the brand colour so it looks intentional and lifts text contrast. */}
-        <div className="pointer-events-none absolute inset-0 z-0 bg-gradient-to-r from-navy-900 via-navy-900/70 to-navy-900/10" />
+        {/* Darkening veil ON TOP of the video (above -z-10, below the z-10 copy) —
+            tames the bright globe and lifts text contrast. Solid #10273c tint. */}
+        <div className="pointer-events-none absolute inset-0 z-0 bg-[#10273c]/60" />
         {/* Copy occupies the right half from lg up; below lg it goes full width
             and the video reads as a backdrop. Padding tightened so the hero
             fits one viewport without scrolling (client 2026-07-22). */}

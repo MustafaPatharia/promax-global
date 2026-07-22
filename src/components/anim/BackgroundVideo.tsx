@@ -19,6 +19,7 @@ export default function BackgroundVideo({
   objectPosition = "center",
   zoom = 1,
   shiftX = "0%",
+  shiftY = "10%",
 }: {
   src: string;
   poster: string;
@@ -37,6 +38,8 @@ export default function BackgroundVideo({
    * RIGHT. Keep |shiftX| under the overflow the zoom creates (~(zoom-1)/2).
    */
   shiftX?: string;
+  /** Slide the (zoomed) video vertically. Positive moves the frame DOWN. */
+  shiftY?: string;
 }) {
   // cursor-parallax (spring-smoothed, small px drift)
   const x = useSpring(0, { stiffness: 60, damping: 20 });
@@ -65,7 +68,7 @@ export default function BackgroundVideo({
           preload="metadata"
           style={{
             objectPosition,
-            transform: `scale(${zoom}) translateX(${shiftX})`,
+            transform: `scale(${zoom}) translateX(${shiftX}) translateY(${shiftY})`,
           }}
           className="h-full w-full object-cover"
         />
