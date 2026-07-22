@@ -86,18 +86,51 @@ export default function PartnerStrip() {
               className="flex w-full shrink-0 items-center justify-around gap-6"
               aria-hidden={pi !== current}
             >
-              {withLogos.slice(pi * perView, pi * perView + perView).map((p) => (
-                <li key={p.name} className="flex min-w-0 shrink items-center">
-                  <Image
-                    src={asset(p.logo!)}
-                    alt={p.name}
-                    width={200}
-                    height={80}
-                    loading="lazy"
-                    className="h-9 w-auto max-w-full object-contain transition duration-500 hover:scale-105 md:h-12"
-                  />
-                </li>
-              ))}
+              {withLogos.slice(pi * perView, pi * perView + perView).map((p) => {
+                const logo = (
+                  // Per-logo `scale` (temporary, see site.ts) balances the uneven
+                  // internal padding of the supplied files. Lives on a wrapper so
+                  // it composes with the image's hover:scale-105 instead of
+                  // fighting it for the single `transform` property.
+                  <span
+                    className="inline-flex origin-center transition-transform duration-500"
+                    style={p.scale ? { transform: `scale(${p.scale})` } : undefined}
+                  >
+                    <Image
+                      src={asset(p.logo!)}
+                      alt={p.name}
+                      width={200}
+                      height={80}
+                      loading="lazy"
+                      // Height-matched, NOT width-matched (client 2026-07-22): fix
+                      // the height and let width run free (max-w-none) so every logo
+                      // shares the same height instead of some shrinking to fit width.
+                      // The shell wrapper is overflow-hidden, so an unusually wide
+                      // logo clips rather than breaking the row.
+                      className="h-11 w-auto max-w-none object-contain transition duration-500 hover:scale-105 md:h-14"
+                    />
+                  </span>
+                );
+                return (
+                  <li key={p.name} className="flex min-w-0 shrink items-center">
+                    {p.url ? (
+                      // Clickable partner link (client 2026-07-22) — opens the
+                      // partner's site in a new tab. Only when a url is set.
+                      <a
+                        href={p.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`Visit ${p.name}`}
+                        className="flex min-w-0 items-center"
+                      >
+                        {logo}
+                      </a>
+                    ) : (
+                      logo
+                    )}
+                  </li>
+                );
+              })}
             </ul>
           ))}
         </div>

@@ -74,9 +74,6 @@ export default function HorizontalScroll({ panels }: { panels: Panel[] }) {
               Explore our integrated capabilities that support the development, operation, and
               long-term success of ports and national infrastructure projects.
             </p>
-            <span className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-brand">
-              Keep scrolling
-            </span>
           </div>
 
           {panels.map((p) => (
@@ -103,6 +100,16 @@ export default function HorizontalScroll({ panels }: { panels: Panel[] }) {
             </Link>
           ))}
         </div>
+
+        {/* Forced-scroll cue — centered at the bottom of the pinned viewport
+            (client 2026-07-22: put the scroll arrow in the centre). Only while
+            pinned; the reduced-motion / no-JS fallback is a native scroll strip. */}
+        {pinned && (
+          <div className="pointer-events-none absolute inset-x-0 bottom-6 z-10 flex flex-col items-center gap-1 text-white/60 motion-reduce:hidden">
+            <span className="text-xs font-semibold uppercase tracking-[0.25em]">Keep scrolling</span>
+            <span className="animate-bounce text-lg leading-none">↓</span>
+          </div>
+        )}
       </div>
     </section>
   );

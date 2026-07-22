@@ -155,6 +155,14 @@ export default function ScrubBand({
             {text}
           </div>
         </div>
+
+        {/* Forced-scroll cue — centered at the bottom of the pinned band
+            (client 2026-07-22: add the scroll arrow where it's missing).
+            Hidden under reduced motion (the band is static there). */}
+        <div className="pointer-events-none absolute inset-x-0 bottom-6 z-10 flex flex-col items-center gap-1 text-white/60 motion-reduce:hidden">
+          <span className="text-xs font-semibold uppercase tracking-[0.25em]">Keep scrolling</span>
+          <span className="animate-bounce text-lg leading-none">↓</span>
+        </div>
       </div>
     </section>
   );

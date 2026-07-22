@@ -45,22 +45,37 @@ export const site = {
  * FICCI and GTSC are not on the doc's list of 15 but the client supplied their
  * logo files directly (2026-07-20) and asked for them to be included.
  */
-export const partners: { name: string; logo: string | null }[] = [
-  { name: "Promax Global", logo: "/partners/promax-global.png" },
-  { name: "Promax United", logo: "/partners/promax-united.jpg" },
+// `url` (client 2026-07-22): when set, the logo becomes a clickable link to the
+// partner's site (opens in a new tab). Leave null until the real URL is
+// confirmed — per the global rule, don't invent partner domains.
+//
+// `scale` (client 2026-07-22, TEMPORARY): the strip locks every logo to the same
+// HEIGHT, but the supplied files have wildly different internal padding — the
+// tight `trot-holdings` (173×56, no margin) fills the box and dominates, while
+// the 150–200px SQUARE files (enjoy/digital/investments) have thick margins so
+// their mark reads small. `scale` visually balances them until the client sends
+// clean, evenly-cropped logos, at which point these overrides should be removed.
+export const partners: {
+  name: string;
+  logo: string | null;
+  url?: string | null;
+  scale?: number;
+}[] = [
+  { name: "Promax Global", logo: "/partners/promax-global.png", url: "https://www.promaxunited.com" },
+  { name: "Promax United", logo: "/partners/promax-united.jpg", url: "https://www.promaxunited.com" },
   { name: "Trot Global", logo: "/partners/trot-global.png" },
   { name: "Youth Chamber of Commerce", logo: "/partners/youth-chamber-of-commerce.jpg" },
   // Supplied as a 1200×630 social "sharepic": white mark on a solid navy field,
   // not a transparent logo. It reads as a dark rectangle in the faded strip —
   // ask the client for the plain mark before launch.
   { name: "Plambeck", logo: "/partners/plambeck.jpg" },
-  { name: "Promax Enjoy", logo: "/partners/promax-enjoy.jpeg" },
+  { name: "Promax Enjoy", logo: "/partners/promax-enjoy.jpeg", scale: 1.3 },
   { name: "Trot Solutions", logo: "/partners/trot-solutions.png" },
   { name: "Solveeasy", logo: "/partners/solveeasy.jpg" },
-  { name: "Promax Digital", logo: "/partners/promax-digital.jpeg" },
-  { name: "Trot Holdings", logo: "/partners/trot-holdings.png" },
+  { name: "Promax Digital", logo: "/partners/promax-digital.jpeg", scale: 1.3 },
+  { name: "Trot Holdings", logo: "/partners/trot-holdings.png", scale: 0.82 },
   { name: "Abu Dhabi International Factory", logo: "/partners/abu-dhabi-international-factory.png" },
-  { name: "Promax Investments", logo: "/partners/promax-investments.png" },
+  { name: "Promax Investments", logo: "/partners/promax-investments.png", scale: 1.3 },
   { name: "Promax Easypay", logo: null },
   { name: "Goldwin Mines", logo: null },
   { name: "Starboard Ports", logo: null },

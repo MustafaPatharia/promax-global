@@ -205,16 +205,21 @@ export default function Home() {
           src={video("digital-globe-iot-network-loop.mp4")}
           poster={poster("digital-globe-iot-network-loop")}
           overlay="bg-navy-900/70"
-          zoom={1.35}
-          shiftX="12%"
+          zoom={1.15}
+          shiftX="16%"
         />
+        {/* The globe clip isn't wide enough to fill the frame, so the left reads
+            as empty. This navy gradient (client 2026-07-22) fills that side with
+            the brand colour so it looks intentional and lifts text contrast. */}
+        <div className="pointer-events-none absolute inset-0 z-0 bg-gradient-to-r from-navy-900 via-navy-900/70 to-navy-900/10" />
         {/* Copy occupies the right half from lg up; below lg it goes full width
-            and the video reads as a backdrop. */}
-        <div className="shell relative z-10 py-28 lg:ms-auto lg:w-[58%] lg:ps-4">
+            and the video reads as a backdrop. Padding tightened so the hero
+            fits one viewport without scrolling (client 2026-07-22). */}
+        <div className="shell relative z-10 py-16 md:py-20 lg:ms-auto lg:w-[58%] lg:ps-4">
           <KineticHeading
             text="From UAE to the World"
             highlight={["World"]}
-            className="mt-5 max-w-4xl font-display text-5xl font-extrabold leading-[1.02] md:text-8xl"
+            className="mt-4 max-w-4xl font-display text-5xl font-extrabold leading-[1.02] md:text-7xl"
           />
 
           <Reveal variant="up" index={3}>
@@ -246,7 +251,7 @@ export default function Home() {
 
           {/* in-hero counters — same count-up as the stats band (IntersectionObserver;
               fires on load since the hero is in view). */}
-          <dl className="mt-14 grid max-w-3xl grid-cols-2 gap-6 border-t border-white/10 pt-8 sm:grid-cols-4">
+          <dl className="mt-10 grid max-w-3xl grid-cols-2 gap-6 border-t border-white/10 pt-6 sm:grid-cols-4">
             {site.stats.map((s, i) => (
               <Reveal key={s.label} variant="up" index={5 + i} as="div">
                 <dt className="font-display text-4xl font-extrabold text-brand">
@@ -406,7 +411,7 @@ export default function Home() {
           <div>
             <SectionTitle
               ghost="Reach"
-              heading={<>One UAE hub, four <span>continents</span></>}
+              heading={<>Our UAE hub, <span>global reach</span></>}
             />
             <Reveal variant="right" index={2}>
               <p className="mt-5 leading-relaxed text-slate-600">
@@ -492,7 +497,7 @@ export default function Home() {
           <div className="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <SectionTitle
               ghost="Portfolio"
-              heading={<>8 flagship projects, <span>one strategic portfolio</span></>}
+              heading={<>Global <span>project portfolio</span></>}
               className="max-w-2xl"
             />
             <Reveal variant="up" index={2}>
