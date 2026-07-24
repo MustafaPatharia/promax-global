@@ -592,15 +592,22 @@ export const pages: Record<string, PageContent & { metaDescription: string }> = 
    * ------------------------------------------------------------------ */
   "smart-green-energy": {
     eyebrow: "Portfolio",
-    title: "Smart Energy Management",
+    title: "Smart & Green Energy",
     heroVideo: "recycle-symbol-sign-sunset.mp4",
-    heroStyle: "letterbox",
+    heroStyle: "kenburns",
     intro:
       "Our Smart Energy Management Solutions offers intelligent monitoring, control, and optimization of energy consumption across industrial, port, logistics, and commercial environments. It integrates IoT sensors, advanced analytics, automation, and energy-efficient technologies to reduce costs, improve reliability, and support national sustainability goals.",
     metaDescription:
       "Promax Global Smart & Green Energy portfolio — smart energy management, renewable integration, hybrid equipment conversions, and ESG-aligned decarbonization programs.",
     bodyStyle: "rows",
     sections: [
+      {
+        heading: "Smart Energy",
+        body:
+          "Our Smart Energy Management Solutions offers intelligent monitoring, control, and optimization of energy consumption across industrial, port, logistics, and commercial environments. It integrates IoT sensors, advanced analytics, automation, and energy-efficient technologies to reduce costs, improve reliability, and support national sustainability goals.",
+        image: "3065eb1c_Smart_Green_Energy.jpg",
+        imageAlt: "Smart energy management systems",
+      },
       {
         heading: "Green Energy",
         body:
@@ -614,34 +621,35 @@ export const pages: Record<string, PageContent & { metaDescription: string }> = 
         type: "service-freight",
         eyebrow: "Our Green Energy Portfolio",
         heading: "Delivery capabilities",
+        ghost: "Energy",
         items: [
           {
-            icon: "bolt",
+            icon: "solar-panel",
             title: "Solar & Renewable Integration",
             text: "Design, deployment, and optimization of solar PV systems, hybrid microgrids, and renewable-powered infrastructure for ports, logistics hubs, and industrial zones.",
           },
           {
-            icon: "crane",
+            icon: "plug-zap",
             title: "Hybrid & Electric Equipment Conversions",
             text: "Electrification and hybridization of cranes, RTGs, terminal tractors, and industrial machinery to reduce emissions and fuel dependency.",
           },
           {
-            icon: "clipboard",
+            icon: "gauge",
             title: "Energy-Efficiency Audits & Optimization",
             text: "Comprehensive assessments to identify energy losses, optimize consumption, and improve asset performance across facilities and equipment.",
           },
           {
-            icon: "globe",
+            icon: "cpu",
             title: "Smart Energy Management Systems (SEMS)",
             text: "IoT-enabled monitoring, analytics, and automation platforms that provide real-time visibility, predictive insights, and intelligent control of energy usage.",
           },
           {
-            icon: "building",
+            icon: "eco-bulb",
             title: "Sustainable Infrastructure Upgrades",
             text: "LED retrofits, efficient drives, regenerative systems, and low-carbon engineering solutions that extend asset life and reduce operational overhead.",
           },
           {
-            icon: "layers",
+            icon: "leaf",
             title: "Carbon Reduction & ESG Compliance Programs",
             text: "Roadmaps, reporting frameworks, and implementation strategies aligned with national sustainability mandates and global ESG standards.",
           },
@@ -654,13 +662,13 @@ export const pages: Record<string, PageContent & { metaDescription: string }> = 
         columns: 4,
         tone: "dark",
         items: [
-          { icon: "building", title: "Government bodies & authority" },
-          { icon: "briefcase", title: "Sovereign wealth funds" },
-          { icon: "layers", title: "Private & institutional investors" },
-          { icon: "globe", title: "Technology providers & OEMs" },
-          { icon: "crane", title: "EPC contractors & integrators" },
+          { icon: "landmark", title: "Government bodies & authority" },
+          { icon: "coins", title: "Sovereign wealth funds" },
+          { icon: "growth", title: "Private & institutional investors" },
+          { icon: "cpu", title: "Technology providers & OEMs" },
+          { icon: "hard-hat", title: "EPC contractors & integrators" },
           { icon: "anchor", title: "Industrial & port operators" },
-          { icon: "bolt", title: "Utility companies & regulators" },
+          { icon: "power-tower", title: "Utility companies & regulators" },
         ],
       },
     ],
@@ -694,6 +702,7 @@ export const pages: Record<string, PageContent & { metaDescription: string }> = 
         type: "service-freight",
         eyebrow: "Mandated Projects",
         heading: "Strategic investment opportunities",
+        ghost: "Invest",
         items: [
           {
             icon: "anchor",

@@ -20,7 +20,7 @@ export default function WorkWithUsPage() {
         path="/work-with-us"
         faqs={faqs["work-with-us"]}
       />
-      <PageShell content={pages["work-with-us"]} faqs={faqs["work-with-us"]} />
+      <PageShell content={pages["work-with-us"]} />
     </>
   );
 }

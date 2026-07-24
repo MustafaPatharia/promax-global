@@ -21,7 +21,7 @@ export const metadata: Metadata = pageMeta({
  *
  * §6.1 The UAE Foundation / Leadership Inspiration panel is the page opener:
  * a two-column plate — left = "Proudly Headquartered in Abu Dhabi" (skyline +
- * copy + five foundations); right = "Inspired by the Vision of the UAE" (the
+ * copy + five foundations); right = "Inspired by the Vision and Leadership of the UAE" (the
  * two founder quotations). Text is transcribed verbatim from the mockup.
  *
  * Sections still to come (built next, per the doc): §6.2 Sustainability & ESG ·
@@ -371,7 +371,7 @@ export default function AboutPage() {
           <div className="mt-24 max-w-4xl">
             <Reveal>
               <p className="font-display text-base font-bold uppercase tracking-[0.28em] text-gold md:text-xl">
-                Inspired by the Vision of the UAE
+                Inspired by the Vision and Leadership of the UAE
               </p>
             </Reveal>
             <span className="mt-3 block h-px w-16 bg-gold/60" />

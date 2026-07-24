@@ -66,7 +66,7 @@ export default async function PortfolioSubPage({
         isService
       />
       {/* noCta: client 00:43:53 — "No call to action in the pages" (portfolio). */}
-      <PageShell content={content} faqs={pageFaqs} noCta />
+      <PageShell content={content} noCta />
     </>
   );
 }

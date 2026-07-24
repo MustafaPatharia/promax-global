@@ -215,12 +215,12 @@ export default function WhyUsPage() {
           {/* Aligned with global frameworks */}
           <Reveal variant="up">
             <div className="card mt-6 p-7 md:p-9">
-              <p className="text-base font-semibold text-navy md:text-lg">
+              <p className="text-center font-display text-2xl font-extrabold text-navy md:text-3xl">
                 Aligned with global frameworks
               </p>
-              <ul className="mt-5 grid gap-4 sm:grid-cols-2">
+              <ul className="mx-auto mt-7 grid w-fit gap-x-16 gap-y-5 sm:grid-cols-2">
                 {frameworks.map((f) => (
-                  <li key={f} className="flex items-start gap-3 text-base font-semibold text-slate-700 md:text-lg">
+                  <li key={f} className="flex items-start gap-3 text-left text-base font-semibold text-slate-700 md:text-lg">
                     <LineIcon name="check" className="mt-0.5 h-6 w-6 shrink-0 text-brand" />
                     <span>{f}</span>
                   </li>

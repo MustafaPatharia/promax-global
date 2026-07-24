@@ -1,6 +1,7 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { nav } from "@/lib/site";
 import { asset } from "@/lib/assets";
@@ -29,6 +30,39 @@ const closeDetails = (e: React.MouseEvent<HTMLAnchorElement>) =>
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
+  const pathname = usePathname();
+
+  /**
+   * The dropdowns are native <details>, so nothing closes them but a click on a
+   * link INSIDE them. Clicking a sibling nav item (Home, Why Us…), or anywhere
+   * off the panel, used to leave Portfolio hanging open. Close every open
+   * <details> in the header unless the pointer landed inside that same one.
+   */
+  useEffect(() => {
+    const closeOthers = (e: Event) => {
+      const target = e.target as Node | null;
+      headerRef.current?.querySelectorAll<HTMLDetailsElement>("details[open]").forEach((d) => {
+        if (!target || !d.contains(target)) d.open = false;
+      });
+    };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeOthers(e);
+    };
+    document.addEventListener("pointerdown", closeOthers);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("pointerdown", closeOthers);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, []);
+
+  /** Any completed client-side navigation closes whatever is still open. */
+  useEffect(() => {
+    headerRef.current
+      ?.querySelectorAll<HTMLDetailsElement>("details[open]")
+      .forEach((d) => (d.open = false));
+  }, [pathname]);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -39,6 +73,7 @@ export default function Nav() {
 
   return (
     <header
+      ref={headerRef}
       dir="ltr"
       className={`sticky top-0 z-50 border-b bg-white/90 backdrop-blur transition-all duration-300 ${
         scrolled ? "border-slate-100 shadow-[0_8px_30px_-16px_rgba(18,41,63,0.25)]" : "border-transparent"

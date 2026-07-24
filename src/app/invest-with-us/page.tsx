@@ -20,7 +20,7 @@ export default function InvestWithUsPage() {
         path="/invest-with-us"
         faqs={faqs["invest-with-us"]}
       />
-      <PageShell content={pages["invest-with-us"]} faqs={faqs["invest-with-us"]} />
+      <PageShell content={pages["invest-with-us"]} />
     </>
   );
 }

@@ -3,7 +3,7 @@
  * ported from the Transland template. Extend the union as new blocks land;
  * the renderer in ./index.tsx switches on `type`.
  */
-import type { IconName } from "@/components/Icons";
+import type { LineName as IconName } from "@/components/LineIcon";
 
 /** Icon-card grid — Transland .single-features-box / why-chose-us. */
 export type FeatureCardsBlock = {
@@ -50,6 +50,7 @@ export type ServiceFreightBlock = {
   eyebrow?: string;
   heading: string;
   intro?: string;
+  ghost?: string;
   /** Grid width at lg+. Advisory & Planning is spec'd 4×2 (meeting 00:53:55). */
   columns?: 2 | 3 | 4;
   items: {

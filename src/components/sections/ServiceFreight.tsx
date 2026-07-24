@@ -22,13 +22,14 @@ export default function ServiceFreight({
   items,
   columns = 3,
   bg = "bg-white",
+  ghost = "Service",
 }: ServiceFreightBlock & { bg?: string }) {
   const cols = { 2: "sm:grid-cols-2", 3: "sm:grid-cols-2 lg:grid-cols-3", 4: "sm:grid-cols-2 lg:grid-cols-4" }[columns];
   return (
     <section className={`section ${bg}`}>
       <div className="shell">
         <div className="mb-12 max-w-2xl">
-          <SectionTitle ghost="Freight" kicker={eyebrow ?? "Our services"} heading={heading} />
+          <SectionTitle ghost={ghost} kicker={eyebrow ?? "Our services"} heading={heading} />
           {intro && (
             <Reveal variant="up" index={1}>
               <p className="mt-4 leading-relaxed text-slate-600">{intro}</p>

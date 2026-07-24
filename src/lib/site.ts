@@ -79,9 +79,6 @@ export const partners: {
   { name: "Promax Easypay", logo: null },
   { name: "Goldwin Mines", logo: null },
   { name: "Starboard Ports", logo: null },
-  // Client-supplied 2026-07-20, additional to the doc's list of 15.
-  // FICCI removed per client (2026-07-21).
-  { name: "GTSC", logo: "/partners/gtsc.png" },
 ];
 
 export type NavItem = { label: string; href: string; children?: NavItem[] };

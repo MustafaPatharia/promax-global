@@ -26,6 +26,14 @@ export type LineName =
   | "growth"
   | "graduation"
   | "bolt"
+  | "landmark"
+  | "coins"
+  | "hard-hat"
+  | "power-tower"
+  | "solar-panel"
+  | "plug-zap"
+  | "gauge"
+  | "eco-bulb"
   | "clipboard"
   | "newspaper"
   | "play"
@@ -147,6 +155,83 @@ const LINE_PATHS: Record<LineName, React.ReactNode> = {
   ),
   bolt: (
     <path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z" />
+  ),
+  /* Landmark — columned civic building: government bodies & authorities. */
+  landmark: (
+    <>
+      <path d="M3 22h18" />
+      <path d="M6 18v-7" />
+      <path d="M10 18v-7" />
+      <path d="M14 18v-7" />
+      <path d="M18 18v-7" />
+      <path d="m12 2 8 5H4z" />
+    </>
+  ),
+  /* Coins — capital / sovereign wealth funds. */
+  coins: (
+    <>
+      <circle cx="9" cy="9" r="6" />
+      <path d="M18.6 11.1A6 6 0 1 1 11 18.7" />
+      <path d="M8 7h1.2v4.2" />
+    </>
+  ),
+  /* Hard hat — EPC contractors & integrators. */
+  "hard-hat": (
+    <>
+      <path d="M2.5 18.5a1 1 0 0 1 1-1h17a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1h-17a1 1 0 0 1-1-1z" />
+      <path d="M10 10.5V5.8a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4.7" />
+      <path d="M4.5 17.5V13a5.5 5.5 0 0 1 5.5-5.5" />
+      <path d="M14 7.5A5.5 5.5 0 0 1 19.5 13v4.5" />
+    </>
+  ),
+  /* Transmission pylon — utility companies & regulators. */
+  "power-tower": (
+    <>
+      <path d="M12 2 5.5 22" />
+      <path d="M12 2 18.5 22" />
+      <path d="M12 2v20" />
+      <path d="M6.6 8.5h10.8" />
+      <path d="M5.1 15h13.8" />
+    </>
+  ),
+  /* Solar panel — angled PV array on a stand (energy & ecology set idiom). */
+  "solar-panel": (
+    <>
+      <path d="M4.5 14h15l-1.6-9a1 1 0 0 0-1-.86H7.1a1 1 0 0 0-1 .86z" />
+      <path d="M5.1 9.5h13.8" />
+      <path d="M12 4.14V14" />
+      <path d="M12 14v3" />
+      <path d="M8 20h8" />
+      <path d="M12 17v3" />
+    </>
+  ),
+  /* Plug + bolt — electrification / hybrid conversions. */
+  "plug-zap": (
+    <>
+      <path d="M9 2v4" />
+      <path d="M15 2v4" />
+      <path d="M6 6h12v3a6 6 0 0 1-6 6 6 6 0 0 1-6-6z" />
+      <path d="M12 15v3" />
+      <path d="m13.5 18-3 2.4h3L10.5 23" />
+    </>
+  ),
+  /* Gauge — efficiency audits / optimisation. */
+  gauge: (
+    <>
+      <path d="m12 14 4-4" />
+      <path d="M3.34 19a10 10 0 1 1 17.32 0" />
+    </>
+  ),
+  /* Eco bulb — leaf inside a bulb: LED retrofits / sustainable upgrades. */
+  "eco-bulb": (
+    <>
+      <path d="M15 14c.2-1 .7-1.7 1.5-2.5A5.99 5.99 0 0 0 18 7a6 6 0 0 0-12 0c0 1.8.7 3.4 1.5 4.5.8.8 1.3 1.5 1.5 2.5" />
+      <path d="M9 18h6" />
+      <path d="M10 22h4" />
+      <path d="M12 12.5V8.8" />
+      <path d="M12 8.8c0-1.6 1.2-2.8 2.8-2.8 0 1.6-1.2 2.8-2.8 2.8" />
+      <path d="M12 10.2c0-1.6-1.2-2.8-2.8-2.8 0 1.6 1.2 2.8 2.8 2.8" />
+    </>
   ),
   clipboard: (
     <>

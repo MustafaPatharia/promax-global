@@ -1,5 +1,4 @@
 import Link from "next/link";
-import type { Faq } from "@/lib/faqs";
 import Reveal from "@/components/anim/Reveal";
 import Counter from "@/components/anim/Counter";
 import VideoHero, { type HeroVariant } from "@/components/anim/VideoHero";
@@ -62,11 +61,9 @@ const base = (f: string) => f.replace(/\.mp4$/, "");
  */
 export default function PageShell({
   content,
-  faqs,
   noCta = false,
 }: {
   content: PageContent;
-  faqs?: Faq[];
   noCta?: boolean;
 }) {
   return (
@@ -203,28 +200,6 @@ export default function PageShell({
           </div>
         </section>
       )}
-
-      {/* ---------- FAQ — quotable Q&A for humans and AI answer engines ---------- */}
-      {faqs?.length ? (
-        <section className="section bg-slate-50">
-          <div className="shell">
-            <Reveal>
-              <h2 className="text-2xl font-bold text-navy md:text-3xl">Frequently asked questions</h2>
-            </Reveal>
-            <div className="mt-8 max-w-3xl divide-y divide-slate-200 border-t border-slate-200">
-              {faqs.map((f, i) => (
-                <details key={i} className="group py-5">
-                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold text-navy">
-                    {f.q}
-                    <span className="text-brand transition group-open:rotate-45">+</span>
-                  </summary>
-                  <p className="mt-3 leading-relaxed text-slate-600">{f.a}</p>
-                </details>
-              ))}
-            </div>
-          </div>
-        </section>
-      ) : null}
 
       {/* ---------- Closing CTA (suppressed on portfolio pages — see `noCta`) ---------- */}
       {!noCta && (
