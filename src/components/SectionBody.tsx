@@ -53,7 +53,7 @@ export default function SectionBody({
   /** Page-order index — alternates media side + keeps reveals varied. */
   index?: number;
 }) {
-  const { heading, body, items, image, imageAlt } = section;
+  const { heading, body, items, image, imageAlt, id } = section;
   const ghost = heading.split(" ")[0];
   const mediaFirst = index % 2 === 1; // alternate image side down the page
 
@@ -61,7 +61,7 @@ export default function SectionBody({
   if (!items?.length) {
     if (image) {
       return (
-        <section className={`section ${bg}`}>
+        <section id={id} className={`section scroll-mt-24 ${bg}`}>
           <div className="shell grid items-center gap-10 lg:grid-cols-2">
             <div className={mediaFirst ? "lg:order-2" : ""}>
               <SectionMedia src={image} alt={imageAlt ?? heading} variant={mediaFirst ? "right" : "left"} className="aspect-[4/3]" />
@@ -81,7 +81,7 @@ export default function SectionBody({
       );
     }
     return (
-      <section className={`section ${bg}`}>
+      <section id={id} className={`section scroll-mt-24 ${bg}`}>
         <div className="shell">
           <Reveal>
             <h2 className="text-2xl font-bold text-navy md:text-3xl">{heading}</h2>
@@ -98,7 +98,7 @@ export default function SectionBody({
 
   if (layout === "rows") {
     return (
-      <section className={`section ${bg}`}>
+      <section id={id} className={`section scroll-mt-24 ${bg}`}>
         <div className="shell grid gap-12 lg:grid-cols-[5fr_7fr]">
           <div className="lg:sticky lg:top-28 lg:self-start">
             <Reveal variant="up">
@@ -140,7 +140,7 @@ export default function SectionBody({
 
   if (layout === "grid-num") {
     return (
-      <section className={`section ${bg}`}>
+      <section id={id} className={`section scroll-mt-24 ${bg}`}>
         <div className="shell">
           <div className="relative mb-12">
             <Reveal variant="up">
@@ -177,7 +177,7 @@ export default function SectionBody({
 
   // cards (default)
   return (
-    <section className={`section ${bg}`}>
+    <section id={id} className={`section scroll-mt-24 ${bg}`}>
       <div className="shell">
         <Reveal>
           <h2 className="text-2xl font-bold text-navy md:text-3xl">{heading}</h2>

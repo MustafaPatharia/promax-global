@@ -9,6 +9,8 @@ import Blocks, { type Block } from "@/components/sections";
 import { video, poster } from "@/lib/videos";
 
 export type PageSection = {
+  /** Anchor target — nav sub-items deep-link to sections (e.g. `#smart-energy`). */
+  id?: string;
   heading: string;
   body?: string;
   items?: { title: string; text?: string }[];

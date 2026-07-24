@@ -602,6 +602,7 @@ export const pages: Record<string, PageContent & { metaDescription: string }> = 
     bodyStyle: "rows",
     sections: [
       {
+        id: "smart-energy",
         heading: "Smart Energy",
         body:
           "Our Smart Energy Management Solutions offers intelligent monitoring, control, and optimization of energy consumption across industrial, port, logistics, and commercial environments. It integrates IoT sensors, advanced analytics, automation, and energy-efficient technologies to reduce costs, improve reliability, and support national sustainability goals.",
@@ -609,6 +610,7 @@ export const pages: Record<string, PageContent & { metaDescription: string }> = 
         imageAlt: "Smart energy management systems",
       },
       {
+        id: "green-energy",
         heading: "Green Energy",
         body:
           "Promax Global delivers integrated green energy solutions — from renewable integration and hybrid equipment conversions to smart energy management and ESG-aligned decarbonization programs. We help ports, industries, and government entities transition to cleaner, more efficient, and future-ready operations.",
